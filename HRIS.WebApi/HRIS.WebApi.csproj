@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="5.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HRIS.Repository\HRIS.Repository.csproj" />
+    <ProjectReference Include="..\HRIS.Service\HRIS.Service.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\Response\" />
+    <Folder Include="Models\Request\" />
+  </ItemGroup>
+
+</Project>

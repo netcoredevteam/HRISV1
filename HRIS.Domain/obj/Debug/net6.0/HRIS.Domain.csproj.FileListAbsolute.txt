@@ -1,0 +1,12 @@
+D:\Work\NEW PROJECTS\HRIS\HRIS\HRIS.Domain\bin\Debug\net6.0\HRIS.Domain.deps.json
+D:\Work\NEW PROJECTS\HRIS\HRIS\HRIS.Domain\bin\Debug\net6.0\HRIS.Domain.dll
+D:\Work\NEW PROJECTS\HRIS\HRIS\HRIS.Domain\bin\Debug\net6.0\HRIS.Domain.pdb
+D:\Work\NEW PROJECTS\HRIS\HRIS\HRIS.Domain\obj\Debug\net6.0\HRIS.Domain.csproj.AssemblyReference.cache
+D:\Work\NEW PROJECTS\HRIS\HRIS\HRIS.Domain\obj\Debug\net6.0\HRIS.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\Work\NEW PROJECTS\HRIS\HRIS\HRIS.Domain\obj\Debug\net6.0\HRIS.Domain.AssemblyInfoInputs.cache
+D:\Work\NEW PROJECTS\HRIS\HRIS\HRIS.Domain\obj\Debug\net6.0\HRIS.Domain.AssemblyInfo.cs
+D:\Work\NEW PROJECTS\HRIS\HRIS\HRIS.Domain\obj\Debug\net6.0\HRIS.Domain.csproj.CoreCompileInputs.cache
+D:\Work\NEW PROJECTS\HRIS\HRIS\HRIS.Domain\obj\Debug\net6.0\HRIS.Domain.dll
+D:\Work\NEW PROJECTS\HRIS\HRIS\HRIS.Domain\obj\Debug\net6.0\refint\HRIS.Domain.dll
+D:\Work\NEW PROJECTS\HRIS\HRIS\HRIS.Domain\obj\Debug\net6.0\HRIS.Domain.pdb
+D:\Work\NEW PROJECTS\HRIS\HRIS\HRIS.Domain\obj\Debug\net6.0\ref\HRIS.Domain.dll

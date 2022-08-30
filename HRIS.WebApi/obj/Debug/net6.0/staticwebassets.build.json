@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "uk49UHVuVlVVMt+leiNLg+TKlnPjijQRUEt1qBVNhfI=",
+  "Source": "HRIS.WebApi",
+  "BasePath": "_content/HRIS.WebApi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

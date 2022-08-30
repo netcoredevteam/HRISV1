@@ -1,0 +1,17 @@
+D:\Work\NEW PROJECTS\HRIS\HRIS\HRIS.Service\bin\Debug\net6.0\HRIS.Service.deps.json
+D:\Work\NEW PROJECTS\HRIS\HRIS\HRIS.Service\bin\Debug\net6.0\HRIS.Service.dll
+D:\Work\NEW PROJECTS\HRIS\HRIS\HRIS.Service\bin\Debug\net6.0\HRIS.Service.pdb
+D:\Work\NEW PROJECTS\HRIS\HRIS\HRIS.Service\obj\Debug\net6.0\HRIS.Service.csproj.AssemblyReference.cache
+D:\Work\NEW PROJECTS\HRIS\HRIS\HRIS.Service\obj\Debug\net6.0\HRIS.Service.GeneratedMSBuildEditorConfig.editorconfig
+D:\Work\NEW PROJECTS\HRIS\HRIS\HRIS.Service\obj\Debug\net6.0\HRIS.Service.AssemblyInfoInputs.cache
+D:\Work\NEW PROJECTS\HRIS\HRIS\HRIS.Service\obj\Debug\net6.0\HRIS.Service.AssemblyInfo.cs
+D:\Work\NEW PROJECTS\HRIS\HRIS\HRIS.Service\obj\Debug\net6.0\HRIS.Service.csproj.CoreCompileInputs.cache
+D:\Work\NEW PROJECTS\HRIS\HRIS\HRIS.Service\obj\Debug\net6.0\HRIS.Service.dll
+D:\Work\NEW PROJECTS\HRIS\HRIS\HRIS.Service\obj\Debug\net6.0\refint\HRIS.Service.dll
+D:\Work\NEW PROJECTS\HRIS\HRIS\HRIS.Service\obj\Debug\net6.0\HRIS.Service.pdb
+D:\Work\NEW PROJECTS\HRIS\HRIS\HRIS.Service\obj\Debug\net6.0\ref\HRIS.Service.dll
+D:\Work\NEW PROJECTS\HRIS\HRIS\HRIS.Service\bin\Debug\net6.0\HRIS.Domain.dll
+D:\Work\NEW PROJECTS\HRIS\HRIS\HRIS.Service\bin\Debug\net6.0\HRIS.Repository.dll
+D:\Work\NEW PROJECTS\HRIS\HRIS\HRIS.Service\bin\Debug\net6.0\HRIS.Domain.pdb
+D:\Work\NEW PROJECTS\HRIS\HRIS\HRIS.Service\bin\Debug\net6.0\HRIS.Repository.pdb
+D:\Work\NEW PROJECTS\HRIS\HRIS\HRIS.Service\obj\Debug\net6.0\HRIS.Service.csproj.CopyComplete

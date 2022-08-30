@@ -1,0 +1,17 @@
+D:\Work\NEW PROJECTS\HRIS\HRIS\HRIS.Repository\obj\Debug\net6.0\HRIS.Repository.csproj.AssemblyReference.cache
+D:\Work\NEW PROJECTS\HRIS\HRIS\HRIS.Repository\obj\Debug\net6.0\HRIS.Repository.GeneratedMSBuildEditorConfig.editorconfig
+D:\Work\NEW PROJECTS\HRIS\HRIS\HRIS.Repository\obj\Debug\net6.0\HRIS.Repository.AssemblyInfoInputs.cache
+D:\Work\NEW PROJECTS\HRIS\HRIS\HRIS.Repository\obj\Debug\net6.0\HRIS.Repository.AssemblyInfo.cs
+D:\Work\NEW PROJECTS\HRIS\HRIS\HRIS.Repository\obj\Debug\net6.0\HRIS.Repository.csproj.CoreCompileInputs.cache
+D:\Work\NEW PROJECTS\HRIS\HRIS\HRIS.Repository\bin\Debug\net6.0\HRIS.Repository.deps.json
+D:\Work\NEW PROJECTS\HRIS\HRIS\HRIS.Repository\bin\Debug\net6.0\HRIS.Repository.runtimeconfig.json
+D:\Work\NEW PROJECTS\HRIS\HRIS\HRIS.Repository\bin\Debug\net6.0\HRIS.Repository.dll
+D:\Work\NEW PROJECTS\HRIS\HRIS\HRIS.Repository\bin\Debug\net6.0\HRIS.Repository.pdb
+D:\Work\NEW PROJECTS\HRIS\HRIS\HRIS.Repository\bin\Debug\net6.0\HRIS.Domain.dll
+D:\Work\NEW PROJECTS\HRIS\HRIS\HRIS.Repository\bin\Debug\net6.0\HRIS.Domain.pdb
+D:\Work\NEW PROJECTS\HRIS\HRIS\HRIS.Repository\obj\Debug\net6.0\HRIS.Repository.csproj.CopyComplete
+D:\Work\NEW PROJECTS\HRIS\HRIS\HRIS.Repository\obj\Debug\net6.0\HRIS.Repository.dll
+D:\Work\NEW PROJECTS\HRIS\HRIS\HRIS.Repository\obj\Debug\net6.0\refint\HRIS.Repository.dll
+D:\Work\NEW PROJECTS\HRIS\HRIS\HRIS.Repository\obj\Debug\net6.0\HRIS.Repository.pdb
+D:\Work\NEW PROJECTS\HRIS\HRIS\HRIS.Repository\obj\Debug\net6.0\HRIS.Repository.genruntimeconfig.cache
+D:\Work\NEW PROJECTS\HRIS\HRIS\HRIS.Repository\obj\Debug\net6.0\ref\HRIS.Repository.dll
