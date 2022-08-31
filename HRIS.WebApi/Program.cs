@@ -74,10 +74,12 @@ var app = builder.Build();
 
         app.UseSwaggerUI(c =>
         {
-            c.SwaggerEndpoint("/swagger/v1/swagger.json", "HRIS.API");
-            c.RoutePrefix = string.Empty;
+            c.SwaggerEndpoint("/swagger/v1/swagger.json", "HRIS.WebAPI");
+            c.RoutePrefix = "swagger";
         });
     }
+
+    app.UseStaticFiles();
 
     app.UseCors(x => x
         .AllowAnyOrigin()
