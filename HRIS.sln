@@ -6,12 +6,17 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HRIS.Domain", "HRIS.Domain\HRIS.Domain.csproj", "{72B7FEA4-9453-4488-9E13-DFDEEFA5A226}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HRIS.Repository", "HRIS.Repository\HRIS.Repository.csproj", "{71AF91FF-F81B-4427-AC98-0306AE10F8FA}"
+	ProjectSection(ProjectDependencies) = postProject
+		{6364CB38-14B5-476B-BA57-71081E3B2AC1} = {6364CB38-14B5-476B-BA57-71081E3B2AC1}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HRIS.Service", "HRIS.Service\HRIS.Service.csproj", "{A048AAAA-5A30-4114-8EF7-8E3C860C1AAF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HRIS.WebApi", "HRIS.WebApi\HRIS.WebApi.csproj", "{4D476D9C-2468-433F-9104-4E9ED7DE8647}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRIS.Utility", "HRIS.Utility\HRIS.Utility.csproj", "{72176B24-2861-4E80-B8D5-C84A316E462B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HRIS.Utility", "HRIS.Utility\HRIS.Utility.csproj", "{72176B24-2861-4E80-B8D5-C84A316E462B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HRIS.Core", "HRIS.Core\HRIS.Core.csproj", "{6364CB38-14B5-476B-BA57-71081E3B2AC1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +44,10 @@ Global
 		{72176B24-2861-4E80-B8D5-C84A316E462B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{72176B24-2861-4E80-B8D5-C84A316E462B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{72176B24-2861-4E80-B8D5-C84A316E462B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6364CB38-14B5-476B-BA57-71081E3B2AC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6364CB38-14B5-476B-BA57-71081E3B2AC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6364CB38-14B5-476B-BA57-71081E3B2AC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6364CB38-14B5-476B-BA57-71081E3B2AC1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
