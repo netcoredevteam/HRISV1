@@ -43,6 +43,12 @@ var builder = WebApplication.CreateBuilder(args);
         config.ReportApiVersions = true;
     });
 
+    services.AddDbContext<ApplicationDbContext>(options =>
+    {
+        var connectionString = configuration.GetConnectionString("DefaultConnection");
+        options.UseSqlServer(connectionString);
+    });
+
     services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
     // Repository

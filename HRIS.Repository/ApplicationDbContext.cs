@@ -25,6 +25,7 @@ namespace HRIS.Repository
 
         public DbSet<Employee>? Employees { get; set; }
 
+
         public async Task<int> SaveChangesAsync() => await base.SaveChangesAsync();
     }
 }
