@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace HRIS.Domain.Enums
 {
-    public enum UserType
+    public enum Status
     {
-        SUPER_ADMIN,
-        ADMIN,
-        USER
+        Disabled = 0,
+        Enabled = 1,
+        Deleted = 2
     }
 }

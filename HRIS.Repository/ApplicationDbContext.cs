@@ -19,12 +19,14 @@ namespace HRIS.Repository
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             new EmployeeEntityTypeConfigurations().Configure(modelBuilder.Entity<Employee>());
+            new UserEntityTypeConfiguration().Configure(modelBuilder.Entity<User>());
 
 
             base.OnModelCreating(modelBuilder);
         }
 
         public DbSet<Employee>? Employees { get; set; }
+        public DbSet<User>? Users { get; set; }
 
 
         public async Task<int> SaveChangesAsync() => await base.SaveChangesAsync();
