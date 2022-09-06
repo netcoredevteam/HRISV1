@@ -78,6 +78,11 @@ namespace HRIS.Repository.Configurations
                 .WithOne(e => e.Employee)
                 .HasForeignKey(e => e.EmployeeId)
                 .OnDelete(DeleteBehavior.SetNull);
+
+            builder
+                .HasOne(e => e.Schedule)
+                .WithMany(e => e.Employees)
+                .HasForeignKey(e => e.ScheduleId);
         }
     }
 }

@@ -25,8 +25,13 @@ namespace HRIS.Domain.Entities
         public string? ContactName { get; set; }
         public string? ContactNo { get; set; }
 
+        //Work Position
         public Guid WorkPositionId { get; set; }
         public WorkPosition? WorkPosition { get; set; }
+        
+        //Schedule
+        public Guid ScheduleId { get; set; }
+        public Schedule? Schedule { get; set; }
 
         public string? ProfileImage { get; set; }
 

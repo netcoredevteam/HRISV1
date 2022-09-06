@@ -23,6 +23,7 @@ namespace HRIS.Repository
 
             new WorkPositionTypeConfigurations().Configure(modelBuilder.Entity<WorkPosition>());
 
+            new ScheduleEntityTypeConfiguration().Configure(modelBuilder.Entity<Schedule>());
 
             base.OnModelCreating(modelBuilder);
         }
@@ -30,6 +31,7 @@ namespace HRIS.Repository
         public DbSet<Employee>? Employees { get; set; }
         public DbSet<User>? Users { get; set; }
         public DbSet<WorkPosition>? WorkPositions { get; set; }
+        public DbSet<Schedule>? Schedules { get; set; }
 
 
         public async Task<int> SaveChangesAsync() => await base.SaveChangesAsync();

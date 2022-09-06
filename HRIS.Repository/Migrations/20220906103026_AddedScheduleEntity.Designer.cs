@@ -4,6 +4,7 @@ using HRIS.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HRIS.Repository.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220906103026_AddedScheduleEntity")]
+    partial class AddedScheduleEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -132,6 +134,9 @@ namespace HRIS.Repository.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)")
                         .HasColumnName("name");
+
+                    b.Property<string>("ScheduleId")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("StartTime")
                         .HasColumnType("datetime2")
