@@ -20,6 +20,7 @@ namespace HRIS.Repository
         {
             new EmployeeEntityTypeConfigurations().Configure(modelBuilder.Entity<Employee>());
 
+
             base.OnModelCreating(modelBuilder);
         }
 

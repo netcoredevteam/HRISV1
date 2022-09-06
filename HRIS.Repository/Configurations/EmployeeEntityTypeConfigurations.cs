@@ -30,6 +30,10 @@ namespace HRIS.Repository.Configurations
                 .Property(p => p.LastName)
                 .HasMaxLength(50)
                 .IsRequired();
+            builder
+                .Property(p => p.DateHired)
+                .HasColumnType("datetime2")
+                .IsRequired();
         }
     }
 }
