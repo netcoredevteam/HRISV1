@@ -21,12 +21,15 @@ namespace HRIS.Repository
             new EmployeeEntityTypeConfigurations().Configure(modelBuilder.Entity<Employee>());
             new UserEntityTypeConfiguration().Configure(modelBuilder.Entity<User>());
 
+            new WorkPositionTypeConfigurations().Configure(modelBuilder.Entity<WorkPosition>());
+
 
             base.OnModelCreating(modelBuilder);
         }
 
         public DbSet<Employee>? Employees { get; set; }
         public DbSet<User>? Users { get; set; }
+        public DbSet<WorkPosition>? WorkPositions { get; set; }
 
 
         public async Task<int> SaveChangesAsync() => await base.SaveChangesAsync();
