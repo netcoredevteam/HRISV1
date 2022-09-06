@@ -1,4 +1,5 @@
-﻿using HRIS.Service.Interfaces;
+﻿using HRIS.Service.DTOs;
+using HRIS.Service.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HRIS.WebApi.Controllers.v1
@@ -29,7 +30,23 @@ namespace HRIS.WebApi.Controllers.v1
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            return Ok(await _employeeService.GetAllEmployees());
+            return Ok(await _employeeService.GetAll());
+        }
+
+        #endregion
+
+        #region Create Employee
+        /// <summary>
+        /// Creates an Employee
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<IActionResult> Create([FromBody] CreateEmployeeDto model)
+        {
+            await _employeeService.Create(model);
+
+            return Ok();
         }
 
         #endregion

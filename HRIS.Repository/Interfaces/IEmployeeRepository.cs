@@ -1,4 +1,5 @@
 ﻿using HRIS.Domain.Entities;
+using HRIS.Repository.Interfaces.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,8 +8,7 @@ using System.Threading.Tasks;
 
 namespace HRIS.Repository.Interfaces
 {
-    public interface IEmployeeRepository
+    public interface IEmployeeRepository : IRepository<Employee>
     {
-        Task<List<Employee>> GetAllEmployees();
     }
 }

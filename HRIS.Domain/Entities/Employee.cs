@@ -15,7 +15,7 @@ namespace HRIS.Domain.Entities
             this.WorkPosition = new();
         }
 
-        public string? EmployeeId { get; set; }
+        public string? EmployeeNo { get; set; }
         public string? FirstName { get; set; }
         public string? LastName { get; set; }
         public DateTime DateHired { get; set; }

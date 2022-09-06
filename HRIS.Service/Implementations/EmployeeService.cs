@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using HRIS.Domain.Entities;
 using HRIS.Repository.Interfaces;
 using HRIS.Service.DTOs;
 using HRIS.Service.Interfaces;
@@ -22,9 +23,15 @@ namespace HRIS.Service.Implementations
             _mapper = mapper;
         }
 
-        public async Task<List<EmployeeDto>> GetAllEmployees()
+        public async Task Create(CreateEmployeeDto model)
         {
-            var employees = await _employeeRepository.GetAllEmployees();
+            var employee = _mapper.Map<Employee>(model);
+            await _employeeRepository.Insert(employee);
+        }
+
+        public async Task<IEnumerable<EmployeeDto>> GetAll()
+        {
+            var employees = await _employeeRepository.GetAll();
             var employeeDto = _mapper.Map<List<EmployeeDto>>(employees);
 
             return employeeDto;

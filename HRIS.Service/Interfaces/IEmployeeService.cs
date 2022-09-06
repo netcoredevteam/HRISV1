@@ -4,6 +4,7 @@ namespace HRIS.Service.Interfaces
 {
     public interface IEmployeeService
     {
-        Task<List<EmployeeDto>> GetAllEmployees();
+        Task<IEnumerable<EmployeeDto>> GetAll();
+        Task Create(CreateEmployeeDto model);
     }
 }

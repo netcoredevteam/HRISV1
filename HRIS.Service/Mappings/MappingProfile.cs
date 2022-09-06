@@ -14,6 +14,7 @@ namespace HRIS.Service.Mappings
         public MappingProfile()
         {
             CreateMap<Employee, EmployeeDto>().ReverseMap();
+            CreateMap<Employee, CreateEmployeeDto>().ReverseMap();
         }
     }
 }

@@ -1,11 +1,6 @@
 ﻿using HRIS.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HRIS.Repository.Configurations
 {
@@ -65,14 +60,6 @@ namespace HRIS.Repository.Configurations
                 .WithMany(p => p.Users)
                 .HasForeignKey(p => p.EmployeeId)
                 .OnDelete(DeleteBehavior.Cascade);
-
-            //public string? Username { get; set; }
-            //public string? Password { get; set; }
-            //public Role Role { get; set; }
-            //public string? Nickname { get; set; }
-            //public Status Status { get; set; }
-            //public int IsDeleted { get; set; }
-            //public DateTime LastLoginTime { get; set; }
     }
 }
 }
