@@ -34,6 +34,10 @@ namespace HRIS.Repository.Configurations
                 .Property(p => p.DateHired)
                 .HasColumnType("datetime2")
                 .IsRequired();
+            builder
+                .Property(p => p.BirthDate)
+                .HasColumnType("datetime2")
+                .IsRequired();
         }
     }
 }
