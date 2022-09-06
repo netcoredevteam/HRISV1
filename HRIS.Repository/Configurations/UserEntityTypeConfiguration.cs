@@ -28,6 +28,11 @@ namespace HRIS.Repository.Configurations
                 .IsRequired();
 
             builder
+                .Property(p => p.EmployeeId)
+                .HasColumnName("employee_id")
+                .HasMaxLength(50);
+
+            builder
                 .Property(p => p.Password)
                 .HasColumnName("password")
                 .HasMaxLength(50)
@@ -38,6 +43,11 @@ namespace HRIS.Repository.Configurations
                 .HasColumnName("role")
                 .HasMaxLength(50)
                 .IsRequired();
+
+            builder
+                .Property(p => p.Nickname)
+                .HasColumnName("nickname")
+                .HasMaxLength(50);
 
             builder
                 .Property(p => p.Status)
