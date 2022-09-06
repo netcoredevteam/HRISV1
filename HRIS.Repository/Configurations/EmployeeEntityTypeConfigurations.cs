@@ -32,11 +32,12 @@ namespace HRIS.Repository.Configurations
                 .IsRequired();
             builder
                 .Property(p => p.DateHired)
-                .HasColumnType("datetime2")
+                .HasColumnType("date")
                 .IsRequired();
+
             builder
                 .Property(p => p.BirthDate)
-                .HasColumnType("datetime2")
+                .HasColumnType("date")
                 .IsRequired();
         }
     }
