@@ -23,16 +23,45 @@ namespace HRIS.Repository.Configurations
 
             builder
                 .Property(p => p.Username)
-                .HasMaxLength(50)
+                .HasColumnName("username")
+                .HasMaxLength(64)
                 .IsRequired();
 
             builder
                 .Property(p => p.Password)
-                .HasMaxLength(50)
+                .HasMaxLength(64)
+                .HasColumnName("password")
                 .IsRequired();
 
             builder
-                .HasOne(p => p.Employee);
+                .Property(p => p.Nickname)
+                .HasColumnName("nickname")
+                .HasMaxLength(64);
+
+            builder
+                .Property(p => p.UserRole)
+                .HasColumnName("user_role");
+
+            builder
+                .Property(p => p.LastLoginTime)
+                .HasColumnName("last_login_time");
+
+            builder
+                .Property(p => p.IsDeleted)
+                .HasColumnName("is_deleted")
+                .IsRequired();
+
+            builder
+                .Property(p => p.Status)
+                .HasColumnName("status")
+                .IsRequired();
+
+            builder
+                .HasOne(p => p.Employee)
+                .WithOne()
+                .HasForeignKey("employee_id")
+                .OnDelete(DeleteBehavior.Restrict)
+                .IsRequired();
         }
     }
 }

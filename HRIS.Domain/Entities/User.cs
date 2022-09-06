@@ -11,8 +11,14 @@ namespace HRIS.Domain.Entities
     {
         public string? Username { get; set; }
         public string? Password { get; set; }
-        public UserType UserType { get; set; }
-        public Employee? Employee { get; set; }
+        public string? Nickname { get; set; }
+        public bool IsDeleted { get; set; }
+        public DateTime LastLoginTime { get; set; }
+        public UserRole UserRole { get; set; }
+        public Status Status { get; set; }
+
+        // Navigation Properties
         public Guid EmployeeId { get; set; }
+        public Employee? Employee { get; set; }
     }
 }
