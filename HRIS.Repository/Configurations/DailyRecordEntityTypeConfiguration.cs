@@ -16,7 +16,7 @@ namespace HRIS.Repository.Configurations
         public void Configure(EntityTypeBuilder<DailyRecord> builder)
         {
             builder
-                .ToTable("daily_recor")
+                .ToTable("daily_records")
                 .HasKey(dr => dr.Id);
 
             builder
