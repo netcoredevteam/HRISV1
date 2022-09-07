@@ -53,6 +53,7 @@ var builder = WebApplication.CreateBuilder(args);
 
     // Repository
     services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+    services.AddScoped<IUserRepository, UserRepository>();
 
     // Services
     services.AddScoped<IEmployeeService, EmployeeService>();
