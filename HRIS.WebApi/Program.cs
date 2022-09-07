@@ -52,16 +52,10 @@ var builder = WebApplication.CreateBuilder(args);
     services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
     // Repository
-    services.AddScoped<IEmployeeRepository, EmployeeRepository>();
-    services.AddScoped<IUserRepository, UserRepository>();
-    services.AddScoped<ICalendarTaskRepository, CalendarTaskRepository>();
-    services.AddScoped<IWhitelistRepository, WhitelistRepository>();
-    services.AddScoped<IScheduleRepository, ScheduleRepository>();
-    services.AddScoped<ILeaveRecordRepository, LeaveRecordRepository>();
-    services.AddScoped<IAnnouncementRepository, AnnouncementRepository>();
+    MapRepositories(services);
 
     // Services
-    services.AddScoped<IEmployeeService, EmployeeService>();
+    MapServices(services);
 }
 
 var app = builder.Build();
@@ -99,4 +93,24 @@ var app = builder.Build();
     app.MapControllers();
 
     app.Run();
+}
+
+
+void MapRepositories(IServiceCollection services)
+{
+    services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+    services.AddScoped<IUserRepository, UserRepository>();
+    services.AddScoped<ICalendarTaskRepository, CalendarTaskRepository>();
+    services.AddScoped<IWhitelistRepository, WhitelistRepository>();
+    services.AddScoped<IScheduleRepository, ScheduleRepository>();
+    services.AddScoped<ILeaveRecordRepository, LeaveRecordRepository>();
+    services.AddScoped<IAnnouncementRepository, AnnouncementRepository>();
+    services.AddScoped<IDailyRecordRepository, DailyRecordRepository>();
+    services.AddScoped<IMandatoryRepository, MandatoryRepository>();
+    services.AddScoped<IWorkPositionRepository, WorkPositionRepository>();
+}
+
+void MapServices(IServiceCollection services)
+{
+    services.AddScoped<IEmployeeService, EmployeeService>();
 }
