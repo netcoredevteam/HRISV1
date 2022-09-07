@@ -22,10 +22,9 @@ namespace HRIS.Repository
             new EmployeeEntityTypeConfigurations().Configure(modelBuilder.Entity<Employee>());
             new UserEntityTypeConfiguration().Configure(modelBuilder.Entity<User>());
             new WorkPositionTypeConfigurations().Configure(modelBuilder.Entity<WorkPosition>());
-
             new ScheduleEntityTypeConfiguration().Configure(modelBuilder.Entity<Schedule>());
-
             new DailyRecordEntityTypeConfiguration().Configure(modelBuilder.Entity<DailyRecord>());
+            new MandatoryEntityTypeConfiguration().Configure(modelBuilder.Entity<Mandatory>());
 
             base.OnModelCreating(modelBuilder);
         }
@@ -35,6 +34,7 @@ namespace HRIS.Repository
         public DbSet<WorkPosition>? WorkPositions { get; set; }
         public DbSet<Schedule>? Schedules { get; set; }
         public DbSet<DailyRecord> DailyRecords { get; set; }
+        public DbSet<Mandatory> Mandatories { get; set; }
 
 
         public async Task<int> SaveChangesAsync() => await base.SaveChangesAsync();

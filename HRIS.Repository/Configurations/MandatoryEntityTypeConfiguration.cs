@@ -55,7 +55,7 @@ namespace HRIS.Repository.Configurations
                 .HasOne(m => m.Employee)
                 .WithOne(m => m.Mandatory)
                 .HasForeignKey<Employee>(m => m.MandatoryId)
-                .OnDelete(DeleteBehavior.SetNull);
+                .OnDelete(DeleteBehavior.NoAction);
         }
     }
 }
