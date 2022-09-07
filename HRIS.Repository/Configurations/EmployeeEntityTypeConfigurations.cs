@@ -48,31 +48,42 @@ namespace HRIS.Repository.Configurations
 
             builder
                 .Property(e => e.Address)
-                .HasColumnName("address");
+                .HasMaxLength(50)
+                .HasColumnName("address")
+                .IsRequired();
 
             builder
                 .Property(e => e.Phone)
-                .HasColumnName("phone");
+                .HasMaxLength(50)
+                .HasColumnName("phone")
+                .IsRequired();
 
             builder
                 .Property(e => e.ContactName)
-                .HasColumnName("contact_name");
+                .HasMaxLength(50)
+                .HasColumnName("contact_name")
+                .IsRequired();
 
             builder
                 .Property(e => e.ContactNo)
-                .HasColumnName("contact_no");
+                .HasMaxLength(50)
+                .HasColumnName("contact_no")
+                .IsRequired();
 
             builder
                 .Property(e => e.EmployeeNo)
-                .HasColumnName("employee_no");
+                .HasColumnName("employee_no")
+                .IsRequired();
 
             builder
                 .Property(e => e.WorkPositionId)
-                .HasColumnName("work_position_id");
+                .HasColumnName("work_position_id")
+                .IsRequired();
 
             builder
                 .Property(e => e.ScheduleId)
-                .HasColumnName("schedule_id");
+                .HasColumnName("schedule_id")
+                .IsRequired();
 
             builder
                 .HasOne(e => e.WorkPosition)

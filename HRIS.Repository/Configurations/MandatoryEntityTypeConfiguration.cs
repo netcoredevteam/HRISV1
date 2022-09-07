@@ -24,31 +24,37 @@ namespace HRIS.Repository.Configurations
             builder
                 .Property(m => m.EmployeeId)
                 .HasColumnName("employee_id")
+                .HasMaxLength(50)
                 .IsRequired();
 
             builder
                 .Property(m => m.SSS)
                 .HasColumnName("sss")
+                .HasMaxLength(50)
                 .IsRequired();
 
             builder
                 .Property(m => m.PagIbig)
                 .HasColumnName("pag_ibig")
+                .HasMaxLength(50)
                 .IsRequired();
 
             builder
                 .Property(m => m.PhilHealth)
                 .HasColumnName("phil_health")
+                .HasMaxLength(50)
                 .IsRequired();
 
             builder
                 .Property(m => m.TIN)
                 .HasColumnName("tin")
+                .HasMaxLength(50)
                 .IsRequired();
 
             builder
                 .Property(m => m.HMO)
                 .HasColumnName("hmo")
+                .HasMaxLength(50)
                 .IsRequired();
 
             builder
