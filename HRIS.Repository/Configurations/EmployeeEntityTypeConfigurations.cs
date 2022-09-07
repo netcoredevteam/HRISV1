@@ -83,6 +83,11 @@ namespace HRIS.Repository.Configurations
                 .HasOne(e => e.Schedule)
                 .WithMany(e => e.Employees)
                 .HasForeignKey(e => e.ScheduleId);
+
+            builder
+                .HasMany(e => e.DailyRecords)
+                .WithOne(e => e.Employee)
+                .HasForeignKey(e => e.EmployeeId);
         }
     }
 }

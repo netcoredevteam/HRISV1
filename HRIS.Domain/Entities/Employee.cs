@@ -12,6 +12,7 @@ namespace HRIS.Domain.Entities
         public Employee()
         {
             this.Users = new Collection<User>();
+            this.DailyRecords = new Collection<DailyRecord>();
             this.WorkPosition = new();
         }
 
@@ -28,7 +29,7 @@ namespace HRIS.Domain.Entities
         //Work Position
         public Guid WorkPositionId { get; set; }
         public WorkPosition? WorkPosition { get; set; }
-        
+
         //Schedule
         public Guid ScheduleId { get; set; }
         public Schedule? Schedule { get; set; }
@@ -37,7 +38,10 @@ namespace HRIS.Domain.Entities
 
 
 
+
         // Navigation Properties
         public ICollection<User> Users { get; set; }
+
+        public ICollection<DailyRecord> DailyRecords { get; set; }
     }
 }

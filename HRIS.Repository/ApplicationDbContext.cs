@@ -25,6 +25,8 @@ namespace HRIS.Repository
 
             new ScheduleEntityTypeConfiguration().Configure(modelBuilder.Entity<Schedule>());
 
+            new DailyRecordEntityTypeConfiguration().Configure(modelBuilder.Entity<DailyRecord>());
+
             base.OnModelCreating(modelBuilder);
         }
 
@@ -32,6 +34,7 @@ namespace HRIS.Repository
         public DbSet<User>? Users { get; set; }
         public DbSet<WorkPosition>? WorkPositions { get; set; }
         public DbSet<Schedule>? Schedules { get; set; }
+        public DbSet<DailyRecord> DailyRecords { get; set; }
 
 
         public async Task<int> SaveChangesAsync() => await base.SaveChangesAsync();
