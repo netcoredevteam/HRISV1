@@ -65,30 +65,10 @@ namespace HRIS.Repository.Configurations
                 .IsRequired(false);
 
             builder
-                .Property(dr => dr.CreatedBy)
-                .HasColumnName("created_by")
-                .HasColumnType("varchar");
-
-            builder
-                .Property(dr => dr.CreatedAt)
-                .HasColumnName("created_at")
-                .HasColumnType("datetime");
-
-            builder
-                .Property(dr => dr.UpdatedBy)
-                .HasColumnName("updated_by")
-                .HasColumnType("varchar");
-
-            builder
-                .Property(dr => dr.UpdatedAt)
-                .HasColumnName("update_at")
-                .HasColumnType("datetime");
-
-            builder
                 .HasOne(dr => dr.Employee)
                 .WithMany(dr => dr.DailyRecords)
                 .HasForeignKey(dr => dr.EmployeeId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.NoAction);
         }
     }
 }

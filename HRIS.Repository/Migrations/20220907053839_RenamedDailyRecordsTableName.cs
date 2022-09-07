@@ -8,9 +8,9 @@ namespace HRIS.Repository.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_daily_recor_employees_employee_id",
-                table: "daily_recor");
+            //migrationBuilder.DropForeignKey(
+            //    name: "FK_daily_recor_employees_employee_id",
+            //    table: "daily_recor");
 
             migrationBuilder.DropPrimaryKey(
                 name: "PK_daily_recor",
