@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace HRIS.Repository.Configurations
 {
-    internal class ScheduleEntityTypeConfiguration : IEntityTypeConfiguration<Schedule>
+    public class ScheduleEntityTypeConfiguration : IEntityTypeConfiguration<Schedule>
     {
         public void Configure(EntityTypeBuilder<Schedule> builder)
         {

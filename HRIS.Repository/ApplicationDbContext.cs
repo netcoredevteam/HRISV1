@@ -27,8 +27,10 @@ namespace HRIS.Repository
             new MandatoryEntityTypeConfiguration().Configure(modelBuilder.Entity<Mandatory>());
             new LeaveRecordTypeConfiguration().Configure(modelBuilder.Entity<LeaveRecord>());
             new CalendarTaskEntityTypeConfiguration().Configure(modelBuilder.Entity<CalendarTask>());
-
             new AnnouncementEntityTypeConfiguration().Configure(modelBuilder.Entity<Announcement>());
+            new WhitelistEntityTypeConfiguration().Configure(modelBuilder.Entity<Whitelist>());
+
+
             base.OnModelCreating(modelBuilder);
         }
 
@@ -41,6 +43,7 @@ namespace HRIS.Repository
         public DbSet<LeaveRecord> LeaveRecords { get; set; }
         public DbSet<CalendarTask> CalendarTasks { get; set; }
         public DbSet<Announcement> Announcements { get; set; }
+        public DbSet<Whitelist> Whitelists { get; set; }
 
 
         public async Task<int> SaveChangesAsync() => await base.SaveChangesAsync();
