@@ -13,6 +13,7 @@ namespace HRIS.Domain.Entities
         public User()
         {
             this.Employee = new();
+            this.LeaveRecords = new Collection<LeaveRecord>();
         }
 
         public string? Username { get; set; }
@@ -26,5 +27,7 @@ namespace HRIS.Domain.Entities
         // Navigation Properties
         public Guid EmployeeId { get; set; }
         public Employee Employee { get; set; }
+
+        public ICollection<LeaveRecord> LeaveRecords { get; set; }
     }
 }

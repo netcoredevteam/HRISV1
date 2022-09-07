@@ -4,6 +4,7 @@ using HRIS.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HRIS.Repository.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220907052735_AddedLeaveRecordTable")]
+    partial class AddedLeaveRecordTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -77,7 +79,7 @@ namespace HRIS.Repository.Migrations
 
                     b.HasIndex("EmployeeId");
 
-                    b.ToTable("daily_records", (string)null);
+                    b.ToTable("daily_recor", (string)null);
                 });
 
             modelBuilder.Entity("HRIS.Domain.Entities.Employee", b =>
@@ -88,9 +90,7 @@ namespace HRIS.Repository.Migrations
                         .HasColumnName("id");
 
                     b.Property<string>("Address")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)")
+                        .HasColumnType("nvarchar(max)")
                         .HasColumnName("address");
 
                     b.Property<DateTime>("BirthDate")
@@ -98,15 +98,11 @@ namespace HRIS.Repository.Migrations
                         .HasColumnName("birth_date");
 
                     b.Property<string>("ContactName")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)")
+                        .HasColumnType("nvarchar(max)")
                         .HasColumnName("contact_name");
 
                     b.Property<string>("ContactNo")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)")
+                        .HasColumnType("nvarchar(max)")
                         .HasColumnName("contact_no");
 
                     b.Property<DateTime>("CreatedAt")
@@ -122,7 +118,6 @@ namespace HRIS.Repository.Migrations
                         .HasColumnName("date_hired");
 
                     b.Property<string>("EmployeeNo")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("employee_no");
 
@@ -142,9 +137,7 @@ namespace HRIS.Repository.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Phone")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)")
+                        .HasColumnType("nvarchar(max)")
                         .HasColumnName("phone");
 
                     b.Property<Guid>("ScheduleId")
@@ -234,7 +227,7 @@ namespace HRIS.Repository.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("leave_records", (string)null);
+                    b.ToTable("leave_record", (string)null);
                 });
 
             modelBuilder.Entity("HRIS.Domain.Entities.Mandatory", b =>
@@ -253,38 +246,32 @@ namespace HRIS.Repository.Migrations
                         .HasColumnName("created_by");
 
                     b.Property<Guid>("EmployeeId")
-                        .HasMaxLength(50)
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("employee_id");
 
                     b.Property<string>("HMO")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)")
+                        .HasColumnType("nvarchar(max)")
                         .HasColumnName("hmo");
 
                     b.Property<string>("PagIbig")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)")
+                        .HasColumnType("nvarchar(max)")
                         .HasColumnName("pag_ibig");
 
                     b.Property<string>("PhilHealth")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)")
+                        .HasColumnType("nvarchar(max)")
                         .HasColumnName("phil_health");
 
                     b.Property<string>("SSS")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)")
+                        .HasColumnType("nvarchar(max)")
                         .HasColumnName("sss");
 
                     b.Property<string>("TIN")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)")
+                        .HasColumnType("nvarchar(max)")
                         .HasColumnName("tin");
 
                     b.Property<DateTime>("UpdatedAt")
