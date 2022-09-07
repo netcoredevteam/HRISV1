@@ -30,7 +30,7 @@ namespace HRIS.WebApi.Controllers.v1
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            return Ok(await _employeeService.GetAll());
+            return Ok(await _employeeService.GetAllAsync());
         }
 
         #endregion
@@ -44,7 +44,7 @@ namespace HRIS.WebApi.Controllers.v1
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CreateEmployeeDto model)
         {
-            await _employeeService.Create(model);
+            await _employeeService.CreateAsync(model);
 
             return Ok();
         }

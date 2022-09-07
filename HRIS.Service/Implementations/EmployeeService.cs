@@ -23,15 +23,15 @@ namespace HRIS.Service.Implementations
             _mapper = mapper;
         }
 
-        public async Task Create(CreateEmployeeDto model)
+        public async Task CreateAsync(CreateEmployeeDto model)
         {
             var employee = _mapper.Map<Employee>(model);
-            await _employeeRepository.Insert(employee);
+            await _employeeRepository.InsertAsync(employee);
         }
 
-        public async Task<IEnumerable<EmployeeDto>> GetAll()
+        public async Task<IEnumerable<EmployeeDto>> GetAllAsync()
         {
-            var employees = await _employeeRepository.GetAll();
+            var employees = await _employeeRepository.GetAllAsync();
             var employeeDto = _mapper.Map<List<EmployeeDto>>(employees);
 
             return employeeDto;

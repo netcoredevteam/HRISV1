@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HRIS.Core.Interfaces
 {
-    internal interface IRangeInserter<Entity>
+    public interface IRangeInserter<Entity>
     {
         Task InsertRangeAsync(List<Entity> entities);
     }

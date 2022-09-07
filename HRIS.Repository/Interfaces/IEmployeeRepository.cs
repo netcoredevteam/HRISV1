@@ -1,5 +1,5 @@
-﻿using HRIS.Domain.Entities;
-using HRIS.Repository.Interfaces.Common;
+﻿using HRIS.Core.Interfaces;
+using HRIS.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,10 @@ using System.Threading.Tasks;
 
 namespace HRIS.Repository.Interfaces
 {
-    public interface IEmployeeRepository : IRepository<Employee>
-    {
-    }
+    public interface IEmployeeRepository : IDeleter<Employee>, 
+                                           IInserter<Employee>, 
+                                           IListRetriever<Employee>, 
+                                           IRetriever<Employee, Guid>, 
+                                           IUpdater<Employee>
+    { }
 }

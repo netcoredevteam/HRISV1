@@ -21,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\HRIS.Core\HRIS.Core.csproj" />
     <ProjectReference Include="..\HRIS.Domain\HRIS.Domain.csproj" />
   </ItemGroup>
 

@@ -18,30 +18,35 @@ namespace HRIS.Repository.Implementations
             _context = context;
         }
 
-        public Task Delete(Employee entity)
+        public async Task DeleteAsync(Employee entity)
         {
-            throw new NotImplementedException();
+            _context.Employees.Remove(entity);
+
+            await _context.SaveChangesAsync();
         }
 
-        public Task<Employee> Get(Guid id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task<IEnumerable<Employee>> GetAll()
+        public async Task<IEnumerable<Employee>> GetAllAsync()
         {
             return await _context.Employees.ToListAsync();
         }
 
-        public async Task Insert(Employee entity)
+        public async Task<Employee> GetAsync(Guid id)
+        {
+            return await _context.Employees.FirstOrDefaultAsync(e => e.Id == id);
+        }
+
+        public async Task InsertAsync(Employee entity)
         {
             _context.Employees.Add(entity);
+
             await _context.SaveChangesAsync();
         }
 
-        public Task Update(Employee entity)
+        public async Task UpdateAsync(Employee entity)
         {
-            throw new NotImplementedException();
+            _context.Employees.Update(entity);
+
+            await _context.SaveChangesAsync();
         }
     }
 }

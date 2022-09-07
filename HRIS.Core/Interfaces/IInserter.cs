@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HRIS.Core.Interfaces
 {
-    internal interface IInserter<Entity>
+    public interface IInserter<Entity>
     {
         Task InsertAsync(Entity entity);
     }

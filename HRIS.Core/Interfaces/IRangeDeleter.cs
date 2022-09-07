@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HRIS.Core.Interfaces
 {
-    internal interface IRangeDeleter<Entity>
+    public interface IRangeDeleter<Entity>
     {
         Task DeleteRangeAsync(List<Entity> entities);
     }
