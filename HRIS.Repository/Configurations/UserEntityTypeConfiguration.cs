@@ -1,4 +1,5 @@
 ﻿using HRIS.Domain.Entities;
+
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -66,6 +67,12 @@ namespace HRIS.Repository.Configurations
                 .HasForeignKey(u => u.EmployeeId)
                 .OnDelete(DeleteBehavior.Cascade);
 
+            builder
+                .HasMany(u => u.LeaveRecords)
+                .WithOne(u => u.User)
+                .HasForeignKey(u => u.UserId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+        }
     }
-}
 }
