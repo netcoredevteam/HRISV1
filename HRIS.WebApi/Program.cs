@@ -55,6 +55,7 @@ var builder = WebApplication.CreateBuilder(args);
     services.AddScoped<IEmployeeRepository, EmployeeRepository>();
     services.AddScoped<IUserRepository, UserRepository>();
     services.AddScoped<ICalendarTaskRepository, CalendarTaskRepository>();
+    services.AddScoped<IWhitelistRepository, WhitelistRepository>();
 
     // Services
     services.AddScoped<IEmployeeService, EmployeeService>();
