@@ -29,6 +29,7 @@ namespace HRIS.Repository
             new CalendarTaskEntityTypeConfiguration().Configure(modelBuilder.Entity<CalendarTask>());
             new AnnouncementEntityTypeConfiguration().Configure(modelBuilder.Entity<Announcement>());
             new WhitelistEntityTypeConfiguration().Configure(modelBuilder.Entity<Whitelist>());
+            new MenuEntityTypeConfiguration().Configure(modelBuilder.Entity<Menu>());
 
 
             base.OnModelCreating(modelBuilder);
@@ -38,12 +39,13 @@ namespace HRIS.Repository
         public DbSet<User>? Users { get; set; }
         public DbSet<WorkPosition>? WorkPositions { get; set; }
         public DbSet<Schedule>? Schedules { get; set; }
-        public DbSet<DailyRecord> DailyRecords { get; set; }
-        public DbSet<Mandatory> Mandatories { get; set; }
-        public DbSet<LeaveRecord> LeaveRecords { get; set; }
-        public DbSet<CalendarTask> CalendarTasks { get; set; }
-        public DbSet<Announcement> Announcements { get; set; }
-        public DbSet<Whitelist> Whitelists { get; set; }
+        public DbSet<DailyRecord>? DailyRecords { get; set; }
+        public DbSet<Mandatory>? Mandatories { get; set; }
+        public DbSet<LeaveRecord>? LeaveRecords { get; set; }
+        public DbSet<CalendarTask>? CalendarTasks { get; set; }
+        public DbSet<Announcement>? Announcements { get; set; }
+        public DbSet<Whitelist>? Whitelists { get; set; }
+        public DbSet<Menu>? Menus { get; set; }
 
 
         public async Task<int> SaveChangesAsync() => await base.SaveChangesAsync();
