@@ -56,10 +56,16 @@ namespace HRIS.Repository.Configurations
                 .IsRequired();
 
             builder
+                .Property(p => p.ProfileImage)
+                .HasColumnName("profile_image")
+                .IsRequired();
+
+            builder
                 .HasOne(p => p.Employee)
                 .WithMany(p => p.Users)
                 .HasForeignKey(p => p.EmployeeId)
                 .OnDelete(DeleteBehavior.Cascade);
+
     }
 }
 }

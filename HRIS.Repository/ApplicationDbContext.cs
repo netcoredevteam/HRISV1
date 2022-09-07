@@ -1,4 +1,5 @@
 ﻿using HRIS.Domain.Entities;
+using HRIS.Domain.Enums;
 using HRIS.Repository.Configurations;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -20,7 +21,6 @@ namespace HRIS.Repository
         {
             new EmployeeEntityTypeConfigurations().Configure(modelBuilder.Entity<Employee>());
             new UserEntityTypeConfiguration().Configure(modelBuilder.Entity<User>());
-
             new WorkPositionTypeConfigurations().Configure(modelBuilder.Entity<WorkPosition>());
 
             new ScheduleEntityTypeConfiguration().Configure(modelBuilder.Entity<Schedule>());

@@ -26,20 +26,11 @@ namespace HRIS.Domain.Entities
         public string? ContactName { get; set; }
         public string? ContactNo { get; set; }
 
-        //Work Position
+        // Navigation Properties
         public Guid WorkPositionId { get; set; }
         public WorkPosition? WorkPosition { get; set; }
-
-        //Schedule
         public Guid ScheduleId { get; set; }
         public Schedule? Schedule { get; set; }
-
-        public string? ProfileImage { get; set; }
-
-
-
-
-        // Navigation Properties
         public ICollection<User> Users { get; set; }
 
         public ICollection<DailyRecord> DailyRecords { get; set; }

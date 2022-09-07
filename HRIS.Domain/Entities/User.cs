@@ -21,6 +21,7 @@ namespace HRIS.Domain.Entities
         public string? Nickname { get; set; }
         public Status Status { get; set; }
         public DateTime LastLoginTime { get; set; }
+        public string? ProfileImage { get; set; }
 
         // Navigation Properties
         public Guid EmployeeId { get; set; }

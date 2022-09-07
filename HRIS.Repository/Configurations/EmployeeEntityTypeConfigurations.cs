@@ -63,21 +63,28 @@ namespace HRIS.Repository.Configurations
                 .HasColumnName("contact_no");
 
             builder
-                 .Property(e => e.ProfileImage)
-                 .HasColumnName("profile_image")
-                 .HasColumnType("text")
-                 .IsRequired();
+                .Property(e => e.EmployeeNo)
+                .HasColumnName("employee_no");
+
+            builder
+                .Property(e => e.WorkPositionId)
+                .HasColumnName("work_position_id");
+
+            builder
+                .Property(e => e.ScheduleId)
+                .HasColumnName("schedule_id");
 
             builder
                 .HasOne(e => e.WorkPosition)
                 .WithMany(e => e.Employees)
-                .HasForeignKey(e => e.WorkPositionId);
+                .HasForeignKey(e => e.WorkPositionId)
+                .OnDelete(DeleteBehavior.SetNull);
 
             builder
                 .HasMany(e => e.Users)
                 .WithOne(e => e.Employee)
                 .HasForeignKey(e => e.EmployeeId)
-                .OnDelete(DeleteBehavior.SetNull);
+                .OnDelete(DeleteBehavior.Cascade);
 
             builder
                 .HasOne(e => e.Schedule)
