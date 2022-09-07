@@ -16,7 +16,7 @@ namespace HRIS.Repository.Configurations
         public void Configure(EntityTypeBuilder<LeaveRecord> builder)
         {
             builder
-                .ToTable("leave_record")
+                .ToTable("leave_records")
                 .HasKey(lr => lr.Id);
 
             builder
