@@ -14,6 +14,8 @@ namespace HRIS.Domain.Entities
             this.Users = new Collection<User>();
             this.DailyRecords = new Collection<DailyRecord>();
             this.WorkPosition = new();
+            this.Schedule = new();
+            this.Mandatory = new();
         }
 
         public string? EmployeeNo { get; set; }
@@ -31,8 +33,9 @@ namespace HRIS.Domain.Entities
         public WorkPosition? WorkPosition { get; set; }
         public Guid ScheduleId { get; set; }
         public Schedule? Schedule { get; set; }
+        public Guid MandatoryId { get; set; }
+        public Mandatory? Mandatory { get; set; }
         public ICollection<User> Users { get; set; }
-
         public ICollection<DailyRecord> DailyRecords { get; set; }
     }
 }

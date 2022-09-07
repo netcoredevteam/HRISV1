@@ -10,60 +10,60 @@ namespace HRIS.Repository.Configurations
         {
             builder
                 .ToTable("users")
-                .HasKey(p => p.Id);
+                .HasKey(u => u.Id);
 
             builder
-                .Property(p => p.Id)
+                .Property(u => u.Id)
                 .ValueGeneratedOnAdd();
 
             builder
-                .Property(p => p.Username)
+                .Property(u => u.Username)
                 .HasColumnName("username")
                 .HasMaxLength(50)
                 .IsRequired();
 
             builder
-                .Property(p => p.EmployeeId)
+                .Property(u => u.EmployeeId)
                 .HasColumnName("employee_id")
                 .HasMaxLength(50);
 
             builder
-                .Property(p => p.Password)
+                .Property(u => u.Password)
                 .HasColumnName("password")
                 .HasMaxLength(50)
                 .IsRequired();
 
             builder
-                .Property(p => p.Role)
+                .Property(u => u.Role)
                 .HasColumnName("role")
                 .HasMaxLength(50)
                 .IsRequired();
 
             builder
-                .Property(p => p.Nickname)
+                .Property(u => u.Nickname)
                 .HasColumnName("nickname")
                 .HasMaxLength(50);
 
             builder
-                .Property(p => p.Status)
+                .Property(u => u.Status)
                 .HasColumnName("status")
                 .IsRequired();
 
             builder
-                .Property(p => p.LastLoginTime)
+                .Property(u => u.LastLoginTime)
                 .HasColumnName("last_login_time")
                 .HasColumnType("datetime2")
                 .IsRequired();
 
             builder
-                .Property(p => p.ProfileImage)
+                .Property(u => u.ProfileImage)
                 .HasColumnName("profile_image")
                 .IsRequired();
 
             builder
-                .HasOne(p => p.Employee)
-                .WithMany(p => p.Users)
-                .HasForeignKey(p => p.EmployeeId)
+                .HasOne(u => u.Employee)
+                .WithMany(u => u.Users)
+                .HasForeignKey(u => u.EmployeeId)
                 .OnDelete(DeleteBehavior.Cascade);
 
     }

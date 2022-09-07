@@ -84,7 +84,7 @@ namespace HRIS.Repository.Configurations
                 .HasMany(e => e.Users)
                 .WithOne(e => e.Employee)
                 .HasForeignKey(e => e.EmployeeId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.SetNull);
 
             builder
                 .HasOne(e => e.Schedule)
@@ -95,6 +95,12 @@ namespace HRIS.Repository.Configurations
                 .HasMany(e => e.DailyRecords)
                 .WithOne(e => e.Employee)
                 .HasForeignKey(e => e.EmployeeId);
+
+            builder
+                .HasOne(m => m.Mandatory)
+                .WithOne(m => m.Employee)
+                .HasForeignKey<Employee>(m => m.MandatoryId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }
