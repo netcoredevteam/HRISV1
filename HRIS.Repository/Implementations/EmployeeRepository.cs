@@ -52,7 +52,7 @@ namespace HRIS.Repository.Implementations
         {
             var employee = await _context.Employees.FirstOrDefaultAsync(e => e.Id == id);
 
-            return employee.Status == Status.Enabled;
+            return employee.Status == Status.Active;
         }
 
         public async Task UpdateAsync(Employee entity)

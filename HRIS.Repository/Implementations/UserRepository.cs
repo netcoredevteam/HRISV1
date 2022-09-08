@@ -57,7 +57,7 @@ namespace HRIS.Repository.Implementations
         {
             var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
 
-            return user.Status == Status.Enabled;
+            return user.Status == Status.Active;
         }
 
         public async Task UpdateAsync(User entity)
