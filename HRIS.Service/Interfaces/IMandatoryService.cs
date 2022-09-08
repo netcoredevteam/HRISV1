@@ -1,4 +1,5 @@
-﻿using HRIS.Service.DTOs;
+﻿using HRIS.Domain.Entities;
+using HRIS.Service.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,5 +11,6 @@ namespace HRIS.Service.Interfaces
     public interface IMandatoryService
     {
         Task<IEnumerable<MandatoryDto>> GetAllAsync();
+        Task CreateAsync(Mandatory mandatory);
     }
 }

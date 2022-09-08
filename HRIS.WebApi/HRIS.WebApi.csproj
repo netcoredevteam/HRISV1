@@ -20,6 +20,7 @@
   <ItemGroup>
     <ProjectReference Include="..\HRIS.Repository\HRIS.Repository.csproj" />
     <ProjectReference Include="..\HRIS.Service\HRIS.Service.csproj" />
+    <ProjectReference Include="..\HRIS.Utility\HRIS.Utility.csproj" />
   </ItemGroup>
 
   <ItemGroup>

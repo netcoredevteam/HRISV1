@@ -8,6 +8,7 @@ namespace HRIS.Utility.Constants
 {
     public class ResponseMessage
     {
+        public const string Success = "Success";
         public const string BadRequest = "Bad request.";
     }
 }

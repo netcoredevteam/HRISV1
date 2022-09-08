@@ -23,11 +23,16 @@ namespace HRIS.Service.Implementations
             _mapper = mapper;
         }
 
-        public async Task CreateAsync(CreateEmployeeDto model)
+        public Task CreateAsync(Employee employee)
         {
-            var employee = _mapper.Map<Employee>(model);
-            await _employeeRepository.InsertAsync(employee);
+            throw new NotImplementedException();
         }
+
+        //public async Task CreateAsync(CreateEmployeeDto model)
+        //{
+        //    var employee = _mapper.Map<Employee>(model);
+        //    await _employeeRepository.InsertAsync(employee);
+        //}
 
         public async Task<IEnumerable<EmployeeDto>> GetAllAsync()
         {
@@ -35,6 +40,16 @@ namespace HRIS.Service.Implementations
             var employeeDto = _mapper.Map<List<EmployeeDto>>(employees);
 
             return employeeDto;
+        }
+
+        public Task<Employee> GetAsync(string employeeNo)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> HasDuplicateAsync(string employeeNo)
+        {
+            throw new NotImplementedException();
         }
     }
 }
