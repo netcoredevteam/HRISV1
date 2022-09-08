@@ -31,14 +31,6 @@ namespace HRIS.Repository.Configurations
                 .Property(s => s.EndTime)
                 .HasColumnName("end_time")
                 .IsRequired();
-            builder
-                .Property(s => s.CreateTime)
-                .HasColumnName("create_time")
-                .IsRequired();
-            builder
-                .Property(s => s.UpdateTime)
-                .HasColumnName("update_time")
-                .IsRequired();
 
             builder
                .Property(s => s.Status)
