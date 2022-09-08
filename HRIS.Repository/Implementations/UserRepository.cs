@@ -1,4 +1,5 @@
 ﻿using HRIS.Domain.Entities;
+using HRIS.Domain.Enums;
 using HRIS.Repository.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -17,6 +18,7 @@ namespace HRIS.Repository.Implementations
         {
             _context = context;
         }
+
         public async Task DeleteAsync(User entity)
         {
             _context.Users.Remove(entity);
@@ -31,7 +33,17 @@ namespace HRIS.Repository.Implementations
 
         public async Task<User> GetAsync(Guid id)
         {
-            return await _context.Users.FirstOrDefaultAsync(e => e.Id == id);
+            return await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
+        }
+
+        public async Task<User> GetByEmployeeIdAsync(Guid id)
+        {
+            return await _context.Users.FirstOrDefaultAsync(u => u.EmployeeId == id);
+        }
+
+        public async Task<User> GetByUsernameAsync(string? username)
+        {
+            return await _context.Users.FirstOrDefaultAsync(u => u.Username == username);
         }
 
         public async Task InsertAsync(User entity)
@@ -39,6 +51,13 @@ namespace HRIS.Repository.Implementations
             _context.Users.Add(entity);
 
             await _context.SaveChangesAsync();
+        }
+
+        public async Task<bool> IsInUseAsync(Guid id)
+        {
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
+
+            return user.Status == Status.Enabled;
         }
 
         public async Task UpdateAsync(User entity)

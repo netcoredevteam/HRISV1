@@ -12,6 +12,9 @@ namespace HRIS.Repository.Interfaces
                                            IInserter<Employee>, 
                                            IListRetriever<Employee>, 
                                            IRetriever<Employee, Guid>, 
-                                           IUpdater<Employee>
-    { }
+                                           IUpdater<Employee>,
+                                           IInUseChecker<Guid>
+    {
+        Task<Employee> GetByEmployeeIdAsync(string? id);
+    }
 }

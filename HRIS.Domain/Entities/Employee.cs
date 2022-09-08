@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HRIS.Domain.Enums;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -27,6 +28,7 @@ namespace HRIS.Domain.Entities
         public string? Phone { get; set; }
         public string? ContactName { get; set; }
         public string? ContactNo { get; set; }
+        public Status Status { get; set; }
 
         // Navigation Properties
         public Guid WorkPositionId { get; set; }

@@ -1,4 +1,5 @@
 ﻿using HRIS.Domain.Entities;
+using HRIS.Domain.Enums;
 using HRIS.Repository.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -35,11 +36,23 @@ namespace HRIS.Repository.Implementations
             return await _context.Employees.FirstOrDefaultAsync(e => e.Id == id);
         }
 
+        public async Task<Employee> GetByEmployeeIdAsync(string? id)
+        {
+            return await _context.Employees.FirstOrDefaultAsync(e => e.EmployeeNo == id);
+        }
+
         public async Task InsertAsync(Employee entity)
         {
             _context.Employees.Add(entity);
 
             await _context.SaveChangesAsync();
+        }
+
+        public async Task<bool> IsInUseAsync(Guid id)
+        {
+            var employee = await _context.Employees.FirstOrDefaultAsync(e => e.Id == id);
+
+            return employee.Status == Status.Enabled;
         }
 
         public async Task UpdateAsync(Employee entity)

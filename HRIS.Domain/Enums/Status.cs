@@ -8,8 +8,8 @@ namespace HRIS.Domain.Enums
 {
     public enum Status
     {
-        Disabled = 0,
-        Enabled = 1,
+        Inactive = 0,
+        Active = 1,
         Deleted = 2
     }
 }

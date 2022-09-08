@@ -86,6 +86,11 @@ namespace HRIS.Repository.Configurations
                 .IsRequired();
 
             builder
+                .Property(e => e.Status)
+                .HasColumnName("status")
+                .IsRequired();
+
+            builder
                 .HasOne(e => e.WorkPosition)
                 .WithMany(e => e.Employees)
                 .HasForeignKey(e => e.WorkPositionId)
