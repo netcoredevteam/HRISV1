@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
+using HRIS.WebApi.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +19,7 @@ var builder = WebApplication.CreateBuilder(args);
 
     services.AddControllers();
     services.AddAutoMapper(typeof(MappingProfile));
+
     // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
     services.AddEndpointsApiExplorer();
 
@@ -79,7 +81,7 @@ var app = builder.Build();
         });
     }
 
-    app.UseStaticFiles();
+    //app.UseStaticFiles();
 
     app.UseCors(x => x
         .AllowAnyOrigin()
@@ -88,7 +90,7 @@ var app = builder.Build();
 
     app.UseHttpsRedirection();
 
-    app.UseAuthorization();
+    app.UseMiddleware<JwtMiddleware>();
 
     app.MapControllers();
 
@@ -113,4 +115,5 @@ void MapRepositories(IServiceCollection services)
 void MapServices(IServiceCollection services)
 {
     services.AddScoped<IEmployeeService, EmployeeService>();
+    services.AddScoped<IJwtService, JwtService>();
 }

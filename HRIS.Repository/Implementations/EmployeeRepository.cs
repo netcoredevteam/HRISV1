@@ -36,7 +36,7 @@ namespace HRIS.Repository.Implementations
             return await _context.Employees.FirstOrDefaultAsync(e => e.Id == id);
         }
 
-        public async Task<Employee> GetByEmployeeIdAsync(string? id)
+        public async Task<Employee> GetByEmployeeNoAsync(string? id)
         {
             return await _context.Employees.FirstOrDefaultAsync(e => e.EmployeeNo == id);
         }

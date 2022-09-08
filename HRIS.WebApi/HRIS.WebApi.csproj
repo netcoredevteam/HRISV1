@@ -23,9 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\RequestModels\Authenticated\Employee\" />
     <Folder Include="Models\Response\" />
-    <Folder Include="Models\Request\" />
   </ItemGroup>
 
 </Project>

@@ -15,6 +15,6 @@ namespace HRIS.Repository.Interfaces
                                            IUpdater<Employee>,
                                            IInUseChecker<Guid>
     {
-        Task<Employee> GetByEmployeeIdAsync(string? id);
+        Task<Employee> GetByEmployeeNoAsync(string? id);
     }
 }
