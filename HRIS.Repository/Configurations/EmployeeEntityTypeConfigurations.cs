@@ -86,8 +86,9 @@ namespace HRIS.Repository.Configurations
                 .IsRequired();
 
             builder
-                .Property(e => e.Status)
-                .HasColumnName("status")
+                .Property(e => e.IsDeleted)
+                .HasColumnName("is_deleted")
+                .HasDefaultValue(false)
                 .IsRequired();
 
             builder

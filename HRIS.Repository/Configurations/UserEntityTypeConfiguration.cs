@@ -37,6 +37,7 @@ namespace HRIS.Repository.Configurations
             builder
                 .Property(u => u.Role)
                 .HasColumnName("role")
+                .HasDefaultValue("User")
                 .HasMaxLength(50)
                 .IsRequired();
 
@@ -59,6 +60,7 @@ namespace HRIS.Repository.Configurations
             builder
                 .Property(u => u.ProfileImage)
                 .HasColumnName("profile_image")
+                .HasDefaultValue(null)
                 .IsRequired();
 
             builder

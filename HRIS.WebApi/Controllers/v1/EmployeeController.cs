@@ -3,6 +3,7 @@ using HRIS.Domain.Enums;
 using HRIS.Service.DTOs;
 using HRIS.Service.Interfaces;
 using HRIS.Utility.Constants;
+using HRIS.WebApi.Attributes;
 using HRIS.WebApi.Models.RequestModels.Authenticated.Employee;
 
 using Microsoft.AspNetCore.Mvc;
@@ -40,6 +41,7 @@ namespace HRIS.WebApi.Controllers.v1
         /// </summary>
         /// <returns></returns>
         [HttpGet]
+        [AllowAnonymous]
         public async Task<IActionResult> GetAll()
         {
             return Ok(await _employeeService.GetAllAsync());
@@ -79,7 +81,7 @@ namespace HRIS.WebApi.Controllers.v1
                         ContactName = employeeDetail.ContactName,
                         ContactNo = employeeDetail.ContactNo,
                         WorkPositionId = Guid.Empty,
-                        Status = Status.Active,
+                        IsDeleted = false,
                         CreatedBy = "System",
                         CreatedAt = DateTime.Now,
                         UpdatedAt = DateTime.Now,
