@@ -4,12 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HRIS.Domain.Enums
+namespace HRIS.Service.Objects
 {
-    public enum UserRole
+    public class AppSettings
     {
-        USER,
-        ADMIN,
-        SUPERADMIN
+        public string? Key { get; set; }
     }
 }

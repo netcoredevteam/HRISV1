@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
+using HRIS.WebApi.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +19,7 @@ var builder = WebApplication.CreateBuilder(args);
 
     services.AddControllers();
     services.AddAutoMapper(typeof(MappingProfile));
+
     // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
     services.AddEndpointsApiExplorer();
 
@@ -52,10 +54,10 @@ var builder = WebApplication.CreateBuilder(args);
     services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
     // Repository
-    services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+    MapRepositories(services);
 
     // Services
-    services.AddScoped<IEmployeeService, EmployeeService>();
+    MapServices(services);
 }
 
 var app = builder.Build();
@@ -79,7 +81,7 @@ var app = builder.Build();
         });
     }
 
-    app.UseStaticFiles();
+    //app.UseStaticFiles();
 
     app.UseCors(x => x
         .AllowAnyOrigin()
@@ -88,9 +90,31 @@ var app = builder.Build();
 
     app.UseHttpsRedirection();
 
-    app.UseAuthorization();
+    app.UseMiddleware<JwtMiddleware>();
 
     app.MapControllers();
 
     app.Run();
+}
+
+
+void MapRepositories(IServiceCollection services)
+{
+    services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+    services.AddScoped<IUserRepository, UserRepository>();
+    services.AddScoped<ICalendarTaskRepository, CalendarTaskRepository>();
+    services.AddScoped<IWhitelistRepository, WhitelistRepository>();
+    services.AddScoped<IScheduleRepository, ScheduleRepository>();
+    services.AddScoped<ILeaveRecordRepository, LeaveRecordRepository>();
+    services.AddScoped<IAnnouncementRepository, AnnouncementRepository>();
+    services.AddScoped<IDailyRecordRepository, DailyRecordRepository>();
+    services.AddScoped<IMandatoryRepository, MandatoryRepository>();
+    services.AddScoped<IWorkPositionRepository, WorkPositionRepository>();
+}
+
+void MapServices(IServiceCollection services)
+{
+    services.AddScoped<IEmployeeService, EmployeeService>();
+    services.AddScoped<IJwtService, JwtService>();
+    services.AddScoped<IEmployeeEmployeeMandatoryService, EmployeeEmployeeMandatoryService>();
 }

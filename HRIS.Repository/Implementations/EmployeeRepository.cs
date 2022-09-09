@@ -1,4 +1,5 @@
 ﻿using HRIS.Domain.Entities;
+using HRIS.Domain.Enums;
 using HRIS.Repository.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -18,9 +19,47 @@ namespace HRIS.Repository.Implementations
             _context = context;
         }
 
-        public async Task<List<Employee>> GetAllEmployees()
+        public async Task DeleteAsync(Employee entity)
+        {
+            _context.Employees.Remove(entity);
+
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task<IEnumerable<Employee>> GetAllAsync()
         {
             return await _context.Employees.ToListAsync();
+        }
+
+        public async Task<Employee> GetAsync(Guid id)
+        {
+            return await _context.Employees.FirstOrDefaultAsync(e => e.Id == id);
+        }
+
+        public async Task<Employee> GetByEmployeeNoAsync(string? id)
+        {
+            return await _context.Employees.FirstOrDefaultAsync(e => e.EmployeeNo == id);
+        }
+
+        public async Task InsertAsync(Employee entity)
+        {
+            _context.Employees.Add(entity);
+
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task<bool> IsInUseAsync(Guid id)
+        {
+            var employee = await _context.Employees.FirstOrDefaultAsync(e => e.Id == id);
+
+            return employee.IsDeleted;
+        }
+
+        public async Task UpdateAsync(Employee entity)
+        {
+            _context.Employees.Update(entity);
+
+            await _context.SaveChangesAsync();
         }
     }
 }

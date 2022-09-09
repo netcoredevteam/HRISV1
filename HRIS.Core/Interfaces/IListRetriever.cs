@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HRIS.Core.Interfaces
 {
-    internal interface IListRetriever<Entity>
+    public interface IListRetriever<Entity>
     {
         Task<IEnumerable<Entity>> GetAllAsync();
     }

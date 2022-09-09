@@ -8,6 +8,7 @@ namespace HRIS.Service.DTOs
 {
     public class EmployeeDto
     {
-        public int FirstName { get; set; }
+        public string? FirstName { get; set; }
+        public string? LastName { get; set; }
     }
 }

@@ -14,6 +14,15 @@ namespace HRIS.Service.Mappings
         public MappingProfile()
         {
             CreateMap<Employee, EmployeeDto>().ReverseMap();
+            CreateMap<User, UserDto>().ReverseMap();
+            CreateMap<Employee, CreateEmployeeDto>().ReverseMap();
+            CreateMap<User, UserEmployeeDto>().IncludeMembers(s => s.Employee);
+            CreateMap<Employee, UserEmployeeDto>(MemberList.None);
+
+            CreateMap<Mandatory, MandatoryDto>().ReverseMap();
+            CreateMap<LeaveRecord, LeaveRecordDto>().ReverseMap();
+            CreateMap<Schedule, ScheduleDto>().ReverseMap();
+            CreateMap<WorkPosition, WorkPositionDto>().ReverseMap();
         }
     }
 }

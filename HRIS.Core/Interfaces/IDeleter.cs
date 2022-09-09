@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HRIS.Core.Interfaces
 {
-    internal interface IDeleter<Entity>
+    public interface IDeleter<Entity>
     {
         Task DeleteAsync(Entity entity);
     }

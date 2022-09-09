@@ -8,7 +8,9 @@ namespace HRIS.Domain.Enums
 {
     public enum Status
     {
-        INACTIVE,
-        ACTIVE
+        Inactive = 0,
+        Active = 1,
+        Deleted = 2
+>>>>>>>> main:HRIS.Domain/Enums/Status.cs
     }
 }

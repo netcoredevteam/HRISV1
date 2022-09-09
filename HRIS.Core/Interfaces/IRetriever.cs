@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HRIS.Core.Interfaces
 {
-    internal interface IRetriever<Entity, Key>
+    public interface IRetriever<Entity, Key>
     {
         Task<Entity> GetAsync(Key id);
     }

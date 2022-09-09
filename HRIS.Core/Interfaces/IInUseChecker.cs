@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HRIS.Core.Interfaces
 {
-    internal interface IInUseChecker<Key>
+    public interface IInUseChecker<Key>
     {
         Task<bool> IsInUseAsync(Key id);
     }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HRIS.Core.Interfaces
 {
-    internal interface IUpdater<Entity>
+    public interface IUpdater<Entity>
     {
         Task UpdateAsync(Entity entity);
     }

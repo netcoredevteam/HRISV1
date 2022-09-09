@@ -1,6 +1,8 @@
 ﻿using HRIS.Domain.Entities;
+
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,81 +17,107 @@ namespace HRIS.Repository.Configurations
         {
             builder
                 .ToTable("employees")
-                .HasKey(p => p.Id);
+                .HasKey(e => e.Id);
 
             builder
-                .Property(p => p.Id)
+                .Property(e => e.Id)
                 .ValueGeneratedOnAdd();
 
             builder
-                .Property(p => p.EmployeeNo)
-                .HasColumnName("employee_no")
-                .HasMaxLength(64)
-                .IsRequired();
-
-            builder
-                .Property(p => p.FirstName)
+                .Property(e => e.FirstName)
                 .HasColumnName("first_name")
-                .HasMaxLength(64)
+                .HasMaxLength(50)
                 .IsRequired();
 
             builder
-                .Property(p => p.LastName)
+                .Property(e => e.LastName)
                 .HasColumnName("last_name")
-                .HasMaxLength(64)
+                .HasMaxLength(50)
                 .IsRequired();
-
             builder
-                .Property(p => p.Birthdate)
-                .HasColumnName("birth_date")
-                .IsRequired();
-
-            builder
-                .Property(p => p.DateHired)
+                .Property(e => e.DateHired)
                 .HasColumnName("date_hired")
+                .HasColumnType("date")
                 .IsRequired();
 
             builder
-                .Property(p => p.Address)
+                .Property(e => e.BirthDate)
+                .HasColumnName("birth_date")
+                .HasColumnType("date")
+                .IsRequired();
+
+            builder
+                .Property(e => e.Address)
+                .HasMaxLength(50)
                 .HasColumnName("address")
-                .HasMaxLength(128)
                 .IsRequired();
 
             builder
-                .Property(p => p.Phone)
+                .Property(e => e.Phone)
+                .HasMaxLength(50)
                 .HasColumnName("phone")
-                .HasMaxLength(64)
                 .IsRequired();
 
             builder
-                .Property(p => p.EmergencyContactName)
-                .HasColumnName("emergency_contact_name")
-                .HasMaxLength(64)
+                .Property(e => e.ContactName)
+                .HasMaxLength(50)
+                .HasColumnName("contact_name")
                 .IsRequired();
 
             builder
-                .Property(p => p.EmergencyContactNo)
-                .HasColumnName("emergency_contact_no")
-                .HasMaxLength(64)
+                .Property(e => e.ContactNo)
+                .HasMaxLength(50)
+                .HasColumnName("contact_no")
                 .IsRequired();
 
             builder
-                .Property(p => p.WorkPosition)
-                .HasColumnName("work_position")
-                .HasMaxLength(64)
+                .Property(e => e.EmployeeNo)
+                .HasColumnName("employee_no")
                 .IsRequired();
 
             builder
-                .Property(p => p.ScheduleId)
+                .Property(e => e.WorkPositionId)
+                .HasColumnName("work_position_id")
+                .IsRequired();
+
+            builder
+                .Property(e => e.ScheduleId)
                 .HasColumnName("schedule_id")
-                .HasMaxLength(64)
                 .IsRequired();
 
             builder
-                .Property(p => p.ProfileImage)
-                .HasColumnName("profile_image")
-                .HasMaxLength(255)
+                .Property(e => e.IsDeleted)
+                .HasColumnName("is_deleted")
+                .HasDefaultValue(false)
                 .IsRequired();
+
+            builder
+                .HasOne(e => e.WorkPosition)
+                .WithMany(e => e.Employees)
+                .HasForeignKey(e => e.WorkPositionId)
+                .OnDelete(DeleteBehavior.SetNull);
+
+            builder
+                .HasMany(e => e.Users)
+                .WithOne(e => e.Employee)
+                .HasForeignKey(e => e.EmployeeId)
+                .OnDelete(DeleteBehavior.SetNull);
+
+            builder
+                .HasOne(e => e.Schedule)
+                .WithMany(e => e.Employees)
+                .HasForeignKey(e => e.ScheduleId);
+
+            builder
+                .HasMany(e => e.DailyRecords)
+                .WithOne(e => e.Employee)
+                .HasForeignKey(e => e.EmployeeId);
+
+            builder
+                .HasOne(m => m.Mandatory)
+                .WithOne(m => m.Employee)
+                .HasForeignKey<Employee>(m => m.MandatoryId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

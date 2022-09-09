@@ -12,11 +12,11 @@ namespace HRIS.Domain.Entities
         [Column("id")]
         public Guid Id { get; set; }
 
-        [Column("create_time")]
-        public DateTime CreateTime { get; set; }
+        [Column("created_at")]
+        public DateTime CreatedAt { get; set; }
 
-        [Column("update_time")]
-        public DateTime UpdateTime { get; set; }
+        [Column("updated_at")]
+        public DateTime UpdatedAt { get; set; }
 
         [Column("created_by")]
         public string? CreatedBy { get; set; }

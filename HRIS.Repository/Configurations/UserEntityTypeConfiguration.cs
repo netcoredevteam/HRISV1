@@ -1,11 +1,7 @@
 ﻿using HRIS.Domain.Entities;
+
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HRIS.Repository.Configurations
 {
@@ -15,53 +11,70 @@ namespace HRIS.Repository.Configurations
         {
             builder
                 .ToTable("users")
-                .HasKey(p => p.Id);
+                .HasKey(u => u.Id);
 
             builder
-                .Property(p => p.Id)
+                .Property(u => u.Id)
                 .ValueGeneratedOnAdd();
 
             builder
-                .Property(p => p.Username)
+                .Property(u => u.Username)
                 .HasColumnName("username")
-                .HasMaxLength(64)
+                .HasMaxLength(50)
                 .IsRequired();
 
             builder
-                .Property(p => p.Password)
-                .HasMaxLength(64)
+                .Property(u => u.EmployeeId)
+                .HasColumnName("employee_id")
+                .HasMaxLength(50);
+
+            builder
+                .Property(u => u.Password)
                 .HasColumnName("password")
+                .HasMaxLength(50)
                 .IsRequired();
 
             builder
-                .Property(p => p.Nickname)
+                .Property(u => u.Role)
+                .HasColumnName("role")
+                .HasDefaultValue("User")
+                .HasMaxLength(50)
+                .IsRequired();
+
+            builder
+                .Property(u => u.Nickname)
                 .HasColumnName("nickname")
-                .HasMaxLength(64);
+                .HasMaxLength(50);
 
             builder
-                .Property(p => p.UserRole)
-                .HasColumnName("user_role");
-
-            builder
-                .Property(p => p.LastLoginTime)
-                .HasColumnName("last_login_time");
-
-            builder
-                .Property(p => p.IsDeleted)
-                .HasColumnName("is_deleted")
-                .IsRequired();
-
-            builder
-                .Property(p => p.Status)
+                .Property(u => u.Status)
                 .HasColumnName("status")
                 .IsRequired();
 
             builder
-                .HasOne(p => p.Employee)
-                .WithOne()
-                .HasForeignKey("employee_id")
-                .OnDelete(DeleteBehavior.Restrict)
+                .Property(u => u.LastLoginTime)
+                .HasColumnName("last_login_time")
+                .HasColumnType("datetime2")
                 .IsRequired();
+
+            builder
+                .Property(u => u.ProfileImage)
+                .HasColumnName("profile_image")
+                .HasDefaultValue(null)
+                .IsRequired();
+
+            builder
+                .HasOne(u => u.Employee)
+                .WithMany(u => u.Users)
+                .HasForeignKey(u => u.EmployeeId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            builder
+                .HasMany(u => u.LeaveRecords)
+                .WithOne(u => u.User)
+                .HasForeignKey(u => u.UserId)
+                .OnDelete(DeleteBehavior.Restrict);
+
         }
     }
 }
