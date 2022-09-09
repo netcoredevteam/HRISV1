@@ -23,9 +23,9 @@ namespace HRIS.Service.Implementations
             _mapper = mapper;
         }
 
-        public Task CreateAsync(Mandatory mandatory)
+        public async Task CreateAsync(Mandatory mandatory)
         {
-            throw new NotImplementedException();
+             await _mandatoryRepository.InsertAsync(mandatory);
         }
 
         public async Task<IEnumerable<MandatoryDto>> GetAllAsync()

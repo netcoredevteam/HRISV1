@@ -1,7 +1,9 @@
 ﻿using HRIS.Core.Interfaces;
 using HRIS.Domain.Entities;
 using HRIS.Repository.Interfaces;
+
 using Microsoft.EntityFrameworkCore;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,9 +38,15 @@ namespace HRIS.Repository.Implementations
             return await Context.Employees.FirstOrDefaultAsync(e => e.EmployeeNo == id);
         }
 
+        public async Task<bool> HasDuplicateAsync(string employeeNo)
+        {
+
+            return await Context.Employees.Where(e => e.EmployeeNo == employeeNo).AnyAsync();
+        }
+
         public async Task InsertAsync(Employee entity)
         {
-            Context.Employees.Add(entity);
+            await Context.Employees.AddAsync(entity);
 
             await Context.SaveChangesAsync();
         }

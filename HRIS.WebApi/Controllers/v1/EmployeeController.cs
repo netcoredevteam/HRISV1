@@ -78,6 +78,7 @@
 
                     var mandatory = new Mandatory
                     {
+                        EmployeeId = employee.Id,
                         SSS = employeeDetail.SSS,
                         PagIbig = employeeDetail.PagibigNo,
                         PhilHealth = employeeDetail.PhilHealthNo,

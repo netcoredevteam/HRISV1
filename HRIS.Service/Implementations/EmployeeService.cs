@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
+
 using HRIS.Domain.Entities;
 using HRIS.Repository.Interfaces;
 using HRIS.Service.DTOs;
 using HRIS.Service.Interfaces;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,23 +18,21 @@ namespace HRIS.Service.Implementations
         private readonly IEmployeeRepository _employeeRepository;
         private readonly IMapper _mapper;
 
+
+
         public EmployeeService(IEmployeeRepository employeeRepository,
             IMapper mapper)
         {
             _employeeRepository = employeeRepository;
             _mapper = mapper;
+
         }
 
-        public Task CreateAsync(Employee employee)
-        {
-            throw new NotImplementedException();
+        public async Task CreateAsync(Employee employee)
+        { 
+            await _employeeRepository.InsertAsync(employee);
+            await _employeeRepository.SaveChangesAsync();
         }
-
-        //public async Task CreateAsync(CreateEmployeeDto model)
-        //{
-        //    var employee = _mapper.Map<Employee>(model);
-        //    await _employeeRepository.InsertAsync(employee);
-        //}
 
         public async Task<IEnumerable<EmployeeDto>> GetAllAsync()
         {
@@ -47,9 +47,9 @@ namespace HRIS.Service.Implementations
             throw new NotImplementedException();
         }
 
-        public Task<bool> HasDuplicateAsync(string employeeNo)
+        public async Task<bool> HasDuplicateAsync(string employeeNo)
         {
-            throw new NotImplementedException();
+            return await _employeeRepository.HasDuplicateAsync(employeeNo);
         }
     }
 }

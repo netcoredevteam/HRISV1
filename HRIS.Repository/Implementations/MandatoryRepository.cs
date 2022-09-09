@@ -9,8 +9,12 @@ using System.Threading.Tasks;
 
 namespace HRIS.Repository.Implementations
 {
-    public class MandatoryRepository : IMandatoryRepository
+    public class MandatoryRepository : Repository, IMandatoryRepository
     {
+        public MandatoryRepository(ApplicationDbContext context) : base(context)
+        {
+        }
+
         public Task DeleteAsync(Mandatory entity)
         {
             throw new NotImplementedException();
@@ -26,9 +30,9 @@ namespace HRIS.Repository.Implementations
             throw new NotImplementedException();
         }
 
-        public Task InsertAsync(Mandatory entity)
+        public async Task InsertAsync(Mandatory entity)
         {
-            throw new NotImplementedException();
+            Context.Mandatories.AddAsync(entity);
         }
 
         public Task UpdateAsync(Mandatory entity)

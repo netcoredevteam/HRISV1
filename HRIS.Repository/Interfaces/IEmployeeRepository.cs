@@ -13,8 +13,10 @@ namespace HRIS.Repository.Interfaces
                                            IListRetriever<Employee>, 
                                            IRetriever<Employee, Guid>, 
                                            IUpdater<Employee>,
-                                           IInUseChecker<Guid>
+                                           IInUseChecker<Guid>,
+                                           IRepository
     {
         Task<Employee> GetByEmployeeNoAsync(string? id);
+        Task<bool> HasDuplicateAsync(string employeeNo);
     }
 }
