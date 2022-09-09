@@ -42,6 +42,11 @@ namespace HRIS.Repository.Configurations
               .IsRequired();
 
             builder
+                .Property(wp => wp.WorkCode)
+                .HasColumnName("work_code")
+                .IsRequired();
+
+            builder
                 .HasMany(wp => wp.Employees)
                 .WithOne(wp => wp.WorkPosition)
                 .HasForeignKey(wp => wp.WorkPositionId)

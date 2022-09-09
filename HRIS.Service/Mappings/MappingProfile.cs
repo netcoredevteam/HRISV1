@@ -22,6 +22,7 @@ namespace HRIS.Service.Mappings
             CreateMap<Mandatory, MandatoryDto>().ReverseMap();
             CreateMap<LeaveRecord, LeaveRecordDto>().ReverseMap();
             CreateMap<Schedule, ScheduleDto>().ReverseMap();
+            CreateMap<WorkPosition, WorkPositionDto>().ReverseMap();
         }
     }
 }
