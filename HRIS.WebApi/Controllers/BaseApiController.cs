@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using HRIS.WebApi.Attributes;
+using Microsoft.AspNetCore.Mvc;
 
 namespace HRIS.WebApi.Controllers
 {
@@ -6,6 +7,7 @@ namespace HRIS.WebApi.Controllers
     /// <summary>
     /// Base Api Controller
     /// </summary>
+    [Authorize]
     [ApiController]
     [Route("api/v{version:apiVersion}/[controller]")]
     public abstract class BaseApiController : ControllerBase

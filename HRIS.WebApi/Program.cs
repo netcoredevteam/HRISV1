@@ -90,12 +90,27 @@ var app = builder.Build();
 
     app.UseHttpsRedirection();
 
-    app.UseMiddleware<JwtMiddleware>();
+    app.Use(async (ctx, next) =>
+    {
+        try
+        {
+            await next();
+
+            app.UseMiddleware<JwtMiddleware>();
+
+            await next();
+        }
+        catch (Exception ex)
+        {
+            throw;
+        }
+    });
+
 
     app.MapControllers();
-
-    app.Run();
 }
+
+app.Run("https://localhost:5001");
 
 
 void MapRepositories(IServiceCollection services)
@@ -115,6 +130,7 @@ void MapRepositories(IServiceCollection services)
 void MapServices(IServiceCollection services)
 {
     services.AddScoped<IEmployeeService, EmployeeService>();
+    services.AddScoped<IUserService, UserService>();
     services.AddScoped<IJwtService, JwtService>();
     services.AddScoped<IEmployeeEmployeeMandatoryService, EmployeeEmployeeMandatoryService>();
 }

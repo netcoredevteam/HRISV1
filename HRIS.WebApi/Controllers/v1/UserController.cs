@@ -1,4 +1,5 @@
 ﻿using HRIS.Service.Interfaces;
+using HRIS.WebApi.Attributes;
 using HRIS.WebApi.Models.Request;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,6 +15,8 @@ namespace HRIS.WebApi.Controllers.v1
             _userService = userService;
         }
 
+        [HttpPost("login")]
+        [AllowAnonymous]
         public async Task<IActionResult> LoginUser([FromBody] LoginRequestModel model)
         {
             var result = await _userService.AuthenticateUser(model.Username, model.Password);
