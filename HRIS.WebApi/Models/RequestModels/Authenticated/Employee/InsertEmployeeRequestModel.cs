@@ -1,6 +1,4 @@
-﻿using System.Collections.ObjectModel;
-
-namespace HRIS.WebApi.Models.RequestModels.Authenticated.Employee
+﻿namespace HRIS.WebApi.Models.RequestModels.Authenticated.Employee
 {
     /// <summary>
     /// Insert employees and their mandatories  

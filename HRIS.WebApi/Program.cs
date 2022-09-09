@@ -1,13 +1,26 @@
+global using System;
+global using System.Linq;
+global using System.Threading.Tasks;
+global using System.Collections.Generic;
+global using System.Collections.ObjectModel;
+global using Microsoft.AspNetCore.Mvc;
+global using Microsoft.AspNetCore.Mvc.Filters;
+global using HRIS.Domain.Entities;
+global using HRIS.Repository.Implementations;
+global using HRIS.Repository.Interfaces;
+global using HRIS.Service.DTOs;
+global using HRIS.Service.Interfaces;
+global using HRIS.Utility.Constants;
+global using HRIS.WebApi.Attributes;
+global using HRIS.WebApi.Models.RequestModels.Authenticated.Employee;
+global using HRIS.WebApi.Models.Request;
+
+using System.Reflection;
+using Microsoft.OpenApi.Models;
+using Microsoft.EntityFrameworkCore;
 using HRIS.Repository;
-using HRIS.Repository.Interfaces;
-using HRIS.Repository.Implementations;
-using HRIS.Service.Interfaces;
 using HRIS.Service.Mappings;
 using HRIS.Service.Implementations;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.OpenApi.Models;
-using System.Reflection;
 using HRIS.WebApi.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);

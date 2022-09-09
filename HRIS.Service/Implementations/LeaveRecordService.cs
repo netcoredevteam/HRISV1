@@ -12,6 +12,8 @@ namespace HRIS.Service.Implementations
 {
     public class LeaveRecordService : ILeaveRecordService
     {
+        #region Object & Constructor
+
         private readonly ILeaveRecordRepository _leaveRecordRepository;
         private readonly IMapper _mapper;
 
@@ -21,6 +23,8 @@ namespace HRIS.Service.Implementations
             _leaveRecordRepository = leaveRecordRepository;
             _mapper = mapper;
         }
+
+        #endregion
 
         public async Task<IEnumerable<LeaveRecordDto>> GetAllAsync()
         {

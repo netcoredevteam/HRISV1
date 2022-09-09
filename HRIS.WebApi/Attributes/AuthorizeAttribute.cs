@@ -1,8 +1,4 @@
-﻿using HRIS.Service.DTOs;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Filters;
-
-namespace HRIS.WebApi.Attributes
+﻿namespace HRIS.WebApi.Attributes
 {
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
     public class AuthorizeAttribute : Attribute, IAuthorizationFilter

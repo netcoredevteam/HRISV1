@@ -1,8 +1,4 @@
-﻿using HRIS.Service.Interfaces;
-using HRIS.WebApi.Models.Request;
-using Microsoft.AspNetCore.Mvc;
-
-namespace HRIS.WebApi.Controllers.v1
+﻿namespace HRIS.WebApi.Controllers.v1
 {
     [ApiVersion("1.0")]
     public class UserController : BaseApiController

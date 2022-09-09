@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace HRIS.Service.DTOs
+﻿namespace HRIS.Service.DTOs
 {
     public class LeaveRecordDto
     {
@@ -17,6 +11,7 @@ namespace HRIS.Service.DTOs
         public string? UserId { get; set; }
         public string? Remarks { get; set; }
         public string? LeaveType { get; set; }
+
 
     }
 }

@@ -1,7 +1,4 @@
-﻿using HRIS.Repository.Interfaces;
-using HRIS.Service.Interfaces;
-
-namespace HRIS.WebApi.Middleware
+﻿namespace HRIS.WebApi.Middleware
 {
     public class JwtMiddleware
     {

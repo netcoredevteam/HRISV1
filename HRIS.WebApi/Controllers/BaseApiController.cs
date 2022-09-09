@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-
-namespace HRIS.WebApi.Controllers
+﻿namespace HRIS.WebApi.Controllers
 {
     #region BaseController
     /// <summary>

@@ -1,18 +1,4 @@
-﻿using HRIS.Domain.Entities;
-using HRIS.Domain.Enums;
-using HRIS.Service.DTOs;
-using HRIS.Service.Interfaces;
-using HRIS.Utility.Constants;
-using HRIS.WebApi.Attributes;
-using HRIS.WebApi.Models.RequestModels.Authenticated.Employee;
-
-using Microsoft.AspNetCore.Mvc;
-
-using System.Collections.ObjectModel;
-using System.Net;
-using System.Numerics;
-
-namespace HRIS.WebApi.Controllers.v1
+﻿namespace HRIS.WebApi.Controllers.v1
 {
     #region EmployeeController V1
     /// <summary>
