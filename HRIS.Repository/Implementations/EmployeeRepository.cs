@@ -18,9 +18,7 @@ namespace HRIS.Repository.Implementations
 
         public async Task DeleteAsync(Employee entity)
         {
-            Context.Employees.Remove(entity);
-
-            await Context.SaveChangesAsync();
+             Context.Employees.Remove(entity);
         }
 
         public async Task<IEnumerable<Employee>> GetAllAsync()
@@ -44,8 +42,6 @@ namespace HRIS.Repository.Implementations
 
             await Context.SaveChangesAsync();
         }
-
-
 
         public async Task<bool> IsInUseAsync(Guid id)
         {
