@@ -1,5 +1,5 @@
-﻿using HRIS.Domain.Entities;
-using HRIS.Domain.Enums;
+﻿using HRIS.Core.Interfaces;
+using HRIS.Domain.Entities;
 using HRIS.Repository.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -10,56 +10,71 @@ using System.Threading.Tasks;
 
 namespace HRIS.Repository.Implementations
 {
-    public class EmployeeRepository : IEmployeeRepository
+    public class EmployeeRepository : Repository, IEmployeeRepository
     {
-        private readonly ApplicationDbContext _context;
-
-        public EmployeeRepository(ApplicationDbContext context)
+        public EmployeeRepository(ApplicationDbContext context) : base(context)
         {
-            _context = context;
         }
 
         public async Task DeleteAsync(Employee entity)
         {
-            _context.Employees.Remove(entity);
+            Context.Employees.Remove(entity);
 
-            await _context.SaveChangesAsync();
+            await Context.SaveChangesAsync();
         }
 
         public async Task<IEnumerable<Employee>> GetAllAsync()
         {
-            return await _context.Employees.ToListAsync();
+            return await Context.Employees.ToListAsync();
         }
 
         public async Task<Employee> GetAsync(Guid id)
         {
-            return await _context.Employees.FirstOrDefaultAsync(e => e.Id == id);
+            return await Context.Employees.FirstOrDefaultAsync(e => e.Id == id);
         }
 
         public async Task<Employee> GetByEmployeeNoAsync(string? id)
         {
-            return await _context.Employees.FirstOrDefaultAsync(e => e.EmployeeNo == id);
+            return await Context.Employees.FirstOrDefaultAsync(e => e.EmployeeNo == id);
         }
 
         public async Task InsertAsync(Employee entity)
         {
-            _context.Employees.Add(entity);
+            Context.Employees.Add(entity);
 
-            await _context.SaveChangesAsync();
+            await Context.SaveChangesAsync();
         }
+
+
 
         public async Task<bool> IsInUseAsync(Guid id)
         {
-            var employee = await _context.Employees.FirstOrDefaultAsync(e => e.Id == id);
+            var employee = await Context.Employees.FirstOrDefaultAsync(e => e.Id == id);
 
             return employee.IsDeleted;
         }
 
         public async Task UpdateAsync(Employee entity)
         {
-            _context.Employees.Update(entity);
+            Context.Employees.Update(entity);
 
-            await _context.SaveChangesAsync();
+            await Context.SaveChangesAsync();
+        }
+
+
+        Task<IEnumerable<Employee>> IListRetriever<Employee>.GetAllAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<Employee> IRetriever<Employee, Guid>.GetAsync(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<Employee> IEmployeeRepository.GetByEmployeeNoAsync(string? id)
+        {
+            throw new NotImplementedException();
         }
     }
 }
