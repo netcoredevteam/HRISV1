@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HRIS.Service.DTOs
 {
-    public class DailyRecordEmployeeDto
+    public class EmployeeNameDto
     {
         public string? EmployeeNo { get; set; }
         public string? FirstName { get; set; }

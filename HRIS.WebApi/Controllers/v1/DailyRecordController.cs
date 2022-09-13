@@ -25,11 +25,37 @@ namespace HRIS.WebApi.Controllers.v1
 
         [HttpGet("getEmployeeRecords")]
         [AllowAnonymous]
-        public async Task<IActionResult> GetRecords(DailyRecordsSearchRequestModel model)
+        public async Task<IActionResult> GetRecords([FromBody] DailyRecordsSearchRequestModel model)
         {
             var requestDto = Mapper.Map<DailyRecordSearchDto>(model);
 
             return Ok(await _dailyRecordService.GetRecordsAsync(requestDto));
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> CreateRecord([FromBody] DailyRecordsRequestModel model)
+        {
+            var requestDto = Mapper.Map<DailyRecordDto>(model);
+            await _dailyRecordService.CreateRecordAsync(requestDto);
+            return Ok();
+        }
+
+        [HttpDelete]
+        [AllowAnonymous]
+        public async Task<IActionResult> DeleteRecord([FromBody] Guid id)
+        {
+            await _dailyRecordService.RemoveRecordAsync(id);
+            return Ok();
+        }
+
+        [HttpPut]
+        [AllowAnonymous]
+        public async Task<IActionResult> UpdateRecord([FromBody] DailyRecordsRequestModel model)
+        {
+            var requestDto = Mapper.Map<DailyRecordDto>(model);
+            await _dailyRecordService.UpdateRecordAsync(requestDto);
+            return Ok();
         }
     }
     #endregion

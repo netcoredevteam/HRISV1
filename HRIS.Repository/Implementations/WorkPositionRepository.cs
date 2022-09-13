@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace HRIS.Repository.Implementations
 {
-    public class WorkPositionRepository : Repository, IWorkPositionRepository
+    public class WorkPositionRepository : BaseRepository, IWorkPositionRepository
     {
         public WorkPositionRepository(ApplicationDbContext context) : base(context)
         {

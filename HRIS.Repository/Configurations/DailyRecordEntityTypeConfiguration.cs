@@ -31,38 +31,32 @@ namespace HRIS.Repository.Configurations
             builder
                 .Property(dr => dr.TimeIn)
                 .HasColumnName("time_in")
-                .HasColumnType("datetime")
-                .IsRequired(false);
+                .HasColumnType("datetime");
 
             builder
                 .Property(dr => dr.TimeOut)
                 .HasColumnName("time_out")
-                .HasColumnType("datetime")
-                .IsRequired(false);
+                .HasColumnType("datetime");
 
             builder
                 .Property(dr => dr.LunchIn)
                 .HasColumnName("lunch_in")
-                .HasColumnType("datetime")
-                .IsRequired(false);
+                .HasColumnType("datetime");
 
             builder
                 .Property(dr => dr.LunchOut)
                 .HasColumnName("lunch_out")
-                .HasColumnType("datetime")
-                .IsRequired(false);
+                .HasColumnType("datetime");
 
             builder
                 .Property(dr => dr.OTIn)
                 .HasColumnName("ot_in")
-                .HasColumnType("datetime")
-                .IsRequired(false);
+                .HasColumnType("datetime");
 
             builder
                 .Property(dr => dr.OTOut)
                 .HasColumnName("ot_out")
-                .HasColumnType("datetime")
-                .IsRequired(false);
+                .HasColumnType("datetime");
 
             builder
                 .HasOne(dr => dr.Employee)

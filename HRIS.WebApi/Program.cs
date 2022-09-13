@@ -22,6 +22,7 @@ using HRIS.Repository;
 using HRIS.Service.Mappings;
 using HRIS.Service.Implementations;
 using HRIS.WebApi.Middleware;
+using HRIS.WebApi.Mappings;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,7 +32,7 @@ var builder = WebApplication.CreateBuilder(args);
     ConfigurationManager configuration = builder.Configuration;
 
     services.AddControllers();
-    services.AddAutoMapper(typeof(MappingProfile));
+    services.AddAutoMapper(typeof(MappingProfile), typeof(ControllerMappingProfile));
 
     // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
     services.AddEndpointsApiExplorer();
@@ -103,19 +104,19 @@ var app = builder.Build();
 
     app.UseHttpsRedirection();
 
-    app.Use(async (ctx, next) =>
-    {
-        try
-        {
-            await next();
+    //app.Use(async (ctx, next) =>
+    //{
+    //    try
+    //    {
+    //        await next();
 
-            app.UseMiddleware<JwtMiddleware>();
-        }
-        catch (Exception ex)
-        {
-            throw;
-        }
-    });
+    //        app.UseMiddleware<JwtMiddleware>();
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //        throw;
+    //    }
+    //});
 
 
     app.MapControllers();

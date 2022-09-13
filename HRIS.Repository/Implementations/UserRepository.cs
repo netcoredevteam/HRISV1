@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace HRIS.Repository.Implementations
 {
-    public class UserRepository : Repository, IUserRepository
+    public class UserRepository : BaseRepository, IUserRepository
     {
         public UserRepository(ApplicationDbContext context) : base(context)
         { }

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace HRIS.Repository.Implementations
 {
-    public abstract class Repository
+    public abstract class BaseRepository
     {
         protected ApplicationDbContext Context { get; }
-        public Repository(ApplicationDbContext context) => Context = context;
+        public BaseRepository(ApplicationDbContext context) => Context = context;
     }
 }

@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace HRIS.Repository.Implementations
 {
-    public class EmployeeRepository : Repository, IEmployeeRepository
+    public class EmployeeRepository : BaseRepository, IEmployeeRepository
     {
         public EmployeeRepository(ApplicationDbContext context) : base(context)
         {

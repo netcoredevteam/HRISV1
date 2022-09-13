@@ -9,7 +9,10 @@ namespace HRIS.Service.Interfaces
 {
     public interface IDailyRecordService
     {
-        Task<IEnumerable<DailyRecordEmployeeDto>> GetNameListAsync();
+        Task<IEnumerable<EmployeeNameDto>> GetNameListAsync();
         Task<List<DailyRecordDto>> GetRecordsAsync(DailyRecordSearchDto model);
+        Task CreateRecordAsync(DailyRecordDto model);
+        Task UpdateRecordAsync(DailyRecordDto model);
+        Task RemoveRecordAsync(Guid id);
     }
 }

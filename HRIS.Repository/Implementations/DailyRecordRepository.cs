@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace HRIS.Repository.Implementations
 {
-    public class DailyRecordRepository : Repository, IDailyRecordRepository
+    public class DailyRecordRepository : BaseRepository, IDailyRecordRepository
     {
         public DailyRecordRepository(ApplicationDbContext context) : base(context)
         { }
@@ -26,7 +26,10 @@ namespace HRIS.Repository.Implementations
 
         public async Task<IEnumerable<DailyRecord>> GetAllByEmployeeNoAsync(string? employeeNo)
         {
-            throw new NotImplementedException();
+            var employee = await Context.Employees.FirstOrDefaultAsync(e => e.EmployeeNo == employeeNo);
+            var dailyRecords = Context.DailyRecords.Where(dr => dr.EmployeeId == employee.Id);
+
+            return dailyRecords;
         }
 
         public async Task<DailyRecord> GetAsync(Guid id)

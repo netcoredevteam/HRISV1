@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace HRIS.Repository.Implementations
 {
-    public class MandatoryRepository : Repository, IMandatoryRepository
+    public class MandatoryRepository : BaseRepository, IMandatoryRepository
     {
         public MandatoryRepository(ApplicationDbContext context) : base(context)
         {

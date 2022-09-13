@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using HRIS.Domain.Entities;
 using HRIS.Repository.Interfaces;
 using HRIS.Service.DTOs;
 using HRIS.Service.Interfaces;
@@ -25,10 +26,10 @@ namespace HRIS.Service.Implementations
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<DailyRecordEmployeeDto>> GetNameListAsync()
+        public async Task<IEnumerable<EmployeeNameDto>> GetNameListAsync()
         {
             var employees = await _employeeRepository.GetAllAsync();
-            var employeesDto = _mapper.Map<List<DailyRecordEmployeeDto>>(employees);
+            var employeesDto = _mapper.Map<List<EmployeeNameDto>>(employees);
 
             return employeesDto;
         }
@@ -41,6 +42,27 @@ namespace HRIS.Service.Implementations
             var recordsDto = _mapper.Map<List<DailyRecordDto>>(records);
 
             return recordsDto;
+        }
+
+        public async Task CreateRecordAsync(DailyRecordDto model)
+        {
+            var dailyRecord = _mapper.Map<DailyRecord>(model);
+            await _dailyRecordRepository.InsertAsync(dailyRecord);
+            await _dailyRecordRepository.SaveChangesAsync();
+        }
+
+        public async Task RemoveRecordAsync(Guid id)
+        {
+            var record = await _dailyRecordRepository.GetAsync(id);
+            await _dailyRecordRepository.DeleteAsync(record);
+            await _dailyRecordRepository.SaveChangesAsync();
+        }
+
+        public async Task UpdateRecordAsync(DailyRecordDto model)
+        {
+            var dailyRecord = _mapper.Map<DailyRecord>(model);
+            await _dailyRecordRepository.UpdateAsync(dailyRecord);
+            await _dailyRecordRepository.SaveChangesAsync();
         }
     }
 }
