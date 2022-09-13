@@ -9,23 +9,19 @@ using System.Threading.Tasks;
 
 namespace HRIS.Repository.Implementations
 {
-    public class DailyRecordRepository : IDailyRecordRepository
+    public class DailyRecordRepository : Repository, IDailyRecordRepository
     {
-        private readonly ApplicationDbContext _context;
-
-        public DailyRecordRepository(ApplicationDbContext context)
-        {
-            _context = context;
-        }
+        public DailyRecordRepository(ApplicationDbContext context) : base(context)
+        { }
 
         public async Task DeleteAsync(DailyRecord entity)
         {
-            _context.DailyRecords.Remove(entity);
+            Context.DailyRecords.Remove(entity);
         }
 
         public async Task<IEnumerable<DailyRecord>> GetAllAsync()
         {
-            return await _context.DailyRecords.ToListAsync();
+            return await Context.DailyRecords.ToListAsync();
         }
 
         public async Task<IEnumerable<DailyRecord>> GetAllByEmployeeNoAsync(string? employeeNo)
@@ -35,22 +31,22 @@ namespace HRIS.Repository.Implementations
 
         public async Task<DailyRecord> GetAsync(Guid id)
         {
-            return await _context.DailyRecords.FirstOrDefaultAsync(u => u.Id == id);
+            return await Context.DailyRecords.FirstOrDefaultAsync(u => u.Id == id);
         }
 
         public async Task InsertAsync(DailyRecord entity)
         {
-            await _context.DailyRecords.AddAsync(entity);
+            await Context.DailyRecords.AddAsync(entity);
         }
 
         public async Task SaveChangesAsync()
         {
-            await _context.SaveChangesAsync();
+            await Context.SaveChangesAsync();
         }
 
         public async Task UpdateAsync(DailyRecord entity)
         {
-            _context.DailyRecords.Update(entity);
+            Context.DailyRecords.Update(entity);
         }
     }
 }

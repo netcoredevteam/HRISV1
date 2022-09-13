@@ -63,21 +63,16 @@ namespace HRIS.Repository.Implementations
             return employee.IsDeleted;
         }
 
+        public Task SaveChangesAsync()
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task UpdateAsync(Employee entity)
         {
             Context.Employees.Update(entity);
 
             await Context.SaveChangesAsync();
-        }
-
-        Task<Employee> IRetriever<Employee, Guid>.GetAsync(Guid id)
-        {
-            throw new NotImplementedException();
-        }
-
-        Task<Employee> IEmployeeRepository.GetByEmployeeNoAsync(string? id)
-        {
-            throw new NotImplementedException();
         }
     }
 }

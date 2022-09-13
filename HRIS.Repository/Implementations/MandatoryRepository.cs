@@ -35,6 +35,11 @@ namespace HRIS.Repository.Implementations
             await Context.Mandatories.AddAsync(entity);
         }
 
+        public Task SaveChangesAsync()
+        {
+            throw new NotImplementedException();
+        }
+
         public Task UpdateAsync(Mandatory entity)
         {
             throw new NotImplementedException();

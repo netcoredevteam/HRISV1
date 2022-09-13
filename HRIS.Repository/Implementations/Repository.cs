@@ -6,18 +6,9 @@ using System.Threading.Tasks;
 
 namespace HRIS.Repository.Implementations
 {
-    public class Repository
+    public abstract class Repository
     {
         protected ApplicationDbContext Context { get; }
-
-        public Repository(ApplicationDbContext context)
-        {
-            Context = context;
-        }
-
-        public async Task SaveChangesAsync()
-        {
-            await Context.SaveChangesAsync();
-        }
+        public Repository(ApplicationDbContext context) => Context = context;
     }
 }
