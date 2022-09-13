@@ -22,8 +22,6 @@ namespace HRIS.Repository.Implementations
         public async Task DeleteAsync(User entity)
         {
             _context.Users.Remove(entity);
-
-            await _context.SaveChangesAsync();
         }
 
         public async Task<IEnumerable<User>> GetAllAsync()
@@ -48,9 +46,7 @@ namespace HRIS.Repository.Implementations
 
         public async Task InsertAsync(User entity)
         {
-            _context.Users.Add(entity);
-
-            await _context.SaveChangesAsync();
+            await _context.Users.AddAsync(entity);
         }
 
         public async Task<bool> IsInUseAsync(Guid id)
@@ -60,11 +56,14 @@ namespace HRIS.Repository.Implementations
             return user.Status == Status.Active;
         }
 
+        public async Task SaveChangesAsync()
+        {
+            await _context.SaveChangesAsync();
+        }
+
         public async Task UpdateAsync(User entity)
         {
             _context.Users.Update(entity);
-
-            await _context.SaveChangesAsync();
         }
     }
 }

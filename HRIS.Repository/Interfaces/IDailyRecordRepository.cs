@@ -9,11 +9,13 @@ using System.Threading.Tasks;
 
 namespace HRIS.Repository.Interfaces
 {
-    public interface IDailyRecordRepository : IDeleter<Mandatory>,
-                                           IInserter<Mandatory>,
-                                           IListRetriever<Mandatory>,
-                                           IRetriever<Mandatory, Guid>,
-                                           IUpdater<Mandatory>
+    public interface IDailyRecordRepository : IDeleter<DailyRecord>,
+                                           IInserter<DailyRecord>,
+                                           IListRetriever<DailyRecord>,
+                                           IRetriever<DailyRecord, Guid>,
+                                           IUpdater<DailyRecord>,
+                                           ISaver
     {
+        Task<IEnumerable<DailyRecord>> GetAllByEmployeeNoAsync(string? employeeNo);
     }
 }

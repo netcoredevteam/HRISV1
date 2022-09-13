@@ -10,6 +10,8 @@
             _userService = userService;
         }
 
+        [HttpPost("login")]
+        [AllowAnonymous]
         public async Task<IActionResult> LoginUser([FromBody] LoginRequestModel model)
         {
             var result = await _userService.AuthenticateUser(model.Username, model.Password);

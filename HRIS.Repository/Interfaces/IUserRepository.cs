@@ -13,7 +13,8 @@ namespace HRIS.Repository.Interfaces
                                        IListRetriever<User>,
                                        IRetriever<User, Guid>,
                                        IUpdater<User>,
-                                       IInUseChecker<Guid>
+                                       IInUseChecker<Guid>,
+                                       ISaver
     {
         Task<User> GetByEmployeeIdAsync(Guid id);
         Task<User> GetByUsernameAsync(string? username);
