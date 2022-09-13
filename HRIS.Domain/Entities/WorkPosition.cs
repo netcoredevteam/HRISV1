@@ -14,9 +14,7 @@ namespace HRIS.Domain.Entities
             this.Employees = new Collection<Employee>();
         }
         public string? Name { get; set; }
-        public TimeSpan StartTime { get; set; }
-        public TimeSpan EndTime { get; set; }
-        public string WorkCode { get; set; }
+        public string? WorkCode { get; set; }
 
 
 

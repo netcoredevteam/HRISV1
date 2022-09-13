@@ -30,18 +30,6 @@ namespace HRIS.Repository.Configurations
                 .IsRequired();
 
             builder
-                .Property(wp => wp.StartTime)
-                .HasColumnName("start_time")
-                .HasColumnType("time")
-                .IsRequired();
-
-            builder
-              .Property(wp => wp.EndTime)
-              .HasColumnName("end_time")
-              .HasColumnType("time")
-              .IsRequired();
-
-            builder
                 .Property(wp => wp.WorkCode)
                 .HasColumnName("work_code")
                 .IsRequired();
