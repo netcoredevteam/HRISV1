@@ -57,11 +57,11 @@ namespace HRIS.Repository.Configurations
                 .HasMaxLength(50)
                 .IsRequired();
 
-            builder
-                .HasOne(m => m.Employee)
-                .WithOne(m => m.Mandatory)
-                .HasForeignKey<Employee>(m => m.MandatoryId)
-                .OnDelete(DeleteBehavior.NoAction);
+            //builder
+            //    .HasOne(m => m.Employee)
+            //    .WithOne(m => m.Mandatory)
+            //    .HasForeignKey<Employee>(m => m.MandatoryId)
+            //    .OnDelete(DeleteBehavior.NoAction);
         }
     }
 }

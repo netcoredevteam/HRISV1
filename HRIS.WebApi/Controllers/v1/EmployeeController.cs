@@ -90,7 +90,7 @@
                         UpdatedBy = "System"
                     };
 
-                    employee.MandatoryId = mandatory.Id;
+                    //employee.MandatoryId = mandatory.Id;
 
                     await _employeeService.CreateAsync(employee);
                     await _mandatoryService.CreateAsync(mandatory);
