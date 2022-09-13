@@ -24,10 +24,18 @@ namespace HRIS.Service.Implementations
 
         public async Task<IEnumerable<WorkPositionDto>> GetAllAsync()
         {
-            var mandatories = await _workPositionRepository.GetAllAsync();
-            var workPositionDto = _mapper.Map<List<WorkPositionDto>>(mandatories);
+            var workPositions = await _workPositionRepository.GetAllAsync();
+            var workPositionDto = _mapper.Map<List<WorkPositionDto>>(workPositions);
 
             return workPositionDto;
+        }
+
+        public async Task<Guid> GetIdAsync(string workCode)
+        {
+            var workPositon = _workPositionRepository.GetAsync(workCode);
+            var workPositionDto = _mapper.Map<WorkPositionDto>(workPositon);
+
+            return Guid.Empty;
         }
     }
 }

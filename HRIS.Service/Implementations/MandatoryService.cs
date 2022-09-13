@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
+
 using HRIS.Domain.Entities;
 using HRIS.Repository.Interfaces;
 using HRIS.Service.DTOs;
 using HRIS.Service.Interfaces;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +27,8 @@ namespace HRIS.Service.Implementations
 
         public async Task CreateAsync(Mandatory mandatory)
         {
-             await _mandatoryRepository.InsertAsync(mandatory);
+            await _mandatoryRepository.InsertAsync(mandatory);
+            await _mandatoryRepository.SaveChangesAsync();
         }
 
         public async Task<IEnumerable<MandatoryDto>> GetAllAsync()

@@ -20,40 +20,45 @@ namespace HRIS.Repository.Implementations
 
         public async Task DeleteAsync(Employee entity)
         {
-             Context.Employees.Remove(entity);
+            Context.Employees.Remove(entity);
         }
 
         public async Task<IEnumerable<Employee>> GetAllAsync()
         {
-            return await Context.Employees.ToListAsync();
+            return await Context.Employees
+                .Include(e => e.Mandatory)
+                .Include(e => e.WorkPosition)
+                .Include(e => e.Schedule)
+                .ToListAsync();
         }
 
         public async Task<Employee> GetAsync(Guid id)
         {
-            return await Context.Employees.FirstOrDefaultAsync(e => e.Id == id);
+            return await Context.Employees
+                .Include(e => e.Mandatory)
+                .Include(e => e.WorkPosition)
+                .Include(e => e.Schedule)
+                .SingleOrDefaultAsync(e => e.Id == id);
         }
 
         public async Task<Employee> GetByEmployeeNoAsync(string? id)
         {
-            return await Context.Employees.FirstOrDefaultAsync(e => e.EmployeeNo == id);
+            return await Context.Employees.SingleOrDefaultAsync(e => e.EmployeeNo == id);
         }
 
         public async Task<bool> HasDuplicateAsync(string employeeNo)
         {
-
             return await Context.Employees.Where(e => e.EmployeeNo == employeeNo).AnyAsync();
         }
 
         public async Task InsertAsync(Employee entity)
         {
             await Context.Employees.AddAsync(entity);
-
-            await Context.SaveChangesAsync();
         }
 
         public async Task<bool> IsInUseAsync(Guid id)
         {
-            var employee = await Context.Employees.FirstOrDefaultAsync(e => e.Id == id);
+            var employee = await Context.Employees.SingleOrDefaultAsync(e => e.Id == id);
 
             return employee.IsDeleted;
         }
@@ -63,12 +68,6 @@ namespace HRIS.Repository.Implementations
             Context.Employees.Update(entity);
 
             await Context.SaveChangesAsync();
-        }
-
-
-        Task<IEnumerable<Employee>> IListRetriever<Employee>.GetAllAsync()
-        {
-            throw new NotImplementedException();
         }
 
         Task<Employee> IRetriever<Employee, Guid>.GetAsync(Guid id)

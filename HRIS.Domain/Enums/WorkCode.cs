@@ -9,6 +9,7 @@ namespace HRIS.Domain.Enums
     public static class WorkCode
     {
         public const string NetCoreDeveloper = "NCD";
+        public const string FrontendDeveloper = "FED";
         public const string ChatSupport = "CS";
         public const string Marketing = "MKT";
         public const string Affiliate = "AFF";

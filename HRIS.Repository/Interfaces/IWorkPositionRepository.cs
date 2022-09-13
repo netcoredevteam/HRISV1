@@ -1,5 +1,6 @@
 ﻿using HRIS.Core.Interfaces;
 using HRIS.Domain.Entities;
+using HRIS.Domain.Enums;
 
 using System;
 using System.Collections.Generic;
@@ -9,11 +10,12 @@ using System.Threading.Tasks;
 
 namespace HRIS.Repository.Interfaces
 {
-    public interface IWorkPositionRepository : IDeleter<Mandatory>,
-                                           IInserter<Mandatory>,
-                                           IListRetriever<Mandatory>,
-                                           IRetriever<Mandatory, Guid>,
-                                           IUpdater<Mandatory>
+    public interface IWorkPositionRepository : IDeleter<WorkPosition>,
+                                           IInserter<WorkPosition>,
+                                           IListRetriever<WorkPosition>,
+                                           IRetriever<WorkPosition, Guid>,
+                                           IUpdater<WorkPosition>
     {
+        Task<WorkPosition> GetAsync(string workCode);
     }
 }

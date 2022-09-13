@@ -1,4 +1,6 @@
-﻿namespace HRIS.WebApi.Models.RequestModels.Authenticated.Employee
+﻿using HRIS.Domain.Enums;
+
+namespace HRIS.WebApi.Models.RequestModels.Authenticated.Employee
 {
     /// <summary>
     /// Insert employees and their mandatories  
@@ -82,6 +84,10 @@
             /// 
             /// </summary>
             public string? HMO { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string? WorkPositionCode { get; set; }
 
         }
 

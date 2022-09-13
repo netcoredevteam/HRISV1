@@ -13,6 +13,7 @@
   <ItemGroup>
     <ProjectReference Include="..\HRIS.Domain\HRIS.Domain.csproj" />
     <ProjectReference Include="..\HRIS.Repository\HRIS.Repository.csproj" />
+    <ProjectReference Include="..\HRIS.Utility\HRIS.Utility.csproj" />
   </ItemGroup>
 
 </Project>

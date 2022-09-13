@@ -8,6 +8,7 @@ namespace HRIS.Service.DTOs
 {
     public class WorkPositionDto
     {
+        public Guid Id { get; set; }
         public string? Name { get; set; }
     }
 }

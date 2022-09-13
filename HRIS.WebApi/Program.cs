@@ -130,4 +130,5 @@ void MapServices(IServiceCollection services)
     services.AddScoped<IEmployeeService, EmployeeService>();
     services.AddScoped<IJwtService, JwtService>();
     services.AddScoped<IEmployeeEmployeeMandatoryService, EmployeeEmployeeMandatoryService>();
+    services.AddScoped<IMandatoryService, MandatoryService>();
 }

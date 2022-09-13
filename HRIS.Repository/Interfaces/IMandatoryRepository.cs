@@ -13,7 +13,8 @@ namespace HRIS.Repository.Interfaces
                                            IInserter<Mandatory>,
                                            IListRetriever<Mandatory>,
                                            IRetriever<Mandatory, Guid>,
-                                           IUpdater<Mandatory>
+                                           IUpdater<Mandatory>,
+                                            IRepository
     {
     }
 }

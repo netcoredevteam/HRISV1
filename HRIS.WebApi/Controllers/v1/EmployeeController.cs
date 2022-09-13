@@ -28,7 +28,7 @@
         /// <returns></returns>
         [HttpGet]
         [AllowAnonymous]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAllAsync()
         {
             return Ok(await _employeeService.GetAllAsync());
         }

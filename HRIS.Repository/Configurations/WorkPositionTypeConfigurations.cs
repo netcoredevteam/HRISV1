@@ -51,6 +51,15 @@ namespace HRIS.Repository.Configurations
                 .WithOne(wp => wp.WorkPosition)
                 .HasForeignKey(wp => wp.WorkPositionId)
                 .OnDelete(DeleteBehavior.NoAction);
+
+            //builder
+            //    .HasData(new WorkPosition
+            //{
+            //    Id = Guid.NewGuid(),
+            //    Name = "NetCoreDeveloper",
+            //    WorkCode = "NCD",
+            //    StartTime = 
+            //});
         }
     }
 }

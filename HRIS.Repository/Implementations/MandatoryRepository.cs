@@ -32,7 +32,7 @@ namespace HRIS.Repository.Implementations
 
         public async Task InsertAsync(Mandatory entity)
         {
-            Context.Mandatories.AddAsync(entity);
+            await Context.Mandatories.AddAsync(entity);
         }
 
         public Task UpdateAsync(Mandatory entity)
