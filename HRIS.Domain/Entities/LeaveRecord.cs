@@ -8,14 +8,6 @@ namespace HRIS.Domain.Entities
 {
     public class LeaveRecord : BaseEntity
     {
-        //public Guid EmployeeId { get; set; }
-        //public Employee? Employee { get; set; }
-
-        public LeaveRecord()
-        {
-            this.User = new();
-        }
-
         public int Status { get; set; }
         public DateTime FiledDate { get; set; }
         public DateTime LeaveStartDate { get; set; }

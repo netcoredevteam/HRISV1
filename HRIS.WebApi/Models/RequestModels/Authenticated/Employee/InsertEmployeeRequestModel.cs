@@ -88,6 +88,10 @@ namespace HRIS.WebApi.Models.RequestModels.Authenticated.Employee
             /// 
             /// </summary>
             public string? WorkPositionCode { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public Guid ScheduleCode { get; set; }
 
         }
 

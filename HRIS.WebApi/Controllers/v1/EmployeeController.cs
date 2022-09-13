@@ -41,6 +41,7 @@
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
+        [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> CreateAsync([FromBody] InsertEmployeeRequestModel model)
         {
@@ -71,10 +72,9 @@
                         CreatedBy = "System",
                         CreatedAt = DateTime.Now,
                         UpdatedAt = DateTime.Now,
-                        UpdatedBy = "System"
+                        UpdatedBy = "System",
+                        ScheduleId = employeeDetail.ScheduleCode
                     };
-
-                    await _employeeService.CreateAsync(employee);
 
                     var mandatory = new Mandatory
                     {
@@ -90,6 +90,9 @@
                         UpdatedBy = "System"
                     };
 
+                    employee.MandatoryId = mandatory.Id;
+
+                    await _employeeService.CreateAsync(employee);
                     await _mandatoryService.CreateAsync(mandatory);
                 }
 

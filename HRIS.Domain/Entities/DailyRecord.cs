@@ -8,13 +8,8 @@ namespace HRIS.Domain.Entities
 {
     public class DailyRecord : BaseEntity
     {
-        public DailyRecord()
-        {
-            Employee = new Employee();
-        }
-
         public Guid EmployeeId { get; set; }
-        public Employee Employee { get; set; }
+        public Employee? Employee { get; set; }
         public DateTime TimeIn { get; set; }
         public DateTime TimeOut { get; set; }
         public DateTime LunchIn { get; set; }

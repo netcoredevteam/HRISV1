@@ -10,15 +10,6 @@ namespace HRIS.Domain.Entities
 {
     public class Employee : BaseEntity
     {
-        public Employee()
-        {
-            this.Users = new Collection<User>();
-            this.DailyRecords = new Collection<DailyRecord>();
-            this.WorkPosition = new();
-            this.Schedule = new();
-            this.Mandatory = new();
-        }
-
         public string? EmployeeNo { get; set; }
         public string? FirstName { get; set; }
         public string? LastName { get; set; }

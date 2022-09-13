@@ -10,12 +10,6 @@ namespace HRIS.Domain.Entities
 {
     public class User : BaseEntity
     {
-        public User()
-        {
-            this.Employee = new();
-            this.LeaveRecords = new Collection<LeaveRecord>();
-        }
-
         public string? Username { get; set; }
         public string? Password { get; set; }
         public string? Role { get; set; }
