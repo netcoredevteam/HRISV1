@@ -1,12 +1,9 @@
 ﻿using AutoMapper;
+using HRIS.Domain.Entities;
+using HRIS.Repository.Implementations;
 using HRIS.Repository.Interfaces;
 using HRIS.Service.DTOs;
 using HRIS.Service.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HRIS.Service.Implementations
 {
@@ -26,12 +23,47 @@ namespace HRIS.Service.Implementations
 
         #endregion
 
+        //Create LeaveRecord
+        public async Task CreateAsync(LeaveRecord leaveRecord)
+        {
+            await _leaveRecordRepository.InsertAsync(leaveRecord);
+            await _leaveRecordRepository.SaveChangesAsync();
+        }
+
+        //Get All LeaveRecord
         public async Task<IEnumerable<LeaveRecordDto>> GetAllAsync()
         {
-            var mandatories = await _leaveRecordRepository.GetAllAsync();
-            var leaveRecordDto = _mapper.Map<List<LeaveRecordDto>>(mandatories);
+            var leaveRecordDtos = new List<LeaveRecordDto>();
 
-            return leaveRecordDto;
+            try
+            {
+                var leaveRecords = await _leaveRecordRepository.GetAllAsync();
+
+                foreach (var leaveRecord in leaveRecords)
+                {
+
+                    var leaveRecordDto = new LeaveRecordDto()
+                    {
+                        EmployeeId = leaveRecord.Id,
+                        Status = leaveRecord.Status, 
+                        FiledDate = leaveRecord.FiledDate,
+                        DateLeaveFrom = leaveRecord.LeaveStartDate,
+                        DateLeaveTo = leaveRecord.LeaveEndDate,
+                        Reason = leaveRecord.ReasonOfLeave,
+                        UserId = leaveRecord.UserId,
+                        Remarks = leaveRecord.Remarks,
+                        LeaveType = leaveRecord.Leavetype
+                    };
+
+                    leaveRecordDtos.Add(leaveRecordDto);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+
+            return leaveRecordDtos;
         }
     }
 }

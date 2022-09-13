@@ -12,7 +12,8 @@ namespace HRIS.Repository.Interfaces
                                            IInserter<LeaveRecord>,
                                            IListRetriever<LeaveRecord>,
                                            IRetriever<LeaveRecord, Guid>,
-                                           IUpdater<LeaveRecord>
+                                           IUpdater<LeaveRecord>,
+                                           IRepository
     {
     }
 }

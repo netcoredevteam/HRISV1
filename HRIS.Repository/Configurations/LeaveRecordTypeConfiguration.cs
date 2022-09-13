@@ -28,6 +28,11 @@ namespace HRIS.Repository.Configurations
                 .HasColumnName("status");
 
             builder
+                .Property(lr => lr.FiledDate)
+                .HasColumnName("filed_date")
+                .HasColumnType("datetime");
+
+            builder
                 .Property(lr => lr.LeaveStartDate)
                 .HasColumnName("leave_start_date")
                 .HasColumnType("datetime");

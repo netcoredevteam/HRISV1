@@ -1,14 +1,12 @@
-﻿using HRIS.Service.DTOs;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using HRIS.Domain.Entities;
+using HRIS.Service.DTOs;
 
 namespace HRIS.Service.Interfaces
 {
     public interface ILeaveRecordService
     {
-        Task<IEnumerable<LeaveRecordDto>> GetAllAsync();
+        Task<IEnumerable<LeaveRecordDto>> GetAllAsync();//Get All LeaveRecord
+        Task CreateAsync(LeaveRecord leaveRecord);//Create LeaveRecord
+
     }
 }

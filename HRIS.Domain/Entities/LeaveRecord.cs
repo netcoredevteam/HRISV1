@@ -17,7 +17,7 @@ namespace HRIS.Domain.Entities
         }
 
         public int Status { get; set; }
-        public DateTime? dateTime { get; set; }
+        public DateTime FiledDate { get; set; }
         public DateTime LeaveStartDate { get; set; }
         public DateTime LeaveEndDate { get; set; }
         public string? ReasonOfLeave { get; set; }

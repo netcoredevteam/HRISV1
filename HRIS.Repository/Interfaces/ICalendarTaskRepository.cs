@@ -12,6 +12,7 @@ namespace HRIS.Repository.Interfaces
                                                IInserter<CalendarTask>,
                                                IListRetriever<CalendarTask>,
                                                IRetriever<CalendarTask, Guid>,
-                                               IUpdater<CalendarTask>
+                                               IUpdater<CalendarTask>,
+                                               IRepository
     { }
 }

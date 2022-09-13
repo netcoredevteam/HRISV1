@@ -41,6 +41,11 @@ namespace HRIS.Repository.Implementations
             await _context.SaveChangesAsync();
         }
 
+        public Task SaveChangesAsync()
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task UpdateAsync(LeaveRecord entity)
         {
             _context.LeaveRecords.Update(entity);
