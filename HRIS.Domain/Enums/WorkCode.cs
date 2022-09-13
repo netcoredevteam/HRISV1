@@ -14,5 +14,6 @@ namespace HRIS.Domain.Enums
         public const string Marketing = "MKT";
         public const string Affiliate = "AFF";
         public const string DataAnalyst = "DA";
+        public const string HumanResource = "HR";
     }
 }

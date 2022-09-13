@@ -40,14 +40,78 @@ namespace HRIS.Repository.Configurations
                 .HasForeignKey(wp => wp.WorkPositionId)
                 .OnDelete(DeleteBehavior.NoAction);
 
-            //builder
-            //    .HasData(new WorkPosition
-            //{
-            //    Id = Guid.NewGuid(),
-            //    Name = "NetCoreDeveloper",
-            //    WorkCode = "NCD",
-            //    StartTime = 
-            //});
+            builder
+                .HasData(
+                new WorkPosition
+                {
+                    Id = Guid.NewGuid(),
+                    Name = "NetCore Developer",
+                    WorkCode = "NCD",
+                    CreatedAt = DateTime.Now,
+                    UpdatedAt = DateTime.Now,
+                    CreatedBy = "System",
+                    UpdatedBy = "System",
+                },
+                new WorkPosition
+                {
+                    Id = Guid.NewGuid(),
+                    Name = "Frontend Developer",
+                    WorkCode = "FED",
+                    CreatedAt = DateTime.Now,
+                    UpdatedAt = DateTime.Now,
+                    CreatedBy = "System",
+                    UpdatedBy = "System",
+                },
+                new WorkPosition
+                {
+                    Id = Guid.NewGuid(),
+                    Name = "Chat Support",
+                    WorkCode = "CS",
+                    CreatedAt = DateTime.Now,
+                    UpdatedAt = DateTime.Now,
+                    CreatedBy = "System",
+                    UpdatedBy = "System",
+                },
+                 new WorkPosition
+                 {
+                     Id = Guid.NewGuid(),
+                     Name = "Marketing",
+                     WorkCode = "MKT",
+                     CreatedAt = DateTime.Now,
+                     UpdatedAt = DateTime.Now,
+                     CreatedBy = "System",
+                     UpdatedBy = "System",
+                 },
+                 new WorkPosition
+                 {
+                     Id = Guid.NewGuid(),
+                     Name = "Affiliate",
+                     WorkCode = "AFF",
+                     CreatedAt = DateTime.Now,
+                     UpdatedAt = DateTime.Now,
+                     CreatedBy = "System",
+                     UpdatedBy = "System",
+                 },
+                 new WorkPosition
+                 {
+                     Id = Guid.NewGuid(),
+                     Name = "Data Analyst",
+                     WorkCode = "DA",
+                     CreatedAt = DateTime.Now,
+                     UpdatedAt = DateTime.Now,
+                     CreatedBy = "System",
+                     UpdatedBy = "System",
+                 },
+                 new WorkPosition
+                 {
+                     Id = Guid.NewGuid(),
+                     Name = "Human Resource",
+                     WorkCode = "HR",
+                     CreatedAt = DateTime.Now,
+                     UpdatedAt = DateTime.Now,
+                     CreatedBy = "System",
+                     UpdatedBy = "System",
+                 });
         }
     }
 }
