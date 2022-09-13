@@ -78,6 +78,7 @@
 
                     var mandatory = new Mandatory
                     {
+                        Id = Guid.NewGuid(),
                         EmployeeId = employee.Id,
                         SSS = employeeDetail.SSS,
                         PagIbig = employeeDetail.PagibigNo,
@@ -90,10 +91,9 @@
                         UpdatedBy = "System"
                     };
 
-                    //employee.MandatoryId = mandatory.Id;
-
-                    await _employeeService.CreateAsync(employee);
+                    employee.MandatoryId = mandatory.Id;
                     await _mandatoryService.CreateAsync(mandatory);
+                    await _employeeService.CreateAsync(employee);
                 }
 
             }

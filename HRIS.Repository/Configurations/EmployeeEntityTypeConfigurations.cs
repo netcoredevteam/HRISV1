@@ -85,10 +85,10 @@ namespace HRIS.Repository.Configurations
                 .HasColumnName("schedule_id")
                 .IsRequired();
 
-            //builder
-            //    .Property(e => e.MandatoryId)
-            //    .HasColumnName("mandatory_id")
-            //    .IsRequired();
+            builder
+                .Property(e => e.MandatoryId)
+                .HasColumnName("mandatory_id")
+                .IsRequired();
 
             builder
                 .Property(e => e.IsDeleted)
@@ -123,11 +123,11 @@ namespace HRIS.Repository.Configurations
                 .WithOne(e => e.Employee)
                 .HasForeignKey<Mandatory>(e => e.EmployeeId);
 
-            //builder
-            //    .HasOne(m => m.Mandatory)
-            //    .WithOne(m => m.Employee)
-            //    .HasForeignKey<Employee>(m => m.MandatoryId)
-            //    .OnDelete(DeleteBehavior.Cascade);
+            builder
+                .HasOne(m => m.Mandatory)
+                .WithOne(m => m.Employee)
+                .HasForeignKey<Employee>(m => m.MandatoryId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }
