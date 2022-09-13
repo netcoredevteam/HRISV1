@@ -86,6 +86,11 @@ namespace HRIS.Repository.Configurations
                 .IsRequired();
 
             builder
+                .Property(e => e.MandatoryId)
+                .HasColumnName("mandatory_id")
+                .IsRequired();
+
+            builder
                 .Property(e => e.IsDeleted)
                 .HasColumnName("is_deleted")
                 .HasDefaultValue(false)
