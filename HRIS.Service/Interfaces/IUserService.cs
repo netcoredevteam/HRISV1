@@ -9,6 +9,7 @@ namespace HRIS.Service.Interfaces
 {
     public interface IUserService
     {
-        Task<AuthUserDto> AuthenticateUser(string? username, string? password);
+        Task<AuthUserDto> AuthenticateAsync(string? username, string? password);
+        Task CreateAsync(UserDto user);
     }
 }

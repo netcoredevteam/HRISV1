@@ -1,15 +1,7 @@
-﻿using HRIS.Service.Enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace HRIS.Service.DTOs
+﻿namespace HRIS.WebApi.Models.Request
 {
-    public class UserDto
+    public class CreateUserRequestModel
     {
-        public Guid Id { get; set; }
         public string? Username { get; set; }
         public string? Password { get; set; }
         public string? Role { get; set; }

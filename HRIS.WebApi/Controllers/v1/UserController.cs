@@ -14,9 +14,18 @@
         [AllowAnonymous]
         public async Task<IActionResult> LoginUser([FromBody] LoginRequestModel model)
         {
-            var result = await _userService.AuthenticateUser(model.Username, model.Password);
+            var result = await _userService.AuthenticateAsync(model.Username, model.Password);
 
             return Ok(result);
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> CreateUser([FromBody] CreateUserRequestModel model)
+        {
+            var userDto = Mapper.Map<UserDto>(model);
+            await _userService.CreateAsync(userDto);
+            return Ok();
         }
     }
 }

@@ -10,6 +10,8 @@ namespace HRIS.WebApi.Mappings
 
             CreateMap<WhitelistDto, CreateWhitelistRequestModel>().ReverseMap();
             CreateMap<WhitelistDto, UpdateWhitelistRequestModel>().ReverseMap();
+
+            CreateMap<UserDto, CreateUserRequestModel>().ReverseMap();
         }
     }
 }

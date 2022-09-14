@@ -27,7 +27,9 @@ namespace HRIS.Repository.Implementations
 
         public async Task<User> GetAsync(Guid id)
         {
-            return await Context.Users.FirstOrDefaultAsync(u => u.Id == id);
+            return await Context.Users
+                .Include(u => u.Employee)
+                .SingleOrDefaultAsync(u => u.Id == id);
         }
 
         public async Task<User> GetByEmployeeIdAsync(Guid id)
@@ -37,7 +39,9 @@ namespace HRIS.Repository.Implementations
 
         public async Task<User> GetByUsernameAsync(string? username)
         {
-            return await Context.Users.FirstOrDefaultAsync(u => u.Username == username);
+            return await Context.Users
+                .Include(u => u.Employee)
+                .FirstOrDefaultAsync(u => u.Username == username);
         }
 
         public async Task InsertAsync(User entity)

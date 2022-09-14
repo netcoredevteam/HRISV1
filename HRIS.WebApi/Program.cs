@@ -23,6 +23,7 @@ using HRIS.Service.Mappings;
 using HRIS.Service.Implementations;
 using HRIS.WebApi.Middleware;
 using HRIS.WebApi.Mappings;
+using HRIS.Service.Objects;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -66,6 +67,9 @@ var builder = WebApplication.CreateBuilder(args);
     });
 
     services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+    // Strongly Typed Objects
+    services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
 
     // Repository
     MapRepositories(services);

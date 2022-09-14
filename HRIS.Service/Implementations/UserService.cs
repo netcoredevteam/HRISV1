@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using HRIS.Domain.Entities;
 using HRIS.Repository.Interfaces;
 using HRIS.Service.DTOs;
 using HRIS.Service.Interfaces;
@@ -28,7 +29,7 @@ namespace HRIS.Service.Implementations
             _mapper = mapper;
         }
 
-        public async Task<AuthUserDto> AuthenticateUser(string? username, string? password)
+        public async Task<AuthUserDto> AuthenticateAsync(string? username, string? password)
         {
             var user = await _userRepository.GetByUsernameAsync(username);
 
@@ -43,6 +44,13 @@ namespace HRIS.Service.Implementations
             var response = new AuthUserDto(userEmployee, token);
 
             return response;
+        }
+
+        public async Task CreateAsync(UserDto user)
+        {
+            var userDto = _mapper.Map<User>(user);
+            await _userRepository.InsertAsync(userDto);
+            await _userRepository.SaveChangesAsync();
         }
     }
 }
