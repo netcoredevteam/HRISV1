@@ -108,20 +108,7 @@ var app = builder.Build();
 
     app.UseHttpsRedirection();
 
-    //app.Use(async (ctx, next) =>
-    //{
-    //    try
-    //    {
-    //        await next();
-
-    //        app.UseMiddleware<JwtMiddleware>();
-    //    }
-    //    catch (Exception ex)
-    //    {
-    //        throw;
-    //    }
-    //});
-
+    app.UseMiddleware<JwtMiddleware>();
 
     app.MapControllers();
 }
