@@ -10,6 +10,12 @@ namespace HRIS.Domain.Entities
 {
     public class Employee : BaseEntity
     {
+        public Employee()
+        {
+            this.Users = new Collection<User>();
+            this.DailyRecords = new Collection<DailyRecord>();
+        }
+
         public string? EmployeeNo { get; set; }
         public string? FirstName { get; set; }
         public string? LastName { get; set; }
@@ -26,8 +32,8 @@ namespace HRIS.Domain.Entities
         public WorkPosition? WorkPosition { get; set; }
         public Guid ScheduleId { get; set; }
         public Schedule? Schedule { get; set; }
-        public Mandatory Mandatory { get; set; }
         public Guid MandatoryId { get; set; }
+        public Mandatory? Mandatory { get; set; }
         public ICollection<User> Users { get; set; }
         public ICollection<DailyRecord> DailyRecords { get; set; }
     }

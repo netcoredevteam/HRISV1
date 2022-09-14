@@ -10,6 +10,11 @@ namespace HRIS.Domain.Entities
 {
     public class User : BaseEntity
     {
+        public User()
+        {
+            this.LeaveRecords = new Collection<LeaveRecord>();
+        }
+
         public string? Username { get; set; }
         public string? Password { get; set; }
         public string? Role { get; set; }
@@ -20,7 +25,7 @@ namespace HRIS.Domain.Entities
 
         // Navigation Properties
         public Guid EmployeeId { get; set; }
-        public Employee Employee { get; set; }
+        public Employee? Employee { get; set; }
 
         public ICollection<LeaveRecord> LeaveRecords { get; set; }
     }
