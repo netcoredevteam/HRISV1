@@ -13,6 +13,9 @@ namespace HRIS.WebApi.Controllers
     {
         private IMapper? _mapper;
 
+        /// <summary>
+        /// Automapper service
+        /// </summary>
         protected IMapper Mapper => _mapper ??= HttpContext.RequestServices.GetRequiredService<IMapper>();
     }
     #endregion

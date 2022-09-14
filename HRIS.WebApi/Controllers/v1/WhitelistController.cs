@@ -3,15 +3,24 @@
 namespace HRIS.WebApi.Controllers.v1
 {
     #region Whitelist Api
+    /// <summary>
+    /// Whitelist api
+    /// </summary>
     [ApiVersion("1.0")]
     public class WhitelistController : BaseApiController
     {
+        #region Dependency Injection
         private readonly IWhitelistService _whitelistService;
 
+        /// <summary>
+        /// Contructor
+        /// </summary>
+        /// <param name="whitelistService"></param>
         public WhitelistController(IWhitelistService whitelistService)
         {
             _whitelistService = whitelistService;
-        }
+        } 
+        #endregion
 
         #region GetAll
         /// <summary>
@@ -45,6 +54,11 @@ namespace HRIS.WebApi.Controllers.v1
         #endregion
 
         #region Update
+        /// <summary>
+        /// Update Whitelist
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPut]
         [AllowAnonymous]
         public async Task<IActionResult> UpdateWhitelist([FromBody] UpdateWhitelistRequestModel model)
@@ -57,6 +71,11 @@ namespace HRIS.WebApi.Controllers.v1
         #endregion
 
         #region Delete
+        /// <summary>
+        /// Delete Whitelist
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete]
         [AllowAnonymous]
         public async Task<IActionResult> DeleteWhitelist([FromBody] Guid id)
