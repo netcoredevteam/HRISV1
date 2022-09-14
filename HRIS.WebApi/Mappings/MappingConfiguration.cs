@@ -8,8 +8,8 @@ namespace HRIS.WebApi.Mappings
         {
             CreateMap<DailyRecordDto, DailyRecordsRequestModel>().ReverseMap();
 
-            CreateMap<DailyRecordDto, CreateWhitelistRequestModel>().ReverseMap();
-            CreateMap<DailyRecordDto, UpdateWhitelistRequestModel>().ReverseMap();
+            CreateMap<WhitelistDto, CreateWhitelistRequestModel>().ReverseMap();
+            CreateMap<WhitelistDto, UpdateWhitelistRequestModel>().ReverseMap();
         }
     }
 }
