@@ -12,6 +12,7 @@ namespace HRIS.Repository.Interfaces
                                             IInserter<Whitelist>,
                                             IListRetriever<Whitelist>,
                                             IRetriever<Whitelist, Guid>,
-                                            IUpdater<Whitelist>
+                                            IUpdater<Whitelist>,
+                                            ISaver
     { }
 }

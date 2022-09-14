@@ -16,20 +16,20 @@ namespace HRIS.WebApi.Controllers.v1
             _dailyRecordService = dailyRecordService;
         }
 
-        [HttpGet("getEmployeeNames")]
+        [HttpGet("GetEmployeeNames")]
         [AllowAnonymous]
         public async Task<IActionResult> GetNameList()
         {
             return Ok(await _dailyRecordService.GetNameListAsync());
         }
 
-        [HttpGet("getEmployeeRecords")]
+        [HttpGet("GetEmployeeRecords")]
         [AllowAnonymous]
         public async Task<IActionResult> GetRecords([FromBody] DailyRecordsSearchRequestModel model)
         {
             var requestDto = Mapper.Map<DailyRecordSearchDto>(model);
 
-            return Ok(await _dailyRecordService.GetRecordsAsync(requestDto));
+            return Ok(await _dailyRecordService.GetAsync(requestDto));
         }
 
         [HttpPost]
@@ -37,7 +37,7 @@ namespace HRIS.WebApi.Controllers.v1
         public async Task<IActionResult> CreateRecord([FromBody] DailyRecordsRequestModel model)
         {
             var requestDto = Mapper.Map<DailyRecordDto>(model);
-            await _dailyRecordService.CreateRecordAsync(requestDto);
+            await _dailyRecordService.CreateAsync(requestDto);
             return Ok();
         }
 
@@ -45,7 +45,7 @@ namespace HRIS.WebApi.Controllers.v1
         [AllowAnonymous]
         public async Task<IActionResult> DeleteRecord([FromBody] Guid id)
         {
-            await _dailyRecordService.RemoveRecordAsync(id);
+            await _dailyRecordService.RemoveAsync(id);
             return Ok();
         }
 
@@ -54,7 +54,7 @@ namespace HRIS.WebApi.Controllers.v1
         public async Task<IActionResult> UpdateRecord([FromBody] DailyRecordsRequestModel model)
         {
             var requestDto = Mapper.Map<DailyRecordDto>(model);
-            await _dailyRecordService.UpdateRecordAsync(requestDto);
+            await _dailyRecordService.UpdateAsync(requestDto);
             return Ok();
         }
     }

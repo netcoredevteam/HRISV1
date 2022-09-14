@@ -34,7 +34,7 @@ namespace HRIS.Service.Implementations
             return employeesDto;
         }
 
-        public async Task<List<DailyRecordDto>> GetRecordsAsync(DailyRecordSearchDto model)
+        public async Task<List<DailyRecordDto>> GetAsync(DailyRecordSearchDto model)
         {
             var employee = await _employeeRepository.GetByEmployeeNoAsync(model.EmployeeNo);
 
@@ -44,21 +44,21 @@ namespace HRIS.Service.Implementations
             return recordsDto;
         }
 
-        public async Task CreateRecordAsync(DailyRecordDto model)
+        public async Task CreateAsync(DailyRecordDto model)
         {
             var dailyRecord = _mapper.Map<DailyRecord>(model);
             await _dailyRecordRepository.InsertAsync(dailyRecord);
             await _dailyRecordRepository.SaveChangesAsync();
         }
 
-        public async Task RemoveRecordAsync(Guid id)
+        public async Task RemoveAsync(Guid id)
         {
             var record = await _dailyRecordRepository.GetAsync(id);
             await _dailyRecordRepository.DeleteAsync(record);
             await _dailyRecordRepository.SaveChangesAsync();
         }
 
-        public async Task UpdateRecordAsync(DailyRecordDto model)
+        public async Task UpdateAsync(DailyRecordDto model)
         {
             var dailyRecord = _mapper.Map<DailyRecord>(model);
             await _dailyRecordRepository.UpdateAsync(dailyRecord);

@@ -23,6 +23,9 @@ namespace HRIS.Service.Mappings
 
             CreateMap<DailyRecordDto, DailyRecord>().ReverseMap();
 
+            CreateMap<WhitelistDto, Whitelist>().ReverseMap();
+
+
             CreateMap<Mandatory, MandatoryDto>().ReverseMap();
             CreateMap<LeaveRecord, LeaveRecordDto>().ReverseMap();
             CreateMap<Schedule, ScheduleDto>().ReverseMap();

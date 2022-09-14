@@ -9,44 +9,39 @@ using System.Threading.Tasks;
 
 namespace HRIS.Repository.Implementations
 {
-    public class WhitelistRepository : IWhitelistRepository
+    public class WhitelistRepository : BaseRepository, IWhitelistRepository
     {
-        private readonly ApplicationDbContext _context;
-
-        public WhitelistRepository(ApplicationDbContext context)
-        {
-            _context = context;
-        }
+        public WhitelistRepository(ApplicationDbContext context) : base(context)
+        { }
 
         public async Task DeleteAsync(Whitelist entity)
         {
-            _context.Whitelists.Remove(entity);
-
-            await _context.SaveChangesAsync();
+            Context.Whitelists.Remove(entity);
         }
 
         public async Task<IEnumerable<Whitelist>> GetAllAsync()
         {
-            return await _context.Whitelists.ToListAsync();
+            return await Context.Whitelists.ToListAsync();
         }
 
         public async Task<Whitelist> GetAsync(Guid id)
         {
-            return await _context.Whitelists.FirstOrDefaultAsync(e => e.Id == id);
+            return await Context.Whitelists.FirstOrDefaultAsync(e => e.Id == id);
         }
 
         public async Task InsertAsync(Whitelist entity)
         {
-            _context.Whitelists.Add(entity);
+            await Context.Whitelists.AddAsync(entity);
+        }
 
-            await _context.SaveChangesAsync();
+        public async Task SaveChangesAsync()
+        {
+            await Context.SaveChangesAsync();
         }
 
         public async Task UpdateAsync(Whitelist entity)
         {
-            _context.Whitelists.Update(entity);
-
-            await _context.SaveChangesAsync();
+            Context.Whitelists.Update(entity);
         }
     }
 }

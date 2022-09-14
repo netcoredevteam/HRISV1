@@ -147,4 +147,5 @@ void MapServices(IServiceCollection services)
     services.AddScoped<IDailyRecordService, DailyRecordService>();
     services.AddScoped<IEmployeeEmployeeMandatoryService, EmployeeEmployeeMandatoryService>();
     services.AddScoped<IMandatoryService, MandatoryService>();
+    services.AddScoped<IWhitelistService, WhitelistService>();
 }
