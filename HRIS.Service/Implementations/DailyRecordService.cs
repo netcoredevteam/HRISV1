@@ -47,6 +47,9 @@ namespace HRIS.Service.Implementations
         public async Task CreateAsync(DailyRecordDto model)
         {
             var dailyRecord = _mapper.Map<DailyRecord>(model);
+            dailyRecord.CreatedAt = DateTime.Now;
+            dailyRecord.UpdatedAt = DateTime.Now;
+
             await _dailyRecordRepository.InsertAsync(dailyRecord);
             await _dailyRecordRepository.SaveChangesAsync();
         }
@@ -61,6 +64,8 @@ namespace HRIS.Service.Implementations
         public async Task UpdateAsync(DailyRecordDto model)
         {
             var dailyRecord = _mapper.Map<DailyRecord>(model);
+            dailyRecord.UpdatedAt = DateTime.Now;
+
             await _dailyRecordRepository.UpdateAsync(dailyRecord);
             await _dailyRecordRepository.SaveChangesAsync();
         }

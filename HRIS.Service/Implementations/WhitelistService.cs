@@ -25,8 +25,11 @@ namespace HRIS.Service.Implementations
 
         public async Task CreateAsync(WhitelistDto model)
         {
-            var whiltelistDto = _mapper.Map<Whitelist>(model);
-            await _whitelistRepository.InsertAsync(whiltelistDto);
+            var whitelist = _mapper.Map<Whitelist>(model);
+            whitelist.CreatedAt = DateTime.Now;
+            whitelist.UpdatedAt = DateTime.Now;
+
+            await _whitelistRepository.InsertAsync(whitelist);
             await _whitelistRepository.SaveChangesAsync();
         }
 
@@ -46,8 +49,10 @@ namespace HRIS.Service.Implementations
 
         public async Task UpdateAsync(WhitelistDto model)
         {
-            var whiltelistDto = _mapper.Map<Whitelist>(model);
-            await _whitelistRepository.UpdateAsync(whiltelistDto);
+            var whitelist = _mapper.Map<Whitelist>(model);
+            whitelist.UpdatedAt = DateTime.Now;
+
+            await _whitelistRepository.UpdateAsync(whitelist);
             await _whitelistRepository.SaveChangesAsync();
         }
     }

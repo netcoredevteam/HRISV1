@@ -46,10 +46,13 @@ namespace HRIS.Service.Implementations
             return response;
         }
 
-        public async Task CreateAsync(UserDto user)
+        public async Task CreateAsync(UserDto userDto)
         {
-            var userDto = _mapper.Map<User>(user);
-            await _userRepository.InsertAsync(userDto);
+            var user = _mapper.Map<User>(userDto);
+            user.CreatedAt = DateTime.Now;
+            user.UpdatedAt = DateTime.Now;
+
+            await _userRepository.InsertAsync(user);
             await _userRepository.SaveChangesAsync();
         }
     }
