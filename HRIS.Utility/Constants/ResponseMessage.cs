@@ -10,5 +10,10 @@ namespace HRIS.Utility.Constants
     {
         public const string Success = "Success";
         public const string BadRequest = "Bad request.";
+        public const string FileNotSupported = "File not supported.";
+        public const string NotFound = "Not found.";
+        public const string DuplicateEmployeeNo = "Employee No. already exists";
+        public const string UploadComplete = "Upload complete.";
+        public const string UploadFailed = "Upload failed.";
     }
 }

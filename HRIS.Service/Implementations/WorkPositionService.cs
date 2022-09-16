@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
+
 using HRIS.Repository.Interfaces;
 using HRIS.Service.DTOs;
 using HRIS.Service.Interfaces;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,10 +34,7 @@ namespace HRIS.Service.Implementations
 
         public async Task<Guid> GetIdAsync(string workCode)
         {
-            var workPositon = _workPositionRepository.GetAsync(workCode);
-            var workPositionDto = _mapper.Map<WorkPositionDto>(workPositon);
-
-            return Guid.Empty;
+            return await _workPositionRepository.GetIdAsync(workCode);
         }
     }
 }

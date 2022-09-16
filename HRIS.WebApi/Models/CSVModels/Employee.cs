@@ -1,90 +1,93 @@
-﻿using HRIS.Domain.Enums;
+﻿using CsvHelper.Configuration.Attributes;
 
-using System.ComponentModel.DataAnnotations;
-
-namespace HRIS.WebApi.Models.RequestModels.Authenticated.Employee
+namespace HRIS.WebApi.Models.CSVModels
 {
     /// <summary>
-    /// Insert employees and their mandatories  
+    /// Employee CSV
     /// </summary>
-    public class InsertEmployeeRequestModel
+    public class Employee
     {
         /// <summary>
         /// 
         /// </summary>
-        [Required]
+        /// 
+        [Index(0)]
         public string? EmployeeNo { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        [Required]
+        /// 
+        [Index(1)]
         public string? FirstName { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        [Required]
+        [Index(2)]
         public string? LastName { get; set; }
         /// <summary>
         /// 
         /// </summary>
+        [Index(3)]
         public string? DateHired { get; set; }
         /// <summary>
         /// 
         /// </summary>
+        [Index(4)]
+        public string? ScheduleId { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        [Index(5)]
         public string? Birthday { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        [MaxLength(11)]
+        [Index(6)]
         public string? Phone { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        [MaxLength(150)]
+        [Index(7)]
         public string? Address { get; set; }
         /// <summary>
         /// 
         /// </summary>
+        [Index(8)]
         public string? ContactName { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        [MaxLength(150)]
+        [Index(9)]
         public string? ContactNo { get; set; }
         /// <summary>
         /// 
         /// </summary>
+        [Index(10)]
         public string? TinNo { get; set; }
         /// <summary>
         /// 
         /// </summary>
+        [Index(11)]
         public string? SSS { get; set; }
         /// <summary>
         /// 
         /// </summary>
+        [Index(12)]
         public string? PagibigNo { get; set; }
         /// <summary>
         /// 
         /// </summary>
+        [Index(13)]
         public string? PhilHealthNo { get; set; }
         /// <summary>
         /// 
         /// </summary>
+        [Index(14)]
         public string? HMO { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        [Required]
-        public Guid ScheduleId { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
-        [Required]
-        public Guid WorkPositionId { get; set; }
-
-
+        [Index(15)]
+        public string? WorkPositionId{ get; set; }
     }
-
-
-
 }

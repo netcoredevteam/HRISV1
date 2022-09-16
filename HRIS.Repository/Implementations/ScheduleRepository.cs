@@ -9,43 +9,52 @@ using System.Threading.Tasks;
 
 namespace HRIS.Repository.Implementations
 {
-    public class ScheduleRepository : IScheduleRepository
+    public class ScheduleRepository : BaseRepository, IScheduleRepository
     {
-        private readonly ApplicationDbContext _context;
-
-        public ScheduleRepository(ApplicationDbContext context)
+        public ScheduleRepository(ApplicationDbContext context) : base(context)
         {
-            _context = context;
         }
+
+        //private readonly ApplicationDbContext Context;
+
+        //public ScheduleRepository(ApplicationDbContext context)
+        //{
+        //    Context = context;
+        //}
         public async Task DeleteAsync(Schedule entity)
         {
-            _context.Schedules.Remove(entity);
+            Context.Schedules.Remove(entity);
 
-            await _context.SaveChangesAsync();
+            await Context.SaveChangesAsync();
         }
 
         public async Task<IEnumerable<Schedule>> GetAllAsync()
         {
-            return await _context.Schedules.ToListAsync();
+            return await Context.Schedules.ToListAsync();
         }
 
         public async Task<Schedule> GetAsync(Guid id)
         {
-            return await _context.Schedules.FirstOrDefaultAsync(e => e.Id == id);
+            return await Context.Schedules.FirstOrDefaultAsync(e => e.Id == id);
+        }
+
+        public async Task<Guid> GetIdAsync(string? scheduleName)
+        {
+            return await Context.Schedules.Where(s => s.Name == scheduleName).Select(s => s.Id).SingleOrDefaultAsync();
         }
 
         public async Task InsertAsync(Schedule entity)
         {
-            _context.Schedules.Add(entity);
+            Context.Schedules.Add(entity);
 
-            await _context.SaveChangesAsync();
+            await Context.SaveChangesAsync();
         }
 
         public async Task UpdateAsync(Schedule entity)
         {
-            _context.Schedules.Update(entity);
+            Context.Schedules.Update(entity);
 
-            await _context.SaveChangesAsync();
+            await Context.SaveChangesAsync();
         }
     }
 }

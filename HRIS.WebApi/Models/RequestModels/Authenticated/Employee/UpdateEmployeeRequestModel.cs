@@ -1,28 +1,21 @@
-﻿using HRIS.Domain.Enums;
-
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace HRIS.WebApi.Models.RequestModels.Authenticated.Employee
 {
-    /// <summary>
-    /// Insert employees and their mandatories  
-    /// </summary>
-    public class InsertEmployeeRequestModel
+    public class UpdateEmployeeRequestModel
     {
         /// <summary>
         /// 
         /// </summary>
         [Required]
-        public string? EmployeeNo { get; set; }
+        public Guid Id { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        [Required]
         public string? FirstName { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        [Required]
         public string? LastName { get; set; }
         /// <summary>
         /// 
@@ -49,7 +42,7 @@ namespace HRIS.WebApi.Models.RequestModels.Authenticated.Employee
         /// <summary>
         /// 
         /// </summary>
-        [MaxLength(150)]
+        [MaxLength(11)]
         public string? ContactNo { get; set; }
         /// <summary>
         /// 
@@ -75,16 +68,11 @@ namespace HRIS.WebApi.Models.RequestModels.Authenticated.Employee
         /// 
         /// </summary>
         [Required]
-        public Guid ScheduleId { get; set; }
+        public Guid WorkPositionId { get; set; }
         /// <summary>
         /// 
         /// </summary>
         [Required]
-        public Guid WorkPositionId { get; set; }
-
-
+        public Guid ScheduleId { get; set; }
     }
-
-
-
 }

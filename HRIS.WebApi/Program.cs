@@ -113,7 +113,7 @@ var app = builder.Build();
     app.MapControllers();
 }
 
-app.Run("https://localhost:5001");
+app.Run();
 
 
 void MapRepositories(IServiceCollection services)
@@ -139,4 +139,6 @@ void MapServices(IServiceCollection services)
     services.AddScoped<IEmployeeEmployeeMandatoryService, EmployeeEmployeeMandatoryService>();
     services.AddScoped<IMandatoryService, MandatoryService>();
     services.AddScoped<IWhitelistService, WhitelistService>();
+    services.AddScoped<IWorkPositionService, WorkPositionService>();
+    services.AddScoped<IScheduleService, ScheduleService>();
 }

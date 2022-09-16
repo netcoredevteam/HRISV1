@@ -29,5 +29,10 @@ namespace HRIS.Service.Implementations
 
             return scheduleDto;
         }
+
+        public async Task<Guid> GetidAsync(string? scheduleName)
+        {
+            return await _scheduleRepository.GetIdAsync(scheduleName);
+        }
     }
 }

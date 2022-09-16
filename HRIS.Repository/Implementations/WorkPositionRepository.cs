@@ -37,6 +37,11 @@ namespace HRIS.Repository.Implementations
             return await Context.WorkPositions.Where(wp => wp.WorkCode == workCode).SingleOrDefaultAsync();
         }
 
+        public async Task<Guid> GetIdAsync(string workCode)
+        {
+            return await Context.WorkPositions.Where(wp => wp.WorkCode == workCode).Select(wp => wp.Id).SingleOrDefaultAsync();
+        }
+
         public Task InsertAsync(WorkPosition entity)
         {
             throw new NotImplementedException();

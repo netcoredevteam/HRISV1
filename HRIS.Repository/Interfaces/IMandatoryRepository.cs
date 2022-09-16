@@ -11,6 +11,7 @@ namespace HRIS.Repository.Interfaces
 {
     public interface IMandatoryRepository : IDeleter<Mandatory>,
                                            IInserter<Mandatory>,
+                                           IRangeInserter<Mandatory>,
                                            IListRetriever<Mandatory>,
                                            IRetriever<Mandatory, Guid>,
                                            IUpdater<Mandatory>,

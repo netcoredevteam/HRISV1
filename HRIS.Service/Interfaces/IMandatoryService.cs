@@ -12,5 +12,11 @@ namespace HRIS.Service.Interfaces
     {
         Task<IEnumerable<MandatoryDto>> GetAllAsync();
         Task CreateAsync(Mandatory mandatory);
+        Task CreateRangeAsync(List<Mandatory> mandatories);
+
+        Task<Mandatory> GetAsync(Guid id);
+
+        Task UpdateAsync();
+
     }
 }

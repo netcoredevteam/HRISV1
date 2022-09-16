@@ -1,6 +1,8 @@
 ﻿using HRIS.Domain.Entities;
 using HRIS.Repository.Interfaces;
 
+using Microsoft.EntityFrameworkCore;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,9 +27,9 @@ namespace HRIS.Repository.Implementations
             throw new NotImplementedException();
         }
 
-        public Task<Mandatory> GetAsync(Guid id)
+        public async Task<Mandatory> GetAsync(Guid id)
         {
-            throw new NotImplementedException();
+            return await Context.Mandatories.SingleOrDefaultAsync(m => m.Id == id);
         }
 
         public async Task InsertAsync(Mandatory entity)
@@ -35,9 +37,14 @@ namespace HRIS.Repository.Implementations
             await Context.Mandatories.AddAsync(entity);
         }
 
-        public Task SaveChangesAsync()
+        public async Task InsertRangeAsync(List<Mandatory> entities)
         {
-            throw new NotImplementedException();
+            await Context.AddRangeAsync(entities);
+        }
+
+        public async Task SaveChangesAsync()
+        {
+            await Context.SaveChangesAsync();
         }
 
         public Task UpdateAsync(Mandatory entity)

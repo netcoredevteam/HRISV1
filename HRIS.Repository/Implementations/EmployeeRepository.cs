@@ -4,12 +4,6 @@ using HRIS.Repository.Interfaces;
 
 using Microsoft.EntityFrameworkCore;
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace HRIS.Repository.Implementations
 {
     public class EmployeeRepository : BaseRepository, IEmployeeRepository
@@ -18,9 +12,29 @@ namespace HRIS.Repository.Implementations
         {
         }
 
-        public async Task DeleteAsync(Employee entity)
+        public async Task DeleteAsync(Employee employee)
         {
-            Context.Employees.Remove(entity);
+            employee.IsDeleted = true;
+        }
+
+        public Task<List<Employee>> FilterAsync(string employeeNo, string name, bool isDeleted)
+        {
+            var query = Context.Employees
+                .Include(e => e.Mandatory)
+                .Include(e => e.Schedule)
+                .AsQueryable();
+
+            if (!string.IsNullOrEmpty(employeeNo))
+            {
+                query = query.Where(e => e.EmployeeNo == employeeNo);
+            }
+
+            if (!string.IsNullOrEmpty(name))
+            {
+                query = query.Where(e => name.Contains(e.FirstName) || name.Contains(e.LastName));
+            }
+
+            return query.Where(e => e.IsDeleted == isDeleted).ToListAsync();
         }
 
         public async Task<IEnumerable<Employee>> GetAllAsync()
@@ -56,6 +70,11 @@ namespace HRIS.Repository.Implementations
             await Context.Employees.AddAsync(entity);
         }
 
+        public async Task InsertRangeAsync(List<Employee> entities)
+        {
+            await Context.Employees.AddRangeAsync(entities);
+        }
+
         public async Task<bool> IsInUseAsync(Guid id)
         {
             var employee = await Context.Employees.SingleOrDefaultAsync(e => e.Id == id);
@@ -63,16 +82,14 @@ namespace HRIS.Repository.Implementations
             return employee.IsDeleted;
         }
 
-        public Task SaveChangesAsync()
+        public async Task SaveChangesAsync()
         {
-            throw new NotImplementedException();
+            await Context.SaveChangesAsync();
         }
 
         public async Task UpdateAsync(Employee entity)
         {
             Context.Employees.Update(entity);
-
-            await Context.SaveChangesAsync();
         }
     }
 }

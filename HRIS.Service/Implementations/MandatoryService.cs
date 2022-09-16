@@ -31,12 +31,29 @@ namespace HRIS.Service.Implementations
             await _mandatoryRepository.SaveChangesAsync();
         }
 
+        public async Task CreateRangeAsync(List<Mandatory> mandatories)
+        {
+            await _mandatoryRepository.InsertRangeAsync(mandatories);
+            await _mandatoryRepository.SaveChangesAsync();
+
+        }
+
         public async Task<IEnumerable<MandatoryDto>> GetAllAsync()
         {
             var mandatories = await _mandatoryRepository.GetAllAsync();
             var mandatoryDto = _mapper.Map<List<MandatoryDto>>(mandatories);
 
             return mandatoryDto;
+        }
+
+        public async Task<Mandatory> GetAsync(Guid id)
+        {
+            return await _mandatoryRepository.GetAsync(id);
+        }
+
+        public async Task UpdateAsync()
+        {
+            await _mandatoryRepository.SaveChangesAsync();
         }
     }
 }

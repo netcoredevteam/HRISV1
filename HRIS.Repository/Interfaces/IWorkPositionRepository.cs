@@ -17,5 +17,6 @@ namespace HRIS.Repository.Interfaces
                                            IUpdater<WorkPosition>
     {
         Task<WorkPosition> GetAsync(string workCode);
+        Task<Guid> GetIdAsync(string workCode);
     }
 }

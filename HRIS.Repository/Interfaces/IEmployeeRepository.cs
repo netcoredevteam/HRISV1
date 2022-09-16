@@ -1,5 +1,6 @@
 ﻿using HRIS.Core.Interfaces;
 using HRIS.Domain.Entities;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,15 +9,17 @@ using System.Threading.Tasks;
 
 namespace HRIS.Repository.Interfaces
 {
-    public interface IEmployeeRepository : IDeleter<Employee>, 
-                                           IInserter<Employee>, 
-                                           IListRetriever<Employee>, 
-                                           IRetriever<Employee, Guid>, 
+    public interface IEmployeeRepository : IDeleter<Employee>,
+                                           IInserter<Employee>,
+                                           IListRetriever<Employee>,
+                                           IRetriever<Employee, Guid>,
                                            IUpdater<Employee>,
                                            IInUseChecker<Guid>,
+                                           IRangeInserter<Employee>,
                                            IRepository
     {
         Task<Employee> GetByEmployeeNoAsync(string? id);
         Task<bool> HasDuplicateAsync(string employeeNo);
+        Task<List<Employee>> FilterAsync(string employeeNo, string name, bool isDeleted);
     }
 }

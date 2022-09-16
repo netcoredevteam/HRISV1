@@ -14,5 +14,6 @@ namespace HRIS.Repository.Interfaces
                                            IRetriever<Schedule, Guid>,
                                            IUpdater<Schedule>
     {
+        Task<Guid> GetIdAsync(string? scheduleName);
     }
 }

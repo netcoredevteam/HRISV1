@@ -10,5 +10,6 @@ namespace HRIS.Service.Interfaces
     public interface IScheduleService
     {
         Task<IEnumerable<ScheduleDto>> GetAllAsync();
+        Task<Guid> GetidAsync(string? scheduleName);
     }
 }
