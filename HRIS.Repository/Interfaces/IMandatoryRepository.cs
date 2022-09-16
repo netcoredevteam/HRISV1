@@ -17,5 +17,7 @@ namespace HRIS.Repository.Interfaces
                                            IUpdater<Mandatory>,
                                             IRepository
     {
+        Task<Mandatory> GetByEmployeeIdAsync(Guid? id);
+
     }
 }

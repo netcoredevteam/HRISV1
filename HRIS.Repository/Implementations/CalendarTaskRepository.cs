@@ -9,36 +9,34 @@ using System.Threading.Tasks;
 
 namespace HRIS.Repository.Implementations
 {
-    public class CalendarTaskRepository : ICalendarTaskRepository
+    public class CalendarTaskRepository : BaseRepository, ICalendarTaskRepository
     {
-        private readonly ApplicationDbContext _context;
-        public CalendarTaskRepository(ApplicationDbContext context)
+        public CalendarTaskRepository(ApplicationDbContext context): base(context)
         {
-            _context = context;
         }
 
         public async Task DeleteAsync(CalendarTask entity)
         {
-            _context.CalendarTasks.Remove(entity);
+            Context.CalendarTasks.Remove(entity);
 
-            await _context.SaveChangesAsync();
+            await Context.SaveChangesAsync();
         }
 
         public async Task<IEnumerable<CalendarTask>> GetAllAsync()
         {
-            return await _context.CalendarTasks.ToListAsync();
+            return await Context.CalendarTasks.ToListAsync();
         }
 
         public async Task<CalendarTask> GetAsync(Guid id)
         {
-            return await _context.CalendarTasks.FirstOrDefaultAsync(e => e.Id == id);
+            return await Context.CalendarTasks.FirstOrDefaultAsync(e => e.Id == id);
         }
 
         public async Task InsertAsync(CalendarTask entity)
         {
-            _context.CalendarTasks.Add(entity);
+            Context.CalendarTasks.Add(entity);
 
-            await _context.SaveChangesAsync();
+            await Context.SaveChangesAsync();
         }
 
         public Task SaveChangesAsync()
@@ -48,9 +46,9 @@ namespace HRIS.Repository.Implementations
 
         public async Task UpdateAsync(CalendarTask entity)
         {
-            _context.CalendarTasks.Update(entity);
+            Context.CalendarTasks.Update(entity);
 
-            await _context.SaveChangesAsync();
+            await Context.SaveChangesAsync();
         }
     }
 }

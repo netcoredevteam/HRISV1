@@ -32,6 +32,11 @@ namespace HRIS.Repository.Implementations
             return await Context.Mandatories.SingleOrDefaultAsync(m => m.Id == id);
         }
 
+        public Task<Mandatory> GetByEmployeeIdAsync(Guid? id)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task InsertAsync(Mandatory entity)
         {
             await Context.Mandatories.AddAsync(entity);

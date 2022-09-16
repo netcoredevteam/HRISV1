@@ -10,7 +10,7 @@ namespace HRIS.Service.DTOs
 {
     public class MandatoryDto
     {
-        public string? EmployeeId { get; set; }
+        public Guid EmployeeId { get; set; }
         public string? Sss { get; set; }
         public string? PagIbig { get; set; }
         public string? PhilHealth { get; set; }

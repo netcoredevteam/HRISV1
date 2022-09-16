@@ -9,36 +9,34 @@ using System.Threading.Tasks;
 
 namespace HRIS.Repository.Implementations
 {
-    public class AnnouncementRepository : IAnnouncementRepository
+    public class AnnouncementRepository : BaseRepository, IAnnouncementRepository
     {
-        private readonly ApplicationDbContext _context;
-
-        public AnnouncementRepository(ApplicationDbContext context)
+        public AnnouncementRepository(ApplicationDbContext context) : base(context)
         {
-            _context = context;
         }
+
         public async Task DeleteAsync(Announcement entity)
         {
-            _context.Announcements.Remove(entity);
+            Context.Announcements.Remove(entity);
 
-            await _context.SaveChangesAsync();
+            await Context.SaveChangesAsync();
         }
 
         public async Task<IEnumerable<Announcement>> GetAllAsync()
         {
-            return await _context.Announcements.ToListAsync();
+            return await Context.Announcements.ToListAsync();
         }
 
         public async Task<Announcement> GetAsync(Guid id)
         {
-            return await _context.Announcements.FirstOrDefaultAsync(e => e.Id == id);
+            return await Context.Announcements.FirstOrDefaultAsync(e => e.Id == id);
         }
 
         public async Task InsertAsync(Announcement entity)
         {
-            _context.Announcements.Add(entity);
+            Context.Announcements.Add(entity);
 
-            await _context.SaveChangesAsync();
+            await Context.SaveChangesAsync();
         }
 
         public Task SaveChangesAsync()
@@ -48,9 +46,9 @@ namespace HRIS.Repository.Implementations
 
         public async Task UpdateAsync(Announcement entity)
         {
-            _context.Announcements.Update(entity);
+            Context.Announcements.Update(entity);
 
-            await _context.SaveChangesAsync();
+            await Context.SaveChangesAsync();
         }
     }
 }
