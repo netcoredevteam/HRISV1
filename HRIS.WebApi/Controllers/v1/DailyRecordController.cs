@@ -50,7 +50,7 @@ namespace HRIS.WebApi.Controllers.v1
             try
             {
                 var requestDto = Mapper.Map<DailyRecordSearchDto>(model);
-                return Ok(await _dailyRecordService.GetAsync(requestDto));
+                return Ok(await _dailyRecordService.SearchAsync(requestDto));
             }
             catch (ListNotFoundException ex)
             {
@@ -89,7 +89,8 @@ namespace HRIS.WebApi.Controllers.v1
         [AllowAnonymous]
         public async Task<IActionResult> DeleteRecord([FromBody] Guid id)
         {
-            await _dailyRecordService.RemoveAsync(id);
+            var dailyRecord = await _dailyRecordService.GetAsync(id);
+            await _dailyRecordService.RemoveAsync(dailyRecord);
             return Ok();
         }
         #endregion

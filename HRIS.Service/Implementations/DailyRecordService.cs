@@ -35,11 +35,11 @@ namespace HRIS.Service.Implementations
             return employeesDto;
         }
 
-        public async Task<List<DailyRecordDto>> GetAsync(DailyRecordSearchDto model)
+        public async Task<List<DailyRecordDto>> SearchAsync(DailyRecordSearchDto model)
         {
             var employee = await _employeeRepository.GetByEmployeeNoAsync(model.EmployeeNo);
 
-            if(employee == null)
+            if (employee == null)
                 throw new EmployeeNotFoundException("Employee doesn't exist.");
 
             var records = await _dailyRecordRepository.GetAllByEmployeeNoAsync(employee.EmployeeNo);
@@ -62,10 +62,10 @@ namespace HRIS.Service.Implementations
             await _dailyRecordRepository.SaveChangesAsync();
         }
 
-        public async Task RemoveAsync(Guid id)
+        public async Task RemoveAsync(DailyRecordDto model)
         {
-            var record = await _dailyRecordRepository.GetAsync(id);
-            await _dailyRecordRepository.DeleteAsync(record);
+            var dailyRecord = _mapper.Map<DailyRecord>(model);
+            await _dailyRecordRepository.DeleteAsync(dailyRecord);
             await _dailyRecordRepository.SaveChangesAsync();
         }
 
@@ -73,9 +73,16 @@ namespace HRIS.Service.Implementations
         {
             var dailyRecord = _mapper.Map<DailyRecord>(model);
             dailyRecord.UpdatedAt = DateTime.Now;
-
             await _dailyRecordRepository.UpdateAsync(dailyRecord);
             await _dailyRecordRepository.SaveChangesAsync();
+        }
+
+        public async Task<DailyRecordDto> GetAsync(Guid id)
+        {
+            var dailyRecord = await _dailyRecordRepository.GetAsync(id);
+            var dailyRecordDto = _mapper.Map<DailyRecordDto>(dailyRecord);
+
+            return dailyRecordDto;
         }
     }
 }
