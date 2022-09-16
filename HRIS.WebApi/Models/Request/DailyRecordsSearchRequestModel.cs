@@ -1,6 +1,6 @@
 ﻿namespace HRIS.WebApi.Models.Request
 {
-    public class DailyRecordsSearchRequestModel
+    public class DailyRecordSearchRequestModel
     {
         public string? EmployeeNo { get; set; }
         public DateTime From { get; set; }

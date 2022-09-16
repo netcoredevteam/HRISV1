@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using HRIS.WebApi.Models.Request;
 
 namespace HRIS.WebApi.Mappings
 {
@@ -7,6 +8,7 @@ namespace HRIS.WebApi.Mappings
         public ControllerMappingProfile()
         {
             CreateMap<DailyRecordDto, DailyRecordsRequestModel>().ReverseMap();
+            CreateMap<DailyRecordSearchDto, DailyRecordSearchRequestModel>().ReverseMap();
 
             CreateMap<WhitelistDto, CreateWhitelistRequestModel>().ReverseMap();
             CreateMap<WhitelistDto, UpdateWhitelistRequestModel>().ReverseMap();

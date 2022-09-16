@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using HRIS.Service.Exceptions;
+using Microsoft.AspNetCore.Mvc;
+using System.Net;
 
 namespace HRIS.WebApi.Controllers.v1
 {
@@ -41,13 +43,23 @@ namespace HRIS.WebApi.Controllers.v1
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        [HttpGet("GetEmployeeRecords")]
+        [HttpPost("GetEmployeeRecords")]
         [AllowAnonymous]
-        public async Task<IActionResult> GetRecords([FromBody] DailyRecordsSearchRequestModel model)
+        public async Task<IActionResult> GetRecords([FromBody] DailyRecordSearchRequestModel model)
         {
-            var requestDto = Mapper.Map<DailyRecordSearchDto>(model);
-
-            return Ok(await _dailyRecordService.GetAsync(requestDto));
+            try
+            {
+                var requestDto = Mapper.Map<DailyRecordSearchDto>(model);
+                return Ok(await _dailyRecordService.GetAsync(requestDto));
+            }
+            catch (ListNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch (EmployeeNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
         }
         #endregion
 

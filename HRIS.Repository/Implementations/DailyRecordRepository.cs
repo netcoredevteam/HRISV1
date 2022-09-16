@@ -27,7 +27,7 @@ namespace HRIS.Repository.Implementations
         public async Task<IEnumerable<DailyRecord>> GetAllByEmployeeNoAsync(string? employeeNo)
         {
             var employee = await Context.Employees.FirstOrDefaultAsync(e => e.EmployeeNo == employeeNo);
-            var dailyRecords = Context.DailyRecords.Where(dr => dr.EmployeeId == employee.Id);
+            var dailyRecords = await Context.DailyRecords.Where(dr => dr.EmployeeId == employee.Id).ToListAsync();
 
             return dailyRecords;
         }

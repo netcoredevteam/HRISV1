@@ -24,6 +24,7 @@ using HRIS.Service.Implementations;
 using HRIS.WebApi.Middleware;
 using HRIS.WebApi.Mappings;
 using HRIS.Service.Objects;
+using System.Text.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -32,7 +33,9 @@ var builder = WebApplication.CreateBuilder(args);
     var services = builder.Services;
     ConfigurationManager configuration = builder.Configuration;
 
-    services.AddControllers();
+    services.AddControllers()
+        .AddJsonOptions(opt => opt.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase);
+
     services.AddAutoMapper(typeof(MappingProfile), typeof(ControllerMappingProfile));
 
     // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -49,7 +52,6 @@ var builder = WebApplication.CreateBuilder(args);
     });
 
     services.AddCors();
-
     services.AddApiVersioning(config =>
     {
         // Specify the default API Version as 1.0

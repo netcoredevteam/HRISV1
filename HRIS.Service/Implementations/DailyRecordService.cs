@@ -2,6 +2,7 @@
 using HRIS.Domain.Entities;
 using HRIS.Repository.Interfaces;
 using HRIS.Service.DTOs;
+using HRIS.Service.Exceptions;
 using HRIS.Service.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -38,7 +39,14 @@ namespace HRIS.Service.Implementations
         {
             var employee = await _employeeRepository.GetByEmployeeNoAsync(model.EmployeeNo);
 
-            var records = _dailyRecordRepository.GetAllByEmployeeNoAsync(employee.EmployeeNo);
+            if(employee == null)
+                throw new EmployeeNotFoundException("Employee doesn't exist.");
+
+            var records = await _dailyRecordRepository.GetAllByEmployeeNoAsync(employee.EmployeeNo);
+
+            if (!records.Any())
+                throw new ListNotFoundException("No records found.");
+
             var recordsDto = _mapper.Map<List<DailyRecordDto>>(records);
 
             return recordsDto;

@@ -2,6 +2,7 @@
 using HRIS.Domain.Entities;
 using HRIS.Repository.Interfaces;
 using HRIS.Service.DTOs;
+using HRIS.Service.Exceptions;
 using HRIS.Service.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -35,7 +36,7 @@ namespace HRIS.Service.Implementations
 
             // Validate
             if (user == null || password != user.Password)
-                throw new ApplicationException("Username or password is incorrect");
+                throw new UserNotFoundException("Username or Password is incorrect.");
 
             var userEmployee = _mapper.Map<UserEmployeeDto>(user);
 

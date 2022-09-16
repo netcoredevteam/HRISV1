@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using HRIS.Service.Exceptions;
+using Microsoft.AspNetCore.Mvc;
 
 namespace HRIS.WebApi.Controllers.v1
 {
@@ -19,7 +20,7 @@ namespace HRIS.WebApi.Controllers.v1
         public WhitelistController(IWhitelistService whitelistService)
         {
             _whitelistService = whitelistService;
-        } 
+        }
         #endregion
 
         #region GetAll
@@ -31,7 +32,14 @@ namespace HRIS.WebApi.Controllers.v1
         [AllowAnonymous]
         public async Task<IActionResult> GetAllWhitelist()
         {
-            return Ok(await _whitelistService.GetAllAsync());
+            try
+            {
+                return Ok(await _whitelistService.GetAllAsync());
+            }
+            catch (ListNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
         }
 
         #endregion

@@ -1,4 +1,6 @@
-﻿namespace HRIS.WebApi.Controllers.v1
+﻿using HRIS.Service.Exceptions;
+
+namespace HRIS.WebApi.Controllers.v1
 {
     #region Users Api
     [ApiVersion("1.0")]
@@ -27,9 +29,14 @@
         [AllowAnonymous]
         public async Task<IActionResult> LoginUser([FromBody] LoginRequestModel model)
         {
-            var result = await _userService.AuthenticateAsync(model.Username, model.Password);
-
-            return Ok(result);
+            try
+            {
+                return Ok(await _userService.AuthenticateAsync(model.Username, model.Password));
+            }
+            catch (UserNotFoundException ex)
+            {
+                return Unauthorized(ex.Message);
+            }
         }
         #endregion
 
