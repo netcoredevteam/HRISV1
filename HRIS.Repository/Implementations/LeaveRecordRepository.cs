@@ -1,44 +1,37 @@
 ﻿using HRIS.Domain.Entities;
 using HRIS.Repository.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HRIS.Repository.Implementations
 {
-    public class LeaveRecordRepository : ILeaveRecordRepository
+    public class LeaveRecordRepository : BaseRepository, ILeaveRecordRepository
     {
-        private readonly ApplicationDbContext _context;
-
-        public LeaveRecordRepository(ApplicationDbContext context)
+        public LeaveRecordRepository(ApplicationDbContext context) : base(context)
         {
-            _context = context;
         }
+
         public async Task DeleteAsync(LeaveRecord entity)
         {
-            _context.LeaveRecords.Remove(entity);
+            Context.LeaveRecords.Remove(entity);
 
-            await _context.SaveChangesAsync();
+            await Context.SaveChangesAsync();
         }
 
         public async Task<IEnumerable<LeaveRecord>> GetAllAsync()
         {
-            return await _context.LeaveRecords.ToListAsync();
+            return await Context.LeaveRecords.ToListAsync();
         }
 
         public async Task<LeaveRecord> GetAsync(Guid id)
         {
-            return await _context.LeaveRecords.FirstOrDefaultAsync(e => e.Id == id);
+            return await Context.LeaveRecords.FirstOrDefaultAsync(e => e.Id == id);
         }
 
         public async Task InsertAsync(LeaveRecord entity)
         {
-            _context.LeaveRecords.Add(entity);
+            Context.LeaveRecords.Add(entity);
 
-            await _context.SaveChangesAsync();
+            await Context.SaveChangesAsync();
         }
 
         public Task SaveChangesAsync()
@@ -48,9 +41,9 @@ namespace HRIS.Repository.Implementations
 
         public async Task UpdateAsync(LeaveRecord entity)
         {
-            _context.LeaveRecords.Update(entity);
+            Context.LeaveRecords.Update(entity);
 
-            await _context.SaveChangesAsync();
+            await Context.SaveChangesAsync();
         }
     }
 }

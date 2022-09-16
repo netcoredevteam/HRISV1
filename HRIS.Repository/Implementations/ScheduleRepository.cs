@@ -1,11 +1,6 @@
 ﻿using HRIS.Domain.Entities;
 using HRIS.Repository.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HRIS.Repository.Implementations
 {
@@ -15,12 +10,6 @@ namespace HRIS.Repository.Implementations
         {
         }
 
-        //private readonly ApplicationDbContext Context;
-
-        //public ScheduleRepository(ApplicationDbContext context)
-        //{
-        //    Context = context;
-        //}
         public async Task DeleteAsync(Schedule entity)
         {
             Context.Schedules.Remove(entity);
