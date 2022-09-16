@@ -46,12 +46,6 @@ namespace HRIS.Repository.Implementations
         {
             await Context.AddRangeAsync(entities);
         }
-
-        public async Task SaveChangesAsync()
-        {
-            await Context.SaveChangesAsync();
-        }
-
         public Task UpdateAsync(Mandatory entity)
         {
             throw new NotImplementedException();

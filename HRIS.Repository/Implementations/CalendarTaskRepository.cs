@@ -39,11 +39,6 @@ namespace HRIS.Repository.Implementations
             await Context.SaveChangesAsync();
         }
 
-        public Task SaveChangesAsync()
-        {
-            throw new NotImplementedException();
-        }
-
         public async Task UpdateAsync(CalendarTask entity)
         {
             Context.CalendarTasks.Update(entity);

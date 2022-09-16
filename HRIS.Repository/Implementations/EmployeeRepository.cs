@@ -82,11 +82,6 @@ namespace HRIS.Repository.Implementations
             return employee.IsDeleted;
         }
 
-        public async Task SaveChangesAsync()
-        {
-            await Context.SaveChangesAsync();
-        }
-
         public async Task UpdateAsync(Employee entity)
         {
             Context.Employees.Update(entity);

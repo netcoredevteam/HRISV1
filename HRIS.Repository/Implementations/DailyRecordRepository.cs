@@ -42,11 +42,6 @@ namespace HRIS.Repository.Implementations
             await Context.DailyRecords.AddAsync(entity);
         }
 
-        public async Task SaveChangesAsync()
-        {
-            await Context.SaveChangesAsync();
-        }
-
         public async Task UpdateAsync(DailyRecord entity)
         {
             Context.DailyRecords.Update(entity);

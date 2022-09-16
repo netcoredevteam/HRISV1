@@ -34,11 +34,6 @@ namespace HRIS.Repository.Implementations
             await Context.Whitelists.AddAsync(entity);
         }
 
-        public async Task SaveChangesAsync()
-        {
-            await Context.SaveChangesAsync();
-        }
-
         public async Task UpdateAsync(Whitelist entity)
         {
             Context.Whitelists.Update(entity);

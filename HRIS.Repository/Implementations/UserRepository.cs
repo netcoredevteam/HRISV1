@@ -56,11 +56,6 @@ namespace HRIS.Repository.Implementations
             return user.Status == Status.Active;
         }
 
-        public async Task SaveChangesAsync()
-        {
-            await Context.SaveChangesAsync();
-        }
-
         public async Task UpdateAsync(User entity)
         {
             Context.Users.Update(entity);
