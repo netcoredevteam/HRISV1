@@ -52,10 +52,9 @@ namespace HRIS.WebApi.Controllers.v1
         /// <returns></returns>
         [HttpPost]
         [AllowAnonymous]
-        public async Task<IActionResult> CreateWhitelist([FromBody] CreateWhitelistRequestModel model)
+        public async Task<IActionResult> CreateWhitelist([FromBody] WhitelistDto model)
         {
-            var whitelistDto = Mapper.Map<WhitelistDto>(model);
-            await _whitelistService.CreateAsync(whitelistDto);
+            await _whitelistService.CreateAsync(model);
             return Ok();
         }
 
@@ -67,12 +66,11 @@ namespace HRIS.WebApi.Controllers.v1
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        [HttpPut]
+        [HttpPut("{id}")]
         [AllowAnonymous]
-        public async Task<IActionResult> UpdateWhitelist([FromBody] UpdateWhitelistRequestModel model)
+        public async Task<IActionResult> UpdateWhitelist(Guid id, [FromBody] WhitelistDto model)
         {
-            var whitelistDto = Mapper.Map<WhitelistDto>(model);
-            await _whitelistService.UpdateAsync(whitelistDto);
+            await _whitelistService.UpdateAsync(id, model);
             return Ok();
         }
 
@@ -84,11 +82,12 @@ namespace HRIS.WebApi.Controllers.v1
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpDelete]
+        [HttpDelete("{id}")]
         [AllowAnonymous]
-        public async Task<IActionResult> DeleteWhitelist([FromBody] Guid id)
+        public async Task<IActionResult> DeleteWhitelist(Guid id)
         {
-            await _whitelistService.RemoveAsync(id);
+            var whitelist = await _whitelistService.GetAsync(id);
+            await _whitelistService.RemoveAsync(whitelist);
             return Ok();
         }
 

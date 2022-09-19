@@ -10,8 +10,9 @@ namespace HRIS.Service.Interfaces
     public interface IWhitelistService
     {
         Task<List<WhitelistDto>> GetAllAsync();
+        Task<WhitelistDto> GetAsync(Guid id);
         Task CreateAsync(WhitelistDto model);
-        Task UpdateAsync(WhitelistDto model);
-        Task RemoveAsync(Guid id);
+        Task UpdateAsync(Guid id, WhitelistDto model);
+        Task RemoveAsync(WhitelistDto model);
     }
 }

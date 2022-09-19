@@ -26,7 +26,12 @@ namespace HRIS.Service.Implementations
 
         public async Task CreateAsync(WhitelistDto model)
         {
-            var whitelist = _mapper.Map<Whitelist>(model);
+            //var whitelist = _mapper.Map<Whitelist>(model);
+
+            var whitelist = new Whitelist();
+            whitelist.Id = model.Id;
+            whitelist.Ip = model.Ip;
+            whitelist.Remark = model.Remark;
             whitelist.CreatedAt = DateTime.Now;
             whitelist.UpdatedAt = DateTime.Now;
 
@@ -43,21 +48,57 @@ namespace HRIS.Service.Implementations
                 throw new ListNotFoundException("No whitelist found.");
             }
 
-            var whitelistDtos = _mapper.Map<List<WhitelistDto>>(whitelist);
+            //var whitelistDtos = _mapper.Map<List<WhitelistDto>>(whitelist);
+
+            var whitelistDtos = new List<WhitelistDto>();
+            foreach (var item in whitelist)
+            {
+                var whitelistDto = new WhitelistDto();
+                whitelistDto.Ip = item.Ip;
+                whitelistDto.Remark = item.Remark;
+                whitelistDto.Id = item.Id;
+            }
+
             return whitelistDtos;
         }
 
-        public async Task RemoveAsync(Guid id)
+        public async Task<WhitelistDto> GetAsync(Guid id)
         {
             var whitelist = await _whitelistRepository.GetAsync(id);
+
+            var whitelistDto = new WhitelistDto();
+            whitelistDto.Ip = whitelist.Ip;
+            whitelistDto.Remark = whitelist.Remark;
+            whitelistDto.Id = id;
+
+            //var whitelistDto = _mapper.Map<WhitelistDto>(whitelist);
+
+            return whitelistDto;
+        }
+
+        public async Task RemoveAsync(WhitelistDto model)
+        {
+            //var whitelist = _mapper.Map<Whitelist>(model);
+
+            var whitelist = new Whitelist();
+            whitelist.Id = model.Id;
+            whitelist.Ip = model.Ip;
+            whitelist.Remark = model.Remark;
+            whitelist.UpdatedAt = DateTime.Now;
+
             await _whitelistRepository.DeleteAsync(whitelist);
             await _whitelistRepository.SaveChangesAsync();
         }
 
-        public async Task UpdateAsync(WhitelistDto model)
+        public async Task UpdateAsync(Guid id, WhitelistDto model)
         {
-            var whitelist = _mapper.Map<Whitelist>(model);
+            //var whitelist = _mapper.Map<Whitelist>(model);
+
+            var whitelist = new Whitelist();
+            whitelist.Ip = model.Ip;
+            whitelist.Remark = model.Remark;
             whitelist.UpdatedAt = DateTime.Now;
+            whitelist.Id = id;
 
             await _whitelistRepository.UpdateAsync(whitelist);
             await _whitelistRepository.SaveChangesAsync();

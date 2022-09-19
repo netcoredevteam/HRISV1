@@ -16,7 +16,7 @@ namespace HRIS.Repository.Implementations
 
         public async Task DeleteAsync(Whitelist entity)
         {
-            Context.Whitelists.Remove(entity);
+            entity.IsDelete = true;
         }
 
         public async Task<IEnumerable<Whitelist>> GetAllAsync()

@@ -10,5 +10,6 @@ namespace HRIS.Domain.Entities
     {
         public string? Ip { get; set; }
         public string? Remark { get; set; }
+        public bool IsDelete { get; set; }
     }
 }
