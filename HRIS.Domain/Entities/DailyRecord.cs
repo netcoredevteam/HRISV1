@@ -16,5 +16,6 @@ namespace HRIS.Domain.Entities
         public DateTime LunchOut { get; set; }
         public DateTime OTIn { get; set; }
         public DateTime OTOut { get; set; }
+        public bool IsDelete { get; set; }
     }
 }

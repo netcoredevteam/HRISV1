@@ -47,14 +47,36 @@ namespace HRIS.Service.Implementations
             if (!records.Any())
                 throw new ListNotFoundException("No records found.");
 
-            var recordsDto = _mapper.Map<List<DailyRecordDto>>(records);
+            //var recordsDto = _mapper.Map<List<DailyRecordDto>>(records);
+
+            var recordsDto = new List<DailyRecordDto>();
+            foreach (var record in records)
+            {
+                var recordDto = new DailyRecordDto();
+                recordDto.Id = record.Id;
+                recordDto.TimeIn = record.TimeIn;
+                recordDto.TimeOut = record.TimeOut;
+                recordDto.LunchIn = record.LunchIn;
+                recordDto.LunchOut = record.LunchOut;
+                recordDto.OTIn = record.OTIn;
+                recordDto.OTOut = record.OTOut;
+            }
 
             return recordsDto;
         }
 
         public async Task CreateAsync(DailyRecordDto model)
         {
-            var dailyRecord = _mapper.Map<DailyRecord>(model);
+            //var dailyRecord = _mapper.Map<DailyRecord>(model);
+
+            var dailyRecord = new DailyRecord();
+            dailyRecord.Id = model.Id;
+            dailyRecord.TimeIn = model.TimeIn;
+            dailyRecord.TimeOut = model.TimeOut;
+            dailyRecord.LunchIn = model.LunchIn;
+            dailyRecord.LunchOut = model.LunchOut;
+            dailyRecord.OTIn = model.OTIn;
+            dailyRecord.OTOut = model.OTOut;
             dailyRecord.CreatedAt = DateTime.Now;
             dailyRecord.UpdatedAt = DateTime.Now;
 
@@ -64,15 +86,35 @@ namespace HRIS.Service.Implementations
 
         public async Task RemoveAsync(DailyRecordDto model)
         {
-            var dailyRecord = _mapper.Map<DailyRecord>(model);
+            //var dailyRecord = _mapper.Map<DailyRecord>(model);
+
+            var dailyRecord = new DailyRecord();
+            dailyRecord.Id = model.Id;
+            dailyRecord.TimeIn = model.TimeIn;
+            dailyRecord.TimeOut = model.TimeOut;
+            dailyRecord.LunchIn = model.LunchIn;
+            dailyRecord.LunchOut = model.LunchOut;
+            dailyRecord.OTIn = model.OTIn;
+            dailyRecord.OTOut = model.OTOut;
+            dailyRecord.CreatedAt = DateTime.Now;
+            dailyRecord.UpdatedAt = DateTime.Now;
+
             await _dailyRecordRepository.DeleteAsync(dailyRecord);
             await _dailyRecordRepository.SaveChangesAsync();
         }
 
-        public async Task UpdateAsync(Guid id, DailyRecordDto model)
+        public async Task UpdateAsync(DailyRecordDto model)
         {
-            var dailyRecord = _mapper.Map<DailyRecord>(model);
-            dailyRecord.Id = id;
+            // var dailyRecord = _mapper.Map<DailyRecord>(model);
+
+            var dailyRecord = new DailyRecord();
+            dailyRecord.Id = model.Id;
+            dailyRecord.TimeIn = model.TimeIn;
+            dailyRecord.TimeOut = model.TimeOut;
+            dailyRecord.LunchIn = model.LunchIn;
+            dailyRecord.LunchOut = model.LunchOut;
+            dailyRecord.OTIn = model.OTIn;
+            dailyRecord.OTOut = model.OTOut;
             dailyRecord.UpdatedAt = DateTime.Now;
 
             await _dailyRecordRepository.UpdateAsync(dailyRecord);
@@ -82,7 +124,17 @@ namespace HRIS.Service.Implementations
         public async Task<DailyRecordDto> GetAsync(Guid id)
         {
             var dailyRecord = await _dailyRecordRepository.GetAsync(id);
-            var dailyRecordDto = _mapper.Map<DailyRecordDto>(dailyRecord);
+
+            //var dailyRecordDto = _mapper.Map<DailyRecordDto>(dailyRecord);
+
+            var dailyRecordDto = new DailyRecordDto();
+            dailyRecordDto.Id = dailyRecord.Id;
+            dailyRecordDto.TimeIn = dailyRecord.TimeIn;
+            dailyRecordDto.TimeOut = dailyRecord.TimeOut;
+            dailyRecordDto.LunchIn = dailyRecord.LunchIn;
+            dailyRecordDto.LunchOut = dailyRecord.LunchOut;
+            dailyRecordDto.OTIn = dailyRecord.OTIn;
+            dailyRecordDto.OTOut = dailyRecord.OTOut;
 
             return dailyRecordDto;
         }

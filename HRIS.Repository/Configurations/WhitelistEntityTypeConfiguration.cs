@@ -30,6 +30,11 @@ namespace HRIS.Repository.Configurations
                 .IsRequired();
 
             builder
+                .Property(s => s.IsDelete)
+                .HasDefaultValue(false)
+                .IsRequired();
+
+            builder
                 .Property(s => s.CreatedAt)
                 .HasColumnName("create_time")
                 .IsRequired();

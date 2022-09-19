@@ -16,7 +16,7 @@ namespace HRIS.Repository.Implementations
 
         public async Task DeleteAsync(DailyRecord entity)
         {
-            Context.DailyRecords.Remove(entity);
+            entity.IsDelete = true;
         }
 
         public async Task<IEnumerable<DailyRecord>> GetAllAsync()

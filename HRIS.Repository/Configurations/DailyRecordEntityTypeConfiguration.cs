@@ -59,6 +59,11 @@ namespace HRIS.Repository.Configurations
                 .HasColumnType("datetime");
 
             builder
+                .Property(dr => dr.IsDelete)
+                .HasDefaultValue(false)
+                .IsRequired();
+
+            builder
                 .HasOne(dr => dr.Employee)
                 .WithMany(dr => dr.DailyRecords)
                 .HasForeignKey(dr => dr.EmployeeId)

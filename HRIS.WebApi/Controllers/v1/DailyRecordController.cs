@@ -103,10 +103,12 @@ namespace HRIS.WebApi.Controllers.v1
         /// <returns></returns>
         [HttpPut("{id}")]
         [AllowAnonymous]
-        public async Task<IActionResult> UpdateRecord(Guid id, [FromBody] DailyRecordsRequestModel model)
+        public async Task<IActionResult> UpdateRecord(Guid id, [FromBody] DailyRecordDto model)
         {
-            var requestDto = Mapper.Map<DailyRecordDto>(model);
-            await _dailyRecordService.UpdateAsync(id, requestDto);
+            // var requestDto = Mapper.Map<DailyRecordDto>(model);
+
+            model.Id = id;
+            await _dailyRecordService.UpdateAsync(model);
             return Ok();
         } 
         #endregion
