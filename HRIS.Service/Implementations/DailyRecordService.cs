@@ -69,10 +69,12 @@ namespace HRIS.Service.Implementations
             await _dailyRecordRepository.SaveChangesAsync();
         }
 
-        public async Task UpdateAsync(DailyRecordDto model)
+        public async Task UpdateAsync(Guid id, DailyRecordDto model)
         {
             var dailyRecord = _mapper.Map<DailyRecord>(model);
+            dailyRecord.Id = id;
             dailyRecord.UpdatedAt = DateTime.Now;
+
             await _dailyRecordRepository.UpdateAsync(dailyRecord);
             await _dailyRecordRepository.SaveChangesAsync();
         }

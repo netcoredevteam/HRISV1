@@ -13,7 +13,7 @@ namespace HRIS.Service.Interfaces
         Task<List<DailyRecordDto>> SearchAsync(DailyRecordSearchDto model);
         Task<DailyRecordDto> GetAsync(Guid id);
         Task CreateAsync(DailyRecordDto model);
-        Task UpdateAsync(DailyRecordDto model);
+        Task UpdateAsync(Guid id, DailyRecordDto model);
         Task RemoveAsync(DailyRecordDto model);
     }
 }

@@ -2,7 +2,7 @@
 {
     public class DailyRecordsRequestModel
     {
-        public Guid EmployeeId { get; set; }
+        public string? EmployeeNo { get; set; }
         public DateTime? TimeIn { get; set; }
         public DateTime? TimeOut { get; set; }
         public DateTime? LunchIn { get; set; }

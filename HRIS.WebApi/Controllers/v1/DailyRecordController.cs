@@ -85,7 +85,7 @@ namespace HRIS.WebApi.Controllers.v1
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpDelete]
+        [HttpDelete("{id}")]
         [AllowAnonymous]
         public async Task<IActionResult> DeleteRecord([FromBody] Guid id)
         {
@@ -101,12 +101,12 @@ namespace HRIS.WebApi.Controllers.v1
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        [HttpPut]
+        [HttpPut("{id}")]
         [AllowAnonymous]
-        public async Task<IActionResult> UpdateRecord([FromBody] DailyRecordsRequestModel model)
+        public async Task<IActionResult> UpdateRecord(Guid id, [FromBody] DailyRecordsRequestModel model)
         {
             var requestDto = Mapper.Map<DailyRecordDto>(model);
-            await _dailyRecordService.UpdateAsync(requestDto);
+            await _dailyRecordService.UpdateAsync(id, requestDto);
             return Ok();
         } 
         #endregion

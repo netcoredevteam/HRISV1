@@ -9,7 +9,6 @@ namespace HRIS.Service.DTOs
     public class DailyRecordDto
     {
         public Guid Id { get; set; }
-        public Guid EmployeeId { get; set; }
         public DateTime TimeIn { get; set; }
         public DateTime TimeOut { get; set; }
         public DateTime LunchIn { get; set; }
