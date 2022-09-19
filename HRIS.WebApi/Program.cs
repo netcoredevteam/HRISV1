@@ -143,4 +143,5 @@ void MapServices(IServiceCollection services)
     services.AddScoped<IWhitelistService, WhitelistService>();
     services.AddScoped<IWorkPositionService, WorkPositionService>();
     services.AddScoped<IScheduleService, ScheduleService>();
+    services.AddScoped<IProfileService, ProfileService>();
 }

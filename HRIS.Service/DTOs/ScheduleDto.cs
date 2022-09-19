@@ -9,8 +9,11 @@ namespace HRIS.Service.DTOs
     public class ScheduleDto
     {
         public string? Name { get; set; }
+
         public DateTime StartTime { get; set; }
+
         public DateTime EndTime { get; set; }
-        public int? Status { get; set; }
+
+        //public int? Status { get; set; }
     }
 }

@@ -7,40 +7,40 @@ namespace HRIS.Service.Implementations
 {
     public class ProfileService : IProfileService
     {
-        #region Object & Constructor
+        #region DI
         private readonly IEmployeeRepository _employeeRepository;
-        private readonly IMandatoryRepository _mandatoryRepository;
         private readonly IUserRepository _userRepository;
         private readonly IMapper _mapper;
 
         public ProfileService(IEmployeeRepository employeeRepository,
-                                IMandatoryRepository mandatoryRepository,
                                 IUserRepository userRepository,
                                 IMapper mapper)
         {
             _employeeRepository = employeeRepository;
-            _mandatoryRepository = mandatoryRepository;
             _userRepository = userRepository;
             _mapper = mapper;
         }
         #endregion
 
-        //Get Profile by EmployeeNo
-        public async Task<ProfileDto> GetAsync(string employeeNo)
+        //Get Profile by EmployeeId
+        public async Task<ProfileDto?> GetAsync(Guid id)
         {
             var profileDto = new ProfileDto();
 
             try
             {
-                var employee = await _employeeRepository.GetByEmployeeNoAsync(employeeNo);
+                var employee = await _employeeRepository.GetAsync(id);
 
-                var mandatory = await _mandatoryRepository.GetByEmployeeIdAsync(employee.Id);
+                if (employee == null)
+                {
+                    return null;
+                }
 
                 var user = await _userRepository.GetByEmployeeIdAsync(employee.Id);
 
                 profileDto = new ProfileDto()
                 {
-                    EmployeeNo = employeeNo,
+                    EmployeeNo = employee.EmployeeNo,
                     Username = user == null ? "no username" : user.Username,
                     DateHired = employee.DateHired,
                     YearsOfService = (int?)(DateTime.Now - employee.DateHired).TotalDays,
@@ -49,14 +49,12 @@ namespace HRIS.Service.Implementations
                     Phone = employee.Phone,
                     ContactName = employee.ContactName,
                     ContactNo = employee.ContactNo,
-                    Sss = mandatory.SSS,
-                    PagIbig = mandatory.PagIbig,
-                    PhilHealth = mandatory.PhilHealth,
-                    Tin = mandatory.TIN,
-                    Hmo = mandatory.HMO
+                    Sss = employee.Mandatory?.SSS,
+                    PagIbig = employee.Mandatory?.PagIbig,
+                    PhilHealth = employee.Mandatory?.PhilHealth,
+                    Tin = employee.Mandatory?.TIN,
+                    Hmo = employee.Mandatory?.HMO
                 };
-
-                
             }
             catch (Exception)
             {
@@ -64,6 +62,6 @@ namespace HRIS.Service.Implementations
             }
 
             return profileDto;
-        }
+        } 
     }
 }
