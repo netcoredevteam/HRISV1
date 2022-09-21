@@ -25,6 +25,7 @@ using HRIS.WebApi.Middleware;
 using HRIS.WebApi.Mappings;
 using HRIS.Service.Objects;
 using System.Text.Json;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -49,6 +50,32 @@ var builder = WebApplication.CreateBuilder(args);
             Version = "v1",
             Title = "HRIS",
         });
+        c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+        {
+            Description = @"JWT Authorization header using the Bearer scheme. \r\n\r\n 
+                      Enter 'Bearer' [space] and then your token in the text input below.",
+            Name = "Authorization",
+            In = ParameterLocation.Header,
+            Type = SecuritySchemeType.ApiKey,
+            Scheme = "Bearer"
+        });
+        c.AddSecurityRequirement(new OpenApiSecurityRequirement()
+        {
+            {
+                new OpenApiSecurityScheme
+                {
+                Reference = new OpenApiReference
+                  {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "Bearer"
+                  },
+                  Scheme = "oauth2",
+                  Name = "Bearer",
+                  In = ParameterLocation.Header
+                },
+                new List<string>()
+            }
+        });
     });
 
     services.AddCors();
@@ -69,6 +96,7 @@ var builder = WebApplication.CreateBuilder(args);
     });
 
     services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+    services.AddHttpClient();
 
     // Strongly Typed Objects
     services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));

@@ -1,4 +1,5 @@
 ﻿using HRIS.Service.Exceptions;
+using System.Net.Http.Headers;
 
 namespace HRIS.WebApi.Controllers.v1
 {
@@ -8,14 +9,17 @@ namespace HRIS.WebApi.Controllers.v1
     {
         #region Dependency Injection
         private readonly IUserService _userService;
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly HttpClient _httpClient;
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="userService"></param>
-        public UserController(IUserService userService)
+        public UserController(IUserService userService, HttpClient httpClient)
         {
             _userService = userService;
+            _httpClient = httpClient;
         }
         #endregion
 
@@ -31,7 +35,9 @@ namespace HRIS.WebApi.Controllers.v1
         {
             try
             {
-                return Ok(await _userService.AuthenticateAsync(model.Username, model.Password));
+                var authModel = await _userService.AuthenticateAsync(model.Username, model.Password);
+                _httpClient.DefaultRequestHeaders.Add("Authentication", $"Bearer {authModel.Token}");
+                return Ok(authModel);
             }
             catch (UserNotFoundException ex)
             {

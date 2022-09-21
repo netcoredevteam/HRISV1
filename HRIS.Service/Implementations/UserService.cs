@@ -4,9 +4,11 @@ using HRIS.Repository.Interfaces;
 using HRIS.Service.DTOs;
 using HRIS.Service.Exceptions;
 using HRIS.Service.Interfaces;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,19 +17,16 @@ namespace HRIS.Service.Implementations
     public class UserService : IUserService
     {
         private readonly IUserRepository _userRepository;
-        private readonly IEmployeeRepository _employeeRepository;
         private readonly IJwtService _jwtService;
         private readonly IMapper _mapper;
 
-        public UserService(IUserRepository userRepository, 
-            IEmployeeRepository employeeRepository,
+        public UserService(IUserRepository userRepository,
             IJwtService jwtService,
             IMapper mapper)
         {
             _userRepository = userRepository;
-            _employeeRepository = employeeRepository;
             _jwtService = jwtService;
-            _mapper = mapper;
+            _mapper = mapper;;
         }
 
         public async Task<AuthUserDto> AuthenticateAsync(string? username, string? password)
