@@ -35,9 +35,7 @@ namespace HRIS.WebApi.Controllers.v1
         {
             try
             {
-                var authModel = await _userService.AuthenticateAsync(model.Username, model.Password);
-                _httpClient.DefaultRequestHeaders.Add("Authentication", $"Bearer {authModel.Token}");
-                return Ok(authModel);
+                return Ok(await _userService.AuthenticateAsync(model.Username, model.Password));
             }
             catch (UserNotFoundException ex)
             {
