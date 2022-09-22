@@ -9,15 +9,23 @@
             _next = next;
         }
 
-        public async Task Invoke(HttpContext context, IUserRepository userRepository, IJwtService jwtUtils)
+        public async Task Invoke(HttpContext context, 
+                                 IUserRepository userRepository, 
+                                 IJwtService jwtUtils,
+                                 IDistributedCacheRepository<string> distributedCacheRepository)
         {
             var token = context.Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
+
             var userId = jwtUtils.ValidateToken(token);
 
             if (userId != null)
             {
-                // attach user to context on successful jwt validation
-                context.Items["User"] = await userRepository.GetAsync(userId.Value);
+                var tokenCache = await distributedCacheRepository.GetCachedAsync(userId.ToString());
+
+                if (!string.IsNullOrEmpty(tokenCache))
+                {
+                    context.Items["User"] = await userRepository.GetAsync(userId.Value);
+                }
             }
 
             await _next(context);

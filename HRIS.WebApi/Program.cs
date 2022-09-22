@@ -79,6 +79,9 @@ var builder = WebApplication.CreateBuilder(args);
     });
 
     services.AddCors();
+
+    services.AddHttpClient();
+
     services.AddApiVersioning(config =>
     {
         // Specify the default API Version as 1.0
@@ -95,8 +98,15 @@ var builder = WebApplication.CreateBuilder(args);
         options.UseSqlServer(connectionString);
     });
 
+    services.AddDistributedSqlServerCache(options =>
+    {
+        options.ConnectionString = builder.Configuration.GetConnectionString("DistCacheConnection");
+        options.SchemaName = "dbo";
+        options.TableName = "json_web_tokens";
+    });
+
     services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-    services.AddHttpClient();
+    services.AddScoped(typeof(IDistributedCacheRepository<>), typeof(DistributedCacheRepository<>));
 
     // Strongly Typed Objects
     services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
@@ -144,7 +154,6 @@ var app = builder.Build();
 }
 
 app.Run();
-
 
 void MapRepositories(IServiceCollection services)
 {
