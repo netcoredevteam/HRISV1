@@ -32,6 +32,11 @@ namespace HRIS.Repository.Implementations
             return await Context.Schedules.Where(s => s.Name == scheduleName).Select(s => s.Id).SingleOrDefaultAsync();
         }
 
+        public async Task<bool> HasDuplicateAsync(string scheduleName)
+        {
+            return await Context.Schedules.Where(e => e.Name == scheduleName).AnyAsync();
+        }
+
         public async Task InsertAsync(Schedule entity)
         {
             Context.Schedules.Add(entity);

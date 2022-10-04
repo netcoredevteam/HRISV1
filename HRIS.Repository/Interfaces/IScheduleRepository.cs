@@ -7,8 +7,10 @@ namespace HRIS.Repository.Interfaces
                                            IInserter<Schedule>,
                                            IListRetriever<Schedule>,
                                            IRetriever<Schedule, Guid>,
-                                           IUpdater<Schedule>
+                                           IUpdater<Schedule>,
+                                           IRepository
     {
         Task<Guid> GetIdAsync(string? scheduleName);
+        Task<bool> HasDuplicateAsync(string scheduleName);
     }
 }

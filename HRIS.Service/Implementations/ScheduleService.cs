@@ -1,12 +1,10 @@
 ﻿using AutoMapper;
+using HRIS.Domain.Entities;
+using HRIS.Repository.Implementations;
 using HRIS.Repository.Interfaces;
 using HRIS.Service.DTOs;
 using HRIS.Service.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using HRIS.Utility.Helpers;
 
 namespace HRIS.Service.Implementations
 {
@@ -22,17 +20,74 @@ namespace HRIS.Service.Implementations
             _mapper = mapper;
         }
 
+        public async Task CreateAsync(Schedule schedule)
+        {
+            await _scheduleRepository.InsertAsync(schedule);
+            await _scheduleRepository.SaveChangesAsync();
+        }
+
         public async Task<IEnumerable<ScheduleDto>> GetAllAsync()
         {
-            var mandatories = await _scheduleRepository.GetAllAsync();
-            var scheduleDto = _mapper.Map<List<ScheduleDto>>(mandatories);
+            var schedulesDtos = new List<ScheduleDto>();
+
+            try
+            {
+                var schedules = await _scheduleRepository.GetAllAsync();
+
+
+                foreach (var schedule in schedules)
+                {
+
+                    var scheduleDto = new ScheduleDto()
+                    {
+                        Name = schedule.Name,
+                        StartTime = schedule.StartTime,
+                        EndTime = schedule.EndTime
+                    };
+
+                    schedulesDtos.Add(scheduleDto);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+
+            return schedulesDtos;
+        }
+
+        public async Task<ScheduleDto?> GetAsync(Guid id)
+        {
+            var scheduleDto = new ScheduleDto();
+
+            try
+            {
+                var schedule = await _scheduleRepository.GetAsync(id);
+
+                if (schedule == null)
+                {
+                    return null;
+                }
+
+                scheduleDto = new ScheduleDto() 
+                {
+                    Name = schedule.Name,
+                    StartTime = schedule.StartTime,
+                    EndTime = schedule.EndTime
+                };
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
 
             return scheduleDto;
         }
 
-        public async Task<Guid> GetidAsync(string? scheduleName)
+        public async Task<bool> HasDuplicateAsync(string scheduleName)
         {
-            return await _scheduleRepository.GetIdAsync(scheduleName);
+            return await _scheduleRepository.HasDuplicateAsync(scheduleName);
         }
     }
 }
